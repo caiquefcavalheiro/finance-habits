@@ -18,3 +18,8 @@ export const Content = styled.div`
     }
 
 `
+export const CloseButton = styled.div `
+    color: var(--cor-font);
+    float: right;
+    cursor: pointer;
+`

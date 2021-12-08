@@ -1,6 +1,7 @@
 import Button from '../Button';
+import { useState } from 'react';
 import { TextField } from '@mui/material';
-import { Content } from './styles';
+import { CloseButton, Content } from './styles';
 import ReactModal from 'react-modal';
 import { useForm } from 'react-hook-form';
 import * as yup from "yup"
@@ -8,6 +9,12 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import axios from 'axios';
 
 const Signup = () => {
+
+    const [openSignup, setOpenSignup] = useState(true)
+
+    const closeSignup = () => {
+        setOpenSignup(false)
+    }
 
     const api = axios.create({
         baseURL: "https://kenzie-habits.herokuapp.com"
@@ -50,9 +57,10 @@ const Signup = () => {
     return (
         <>
         <ReactModal
-            isOpen={true}
+            isOpen={openSignup}
             style={CustomStyles}
         >
+        <CloseButton onClick={closeSignup} >X</CloseButton>
         <Content>
         <form onSubmit={handleSubmit(handleSignup)} >
             <TextField 
