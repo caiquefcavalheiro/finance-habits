@@ -1,4 +1,5 @@
-import { Button, TextField } from '@mui/material';
+import Button from '../Button';
+import { TextField } from '@mui/material';
 import { Content } from './styles';
 import ReactModal from 'react-modal';
 

@@ -11,7 +11,7 @@ export const Content = styled.div`
         margin: 2.5rem 1rem;
     }
     Button {
-        margin: 3rem 1rem;
+        margin: 3rem auto;
     }
 
 `
