@@ -7,9 +7,5 @@ const Button = ({children, ...rest}) => {
         </Container>
     )
 }
-<<<<<<< HEAD
 
 export default Button
-=======
- export default Button;
->>>>>>> 133453f2320830195c1a17cef99c7f5ff4928b43

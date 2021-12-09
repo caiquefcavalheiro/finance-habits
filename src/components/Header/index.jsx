@@ -3,7 +3,7 @@ import { useState } from 'react';
 import logo from '../../assets/logo.png'
 import { FiMenu} from 'react-icons/fi'
 import {ContainerIcon, ContainerButtons, Container, Icon } from './style';
-import Button from '../Button'
+import Button from '../Button';
 
 function Header () {
     const [menu, setMenu] = useState(false);

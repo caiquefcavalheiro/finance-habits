@@ -11,7 +11,7 @@ import { Container, Icon, Modal } from "./style"
 
 import { SigninContext } from '../../providers/SignIn'
 
-const SignIn = ({openSignup, setOpenSignup}) => {
+const SignIn = ({openSignIn, setOpenSignIn}) => {
 
     const { toLogin } = useContext(SigninContext)
 
@@ -30,12 +30,12 @@ const SignIn = ({openSignup, setOpenSignup}) => {
 
     return(
         <Modal
-            isOpen={openSignup}
+            isOpen={openSignIn}
             ariaHideApp={false}
         >
             
             <Container>
-                <Icon onClick={ () => setOpenSignup(false)}><FiXCircle/></Icon>
+                <Icon onClick={ () => setOpenSignIn(false)}><FiXCircle/></Icon>
                 <form onSubmit={handleSubmit(onSignIn)}>
                     <TextField
                         label='Username'
