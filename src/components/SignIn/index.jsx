@@ -4,14 +4,16 @@ import { yupResolver} from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import {useForm} from 'react-hook-form'
 import {FiXCircle} from 'react-icons/fi'
-import { useState } from "react"
+import { useContext } from "react"
 
 import Button from '../Button'
 import { Container, Icon, Modal } from "./style"
 
-const SignIn = () => {
+import { SigninContext } from '../../providers/SignIn'
 
-    const [openSignup, setOpenSignup] = useState(true)
+const SignIn = ({openSignup, setOpenSignup}) => {
+
+    const { toLogin } = useContext(SigninContext)
 
     const schema = yup.object().shape({
         username: yup.string().required('Campo obrigatório'),
@@ -23,12 +25,13 @@ const SignIn = () => {
     })
 
     const onSignIn = (data) => {
-        console.log(data)
+        toLogin(data)
     }
 
     return(
         <Modal
             isOpen={openSignup}
+            ariaHideApp={false}
         >
             
             <Container>
