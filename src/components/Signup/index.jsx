@@ -1,5 +1,4 @@
 import Button from '../Button';
-import { useState } from 'react';
 import { TextField } from '@mui/material';
 import { CloseButton, Content } from './styles';
 import ReactModal from 'react-modal';
@@ -8,9 +7,7 @@ import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import axios from 'axios';
 
-const Signup = () => {
-
-    const [openSignup, setOpenSignup] = useState(true)
+const Signup = ({openSignup, setOpenSignup}) => {
 
     const closeSignup = () => {
         setOpenSignup(false)
@@ -59,6 +56,7 @@ const Signup = () => {
         <ReactModal
             isOpen={openSignup}
             style={CustomStyles}
+            ariaHideApp={false}
         >
         <CloseButton onClick={closeSignup} >X</CloseButton>
         <Content>

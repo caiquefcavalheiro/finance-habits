@@ -1,23 +1,37 @@
 import styled from 'styled-components'
+import { Menu } from '@mui/material'
+
+export const ContainerMenu = styled(Menu)`
+
+    .MuiMenuItem-root{
+        justify-content: center;
+    }
+    .MuiPaper-root{
+        background-color: #0090AD;
+    }
+
+    hr{
+        margin:0 10px;
+    }
+
+    @media screen and (min-width:1000px) {
+        display: none;
+    }
+`
 
 export const Container = styled.div`
+    color: #FFFFFF;
     display:flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #000000;
+    background-color: #00B4D8;
     padding: 10px 0;
     border-radius: var(--radius);
 
     h1{
+        font-family: 'Gugi', cursive;
         color: var(--color-font);
-    }
-
-    img{
         margin: 0 20px;
-        width: 50px;
-        background: var(--color-font);
-        border-radius: 50%;
-
     }
 
     @media screen and (min-width:1000px) {
@@ -26,9 +40,9 @@ export const Container = styled.div`
 `
 
 export const Icon = styled.button`
-    color: white;
-    background: #000000;
+    color: #FFFFFF;
     padding: 5px;
+    background-color: #00B4D8;
     margin: 0 20px;
 
     svg{

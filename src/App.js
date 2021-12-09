@@ -1,6 +1,5 @@
-import Signup from './components/Signup';
-import Header from './components/Header';
 import GlobalStyle from './style/global'
+import Routes from './routes';
 
 function App() {
 
@@ -8,8 +7,7 @@ function App() {
   return (
     <>
       <GlobalStyle/>
-      <Header />
-      <Signup/>
+      <Routes />
     </>
   );
 }
