@@ -1,5 +1,5 @@
 import styled from "styled-components"
-
+import ReactModal from "react-modal"
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@ export const Content = styled.div`
     }
 
 `
-export const ModalSignup = styled.div`
+export const ModalSignup = styled(ReactModal)`
     width: 310px;
         height: 510px;
         position: absolute;
@@ -45,7 +45,7 @@ export const ModalSignup = styled.div`
         margin-left: -160px;
         margin-top: -255px;
         top: 50%;
-        background: #3d3d3d;
+        background: var(--cor-fundo-modal);
         border-radius: 8px;
         padding: 20px;
 
@@ -65,4 +65,8 @@ export const CloseButton = styled.button`
     svg{
         font-size: 25px;
     }
+`
+export const ButtonDiv = styled.button`
+    display: flex;
+    justify-content: flex-end;
 `

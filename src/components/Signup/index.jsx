@@ -1,21 +1,17 @@
-import { useState } from 'react';
 import Button from '../Button';
 import { TextField } from '@mui/material';
-import { ModalSignup, Content, CloseButton, Container } from './styles';
+import { ModalSignup, Content, Container } from './styles';
 import {FiXCircle} from 'react-icons/fi'
 import { useForm } from 'react-hook-form';
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useContext } from 'react';
 import { SignUpContext } from '../../providers/SignUp';
+import { Icon } from "../SignIn/style"
 
-const Signup = () => {
 
-    const [openSignup, setOpenSignup] = useState(true)
+const Signup = ({signup, setSignup}) => {
 
-    const closeModal = () => {
-        setOpenSignup(false)
-    }
 
     const { toSignUp } = useContext(SignUpContext)
 
@@ -36,14 +32,13 @@ const Signup = () => {
     const handleSignup = (data) => {
         toSignUp(data)
     }
-    
     return (
         <Container>
         <ModalSignup
-            isOpen={openSignup}
+            isOpen={signup}
             ariaHideApp={false}
         >
-        <CloseButton onClick={closeModal}><FiXCircle/></CloseButton>
+        <Icon onClick={() => setSignup(false)}><FiXCircle/></Icon>
         <Content>
         <form onSubmit={handleSubmit(handleSignup)} >
             <TextField 

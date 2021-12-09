@@ -28,7 +28,8 @@ export default createGlobalStyle`
         --color-black: #3D3D3D;
         --color-font: #f4f4f4;
         --radius: 8px;
-        --cor-fundo-popover: #3D3D3D;
+        --cor-botao: #0090AD;
+        --cor-fundo-modal: #C4E6F2;
         --cor-fundo-input: #F5F5F5;
         
     }
