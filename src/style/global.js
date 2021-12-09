@@ -25,6 +25,8 @@ export default createGlobalStyle`
         --cor-santander: linear-gradient(145deg, rgba(237,39,15,1) 0%, rgba(180,31,13,1) 89%);
         --cor-font: #f4f4f4;
         --color-green: #6CD397;
+        --color-black: #3D3D3D;
+        --color-font: #f4f4f4;
         --radius: 8px;
         --cor-fundo-popover: #3D3D3D;
         --cor-fundo-input: #F5F5F5;
