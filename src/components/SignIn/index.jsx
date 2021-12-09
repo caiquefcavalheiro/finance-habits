@@ -49,6 +49,7 @@ const SignIn = ({openSignup, setOpenSignup}) => {
 
                     <TextField
                         label='Senha'
+                        type='password'
                         fullWidth
                         variant="outlined" 
                         margin="normal"
