@@ -1,4 +1,5 @@
 import { Redirect } from 'react-router-dom'
+import CreateHabit from '../../components/CreateHabit'
 
 function Dashboard({ authenticated, setAuthenticated }) {
     if (!authenticated) {
@@ -12,6 +13,7 @@ function Dashboard({ authenticated, setAuthenticated }) {
     return(
         <>
         <button onClick={logout} >Sair</button>
+        <CreateHabit/>
         </>
     )
 }
