@@ -36,6 +36,7 @@ export default createGlobalStyle`
         --color-font: #f4f4f4;
         --radius: 8px;
         --cor-botao: #0090AD;
+        --cor-fundo-botao: #FFFFFF;
         --cor-fundo-modal: #C4E6F2;
         --cor-fundo-input: #F5F5F5;
         --color-grey-0: #d2d2d233;

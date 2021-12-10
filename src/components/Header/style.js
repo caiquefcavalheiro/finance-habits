@@ -53,12 +53,10 @@ export const ContainerButtons = styled.div`
     }
     
     button:nth-child(1){
-        font-size: 20px;
         margin-right: 20px;
     }
 
     button:nth-child(2) {
-        font-size: 20px;
         margin-right:40px;
     }
 `
