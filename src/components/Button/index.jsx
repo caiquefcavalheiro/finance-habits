@@ -1,4 +1,3 @@
-
 import { Container } from "./style"
 
 const Button = ({children, ...rest}) => {
@@ -8,4 +7,5 @@ const Button = ({children, ...rest}) => {
         </Container>
     )
 }
- export default Button
+
+export default Button
