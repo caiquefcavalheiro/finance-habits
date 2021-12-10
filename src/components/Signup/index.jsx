@@ -1,24 +1,19 @@
 import Button from '../Button';
-import { useState } from 'react';
 import { TextField } from '@mui/material';
-import { CloseButton, Content } from './styles';
-import ReactModal from 'react-modal';
+import { ModalSignup, Content, Container } from './styles';
+import {FiXCircle} from 'react-icons/fi'
 import { useForm } from 'react-hook-form';
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
-import axios from 'axios';
+import { useContext } from 'react';
+import { SignUpContext } from '../../providers/SignUp';
+import { Icon } from "../SignIn/style"
 
-const Signup = () => {
 
-    const [openSignup, setOpenSignup] = useState(true)
+const Signup = ({signup, setSignup}) => {
 
-    const closeSignup = () => {
-        setOpenSignup(false)
-    }
 
-    const api = axios.create({
-        baseURL: "https://kenzie-habits.herokuapp.com"
-    })
+    const { toSignUp } = useContext(SignUpContext)
 
     const schema = yup.object().shape({
         username: yup.string().required("Campo obrigatório"),
@@ -35,32 +30,15 @@ const Signup = () => {
     })
 
     const handleSignup = (data) => {
-        api
-        .post("/users/", data)
-        .then((_) => {
-            console.log(data)
-            })
-            .catch((err) => {
-                console.log(err)
-                })
+        toSignUp(data)
     }
-
-    const CustomStyles = {
-        content: {
-            width: "310px",
-            height: "510px",
-            margin: "0 auto",
-            background: "#3d3d3d",
-        }
-    }
-    
     return (
-        <>
-        <ReactModal
-            isOpen={openSignup}
-            style={CustomStyles}
+        <Container>
+        <ModalSignup
+            isOpen={signup}
+            ariaHideApp={false}
         >
-        <CloseButton onClick={closeSignup} >X</CloseButton>
+        <Icon onClick={() => setSignup(false)}><FiXCircle/></Icon>
         <Content>
         <form onSubmit={handleSubmit(handleSignup)} >
             <TextField 
@@ -69,14 +47,16 @@ const Signup = () => {
                 helperText={errors.username?.message}
                 label="Username" 
                 variant="outlined" 
-                margin="normal" />
+                margin="normal"
+                fullWidth />
             <TextField 
                 {...register("email")}
                 error={!!errors.email?.message}
                 helperText={errors.email?.message}
                 label="E-mail" 
                 variant="outlined" 
-                margin="normal" />
+                margin="normal"
+                fullWidth />
             <TextField 
                 {...register("password")}
                 error={!!errors.password?.message}
@@ -84,12 +64,13 @@ const Signup = () => {
                 type="password"
                 label="Senha" 
                 variant="outlined" 
-                margin="normal" />
-            <Button type="submit">Cadastrar</Button>
+                margin="normal"
+                fullWidth />
+            <Button biggerButton type="submit">Cadastrar</Button>
         </form>
         </Content>
-        </ReactModal>
-        </>
+        </ModalSignup>
+        </Container>
     )
 }
 export default Signup

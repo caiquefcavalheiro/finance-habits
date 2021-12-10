@@ -10,7 +10,7 @@ export const Modal = styled(ReactModal)`
         margin-left: -160px;
         margin-top: -255px;
         top: 50%;
-        background: #3d3d3d;
+        background: var(--cor-fundo-modal);
         border-radius: 8px;
         padding: 20px;
 
