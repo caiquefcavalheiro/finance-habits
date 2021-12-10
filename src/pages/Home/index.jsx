@@ -5,13 +5,14 @@ import CardHome from '../../components/CardHome'
 
 const Home = ({authenticated, setAuthenticated}) => {
 
-    const {groups} = useGroups()
+    const {groupList} = useGroups()
 
     return(
         <BasePage authenticated={authenticated} setAuthenticated={setAuthenticated} >
             {
-                groups.map( item => (
-                <CardHome 
+                groupList.map( (item, index) => (
+                <CardHome
+                    key={index}
                     category={item.category} 
                     description={item.description}
                     name={item.name}
