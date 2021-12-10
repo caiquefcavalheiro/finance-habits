@@ -8,18 +8,15 @@ export const GroupProvider = ({children}) => {
     const [page, setPage] = useState(1)
 
     useEffect(()=>{
-
         api.get(`groups/?page=${page}`).then( res => {
-            const {next, results} = res.data
-
+            const {next, results} = res.data;
             if(next !== null){
-                setGroups([...groups, ...results])
+                setGroups((state) => [...state, ...results])
                 setPage(page + 1)
             }else{
-                setGroups([...groups, ...results])
+                setGroups((state) => [...state, ...results])
             }
         })
-
     },[page])
 
     return(
