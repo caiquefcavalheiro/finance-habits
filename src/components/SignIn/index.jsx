@@ -10,8 +10,9 @@ import Button from '../Button'
 import { Container, Icon, Modal } from "./style"
 
 import { SigninContext } from '../../providers/SignIn'
+import { Redirect } from "react-router"
 
-const SignIn = ({openSignup, setOpenSignup}) => {
+const SignIn = ({openSignup, setOpenSignup, authenticated, setAuthenticated}) => {
 
     const { toLogin } = useContext(SigninContext)
 
@@ -26,8 +27,11 @@ const SignIn = ({openSignup, setOpenSignup}) => {
 
     const onSignIn = (data) => {
         toLogin(data)
+        setAuthenticated(true)
     }
-
+    if (authenticated) {
+        return <Redirect to="/dashboard"/>
+    }
     return(
         <Modal
             isOpen={openSignup}
@@ -39,7 +43,7 @@ const SignIn = ({openSignup, setOpenSignup}) => {
                 <form onSubmit={handleSubmit(onSignIn)}>
                     <TextField
                         label='Username'
-                        variant="outlined" 
+                        variant="filled" 
                         margin="normal"
                         fullWidth
                         {...register('username')}
@@ -51,7 +55,7 @@ const SignIn = ({openSignup, setOpenSignup}) => {
                         label='Senha'
                         type='password'
                         fullWidth
-                        variant="outlined" 
+                        variant="filled" 
                         margin="normal"
                         {...register('password')}
                         error={!!errors.password?.message}

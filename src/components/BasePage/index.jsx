@@ -1,10 +1,10 @@
 import Header from "../../components/Header"
 import { Container } from "./style"
 
-const BasePage = ({children}) => {
+const BasePage = ({children, authenticated, setAuthenticated}) => {
     return(
         <>
-            <Header/>
+            <Header authenticated={authenticated} setAuthenticated={setAuthenticated} />
 
             <Container>
                 {children}

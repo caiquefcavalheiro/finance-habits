@@ -8,9 +8,10 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { useContext } from 'react';
 import { SignUpContext } from '../../providers/SignUp';
 import { Icon } from "../SignIn/style"
+import { Redirect } from 'react-router';
 
 
-const Signup = ({signup, setSignup}) => {
+const Signup = ({signup, setSignup, authenticated, setAuthenticated}) => {
 
 
     const { toSignUp } = useContext(SignUpContext)
@@ -31,6 +32,11 @@ const Signup = ({signup, setSignup}) => {
 
     const handleSignup = (data) => {
         toSignUp(data)
+        setAuthenticated(true)
+    }
+
+    if (authenticated) {
+        return <Redirect to="/dashboard" />
     }
     return (
         <ModalSignup
@@ -45,7 +51,7 @@ const Signup = ({signup, setSignup}) => {
                 error={!!errors.username?.message}
                 helperText={errors.username?.message}
                 label="Username" 
-                variant="outlined" 
+                variant="filled" 
                 margin="normal"
                 fullWidth />
             <TextField 
@@ -53,7 +59,7 @@ const Signup = ({signup, setSignup}) => {
                 error={!!errors.email?.message}
                 helperText={errors.email?.message}
                 label="E-mail" 
-                variant="outlined" 
+                variant="filled" 
                 margin="normal"
                 fullWidth />
             <TextField 
@@ -62,7 +68,7 @@ const Signup = ({signup, setSignup}) => {
                 helperText={errors.password?.message}
                 type="password"
                 label="Senha" 
-                variant="outlined" 
+                variant="filled" 
                 margin="normal"
                 fullWidth />
             <Button biggerButton type="submit">Cadastrar</Button>
