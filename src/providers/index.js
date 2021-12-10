@@ -1,9 +1,12 @@
 import { SigninProvider } from "./SignIn";
+import { GroupProvider } from "./Groups";
 
 const Providers = ( { children }) => {
     return(
         <SigninProvider>
-            {children}
+            <GroupProvider>
+                {children}
+            </GroupProvider>
         </SigninProvider>
     )
 }

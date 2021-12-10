@@ -30,6 +30,7 @@ export default createGlobalStyle`
         --radius: 8px;
         --cor-fundo-popover: #3D3D3D;
         --cor-fundo-input: #F5F5F5;
+        --color-grey-0: #d2d2d233
         
     }
 
