@@ -20,6 +20,7 @@ export const ContainerMenu = styled(Menu)`
 `
 
 export const Container = styled.div`
+    height: 10%;
     color: #FFFFFF;
     display:flex;
     align-items: center;
