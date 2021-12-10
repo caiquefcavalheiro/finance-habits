@@ -1,6 +1,7 @@
 import Header from "../../components/Header"
 import { Container } from "./style"
 
+
 const BasePage = ({children, authenticated, setAuthenticated}) => {
     return(
         <>
