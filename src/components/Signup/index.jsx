@@ -43,7 +43,6 @@ const Signup = ({signup, setSignup, authenticated, setAuthenticated}) => {
             isOpen={signup}
             ariaHideApp={false}
         >
-<<<<<<< HEAD
         <Icon onClick={() => setSignup(false)}><FiXCircle/></Icon>
         <Content>
         <form onSubmit={handleSubmit(handleSignup)} >
@@ -75,39 +74,6 @@ const Signup = ({signup, setSignup, authenticated, setAuthenticated}) => {
             <Button biggerButton type="submit">Cadastrar</Button>
         </form>
         </Content>
-=======
-            <Icon onClick={() => setSignup(false)}><FiXCircle/></Icon>
-            <Content>
-                <form onSubmit={handleSubmit(handleSignup)} >
-                    <TextField 
-                        {...register("username")}
-                        error={!!errors.username?.message}
-                        helperText={errors.username?.message}
-                        label="Username" 
-                        variant="outlined" 
-                        margin="normal"
-                        fullWidth />
-                    <TextField 
-                        {...register("email")}
-                        error={!!errors.email?.message}
-                        helperText={errors.email?.message}
-                        label="E-mail" 
-                        variant="outlined" 
-                        margin="normal"
-                        fullWidth />
-                    <TextField 
-                        {...register("password")}
-                        error={!!errors.password?.message}
-                        helperText={errors.password?.message}
-                        type="password"
-                        label="Senha" 
-                        variant="outlined" 
-                        margin="normal"
-                        fullWidth />
-                    <Button biggerButton type="submit">Cadastrar</Button>
-                </form>
-            </Content>
->>>>>>> feature/snowfall
         </ModalSignup>
     )
 }
