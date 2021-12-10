@@ -1,6 +1,6 @@
 import Button from '../Button';
 import { TextField } from '@mui/material';
-import { ModalSignup, Content, Container } from './styles';
+import { ModalSignup, Content } from './styles';
 import {FiXCircle} from 'react-icons/fi'
 import { useForm } from 'react-hook-form';
 import * as yup from "yup"
@@ -33,7 +33,6 @@ const Signup = ({signup, setSignup}) => {
         toSignUp(data)
     }
     return (
-        <Container>
         <ModalSignup
             isOpen={signup}
             ariaHideApp={false}
@@ -70,7 +69,6 @@ const Signup = ({signup, setSignup}) => {
         </form>
         </Content>
         </ModalSignup>
-        </Container>
     )
 }
 export default Signup

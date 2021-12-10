@@ -16,7 +16,7 @@ export default createGlobalStyle`
         box-sizing: border-box;
         font-size: 16px;
         font-family: 'Open Sans', sans-serif;
-        color: var(--cor-font)
+        color: var(--color-black)
     }
 
     :root {
@@ -31,8 +31,7 @@ export default createGlobalStyle`
         --cor-botao: #0090AD;
         --cor-fundo-modal: #C4E6F2;
         --cor-fundo-input: #F5F5F5;
-        --color-grey-0: #d2d2d233
-        
+        --color-grey-0: #d2d2d233;
     }
 
     button{
