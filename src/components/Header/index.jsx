@@ -12,6 +12,16 @@ function Header () {
     const [signin, setSignin] = useState(false);
     const [signup, setSignup] = useState(false);
 
+    function openSignin() {
+        setSignin(true);
+        setMenu(false);
+    }
+
+    function openSignup() {
+        setSignup(true);
+        setMenu(false);
+    }
+
     return (
         <Container>
             <h1>Finance Habits</h1>
@@ -21,14 +31,14 @@ function Header () {
                 setAnchor(event.currentTarget)}}><FiMenu/>
                     </Icon>
                     <ContainerMenu anchorEl={anchor} id="basic-menu" open={menu} onClose={() => setMenu(false)}>
-                        <MenuItem onClick={() => setSignin(true)}>Entrar</MenuItem>
+                        <MenuItem onClick={openSignin}>Entrar</MenuItem>
                         <hr/>
-                        <MenuItem onClick={() => setSignup(true)}>Cadastrar</MenuItem>
+                        <MenuItem onClick={openSignup}>Cadastrar</MenuItem>
                     </ContainerMenu>
                 </ContainerIcon>
                 <ContainerButtons>
-                    <Button onClick={() => setSignin(true)}>Entrar</Button>
-                    <Button onClick={() => setSignup(true)}>Cadastrar</Button>
+                    <Button onClick={() => openSignin()}>Entrar</Button>
+                    <Button onClick={() => openSignup()}>Cadastrar</Button>
                 </ContainerButtons>
             </div>
             <SignIn openSignup={signin} setOpenSignup={setSignin}/>

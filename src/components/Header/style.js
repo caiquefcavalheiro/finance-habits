@@ -33,10 +33,6 @@ export const Container = styled.div`
         color: var(--color-font);
         margin: 0 20px;
     }
-
-    @media screen and (min-width:1000px) {
-        margin: 17px 120px;
-    }
 `
 
 export const Icon = styled.button`

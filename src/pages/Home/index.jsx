@@ -9,13 +9,14 @@ const Home = () => {
 
     return(
         <BasePage>
-            {groups.map( item => (
-                <CardHome 
-                    category={item.category} 
-                    description={item.description}
-                    name={item.name}
-                />
-            ))}
+                {groups.map( (item, index) => (
+                    <CardHome
+                        key={index}
+                        category={item.category} 
+                        description={item.description}
+                        name={item.name}
+                    />
+                ))}
         </BasePage>
     )
 }
