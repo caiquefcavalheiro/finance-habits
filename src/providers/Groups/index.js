@@ -11,6 +11,7 @@ export const GroupProvider = ({children}) => {
         api.get(`groups/?page=${page}`).then( res => {
             const {next, results} = res.data;
             if(next !== null){
+
                 setGroups((state) => [...state, ...results])
                 setPage(page + 1)
             }else{
@@ -19,8 +20,12 @@ export const GroupProvider = ({children}) => {
         })
     },[page])
 
+    const groupList = groups.filter( item => item.category === 'Educação' || item.category === 'Investimento' || item.category === 'Poupança')
+
+    localStorage.setItem('@financeHabits:groupList', JSON.stringify(groupList))
+
     return(
-        <GroupsContext.Provider value={{groups}}>
+        <GroupsContext.Provider value={{groupList}}>
             {children}
         </GroupsContext.Provider>
     )
