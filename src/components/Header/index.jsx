@@ -6,7 +6,7 @@ import Button from '../Button'
 import SignIn from '../SignIn'
 import Signup from '../Signup'
 
-function Header () {
+function Header ({authenticated, setAuthenticated}) {
     const [menu, setMenu] = useState(false);
     const [anchor, setAnchor] = useState("");
     const [signin, setSignin] = useState(false);
@@ -31,8 +31,8 @@ function Header () {
                     <Button onClick={() => setSignup(true)}>Cadastrar</Button>
                 </ContainerButtons>
             </div>
-            <SignIn openSignup={signin} setOpenSignup={setSignin}/>
-            <Signup signup={signup} setSignup={setSignup}/>
+            <SignIn openSignup={signin} setOpenSignup={setSignin} authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            <Signup signup={signup} setSignup={setSignup} authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Container>
     )
 }
