@@ -22,6 +22,8 @@ export const BoxDesktop = styled.div`
   border-radius: 8px;
   padding: 8px;
   color: #6c6c6c;
+  font-family: 'Halter';
+  text-transform: uppercase;
 
   @media screen and (min-width: 600px) {
     display: block;

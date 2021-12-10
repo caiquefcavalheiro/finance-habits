@@ -14,9 +14,16 @@ export default createGlobalStyle`
         padding: 0;
         outline: 0;
         box-sizing: border-box;
+    }
+
+    body{
         font-size: 16px;
         font-family: 'Open Sans', sans-serif;
-        color: var(--color-black)
+        color: var(--color-black);
+    }
+
+    a{
+        text-decoration: none;
     }
 
     :root {
