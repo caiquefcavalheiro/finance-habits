@@ -24,21 +24,22 @@ export const Container = styled.div`
     display:flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #00B4D8;
+    background-color: #0090AD;
     padding: 10px 0;
-    border-radius: var(--radius);
 
     h1{
         font-family: 'Gugi', cursive;
+        font-size: 35px;
+        font-weight: normal;
         color: var(--color-font);
-        margin: 0 20px;
+        margin: 0 40px;
     }
 `
 
 export const Icon = styled.button`
     color: #FFFFFF;
     padding: 5px;
-    background-color: #00B4D8;
+    background-color: #0090AD;
     margin: 0 20px;
 
     svg{
@@ -50,10 +51,15 @@ export const ContainerButtons = styled.div`
     @media screen and (min-width: 1000px) {
         display: block;
     }
+    
+    button:nth-child(1){
+        font-size: 20px;
+        margin-right: 20px;
+    }
 
-    button{
-        font-size: 14px;
-        margin: 0 10px;
+    button:nth-child(2) {
+        font-size: 20px;
+        margin-right:40px;
     }
 `
 export const ContainerIcon = styled.div`
