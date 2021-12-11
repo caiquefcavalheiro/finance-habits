@@ -28,6 +28,7 @@ export const BoxDesktop = styled.div`
 
   @media screen and (min-width: 600px) {
     display: block;
+    margin: 1rem;
   }
 `;
 

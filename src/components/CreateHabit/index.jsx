@@ -38,7 +38,7 @@ const CreateHabit = ({habitModal, setHabitModal}) => {
             user: Number(localStorage.getItem('@financeHabits:user_id'))
         } 
         toCreateHabit(dados)
-        console.log(dados)
+        closeModal()
     }
 
     const closeModal = () => {
