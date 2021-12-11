@@ -2,13 +2,14 @@ import { useContext } from "react"
 import { CreateHabitContext } from "../../providers/CreateHabit"
 import { TextField } from "@mui/material"
 import RadioInput from "../RadioInput"
-import { HabitModal } from "./styles"
+import { HabitModal, Container, Content } from "./styles"
 import * as yup from "yup"
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup"
 import Button from "../Button"
+import {CloseModalButton} from "../CloseModalButton"
 
-const CreateHabit = () => {
+const CreateHabit = ({habitModal, setHabitModal}) => {
 
     const { toCreateHabit } = useContext(CreateHabitContext)
 
@@ -39,12 +40,17 @@ const CreateHabit = () => {
         toCreateHabit(dados)
         console.log(dados)
     }
+
+    const closeModal = () => {
+        setHabitModal(false)
+    }
     return (
         <>
             <HabitModal
-                isOpen={true}
+                isOpen={habitModal}
                 ariaHideApp={false}
             >
+            <CloseModalButton onClick={closeModal} />
             <form onSubmit={handleSubmit(handleCreateHabit)} >
                 <TextField
                     {...register("title")}
@@ -55,7 +61,10 @@ const CreateHabit = () => {
                     margin="normal"
                     fullWidth
                 />
+                <Container>
+            
                 <p>Dificuldade</p>
+                <Content>
                 <RadioInput
                     register={register}
                     name="difficulty"
@@ -80,13 +89,15 @@ const CreateHabit = () => {
                     type="radio"
                     id="03"
                 />
+                </Content>
                 
                 <p>Categoria</p>
+                <Content>
                 <RadioInput
                     register={register}
                     name="category"
                     value="Poupança"
-                    label="Poupança"
+                    label="Poupe"
                     type="radio"
                     id="04"
                 />
@@ -94,7 +105,7 @@ const CreateHabit = () => {
                     register={register}
                     name="category"
                     value="Investimento"
-                    label="Investimento"
+                    label="Invista"
                     type="radio"
                     id="05"
                 />
@@ -102,12 +113,14 @@ const CreateHabit = () => {
                     register={register}
                     name="category"
                     value="Educação"
-                    label="Educação"
+                    label="Estude"
                     type="radio"
                     id="06"
                 />
+                </Content>
 
                 <p>Frequência</p>
+                <Content>
                 <RadioInput
                     register={register}
                     name="frequency"
@@ -120,7 +133,7 @@ const CreateHabit = () => {
                     register={register}
                     name="frequency"
                     value="Semanalmente"
-                    label="Semanalmente"
+                    label="Semanal"
                     type="radio"
                     id="08"
                 />
@@ -128,11 +141,13 @@ const CreateHabit = () => {
                     register={register}
                     name="frequency"
                     value="Mensalmente"
-                    label="Mensalmente"
+                    label="Mensal"
                     type="radio"
                     id="09"
                 />
-                <Button type="submit" />
+                </Content>
+                <Button type="submit">Adicionar hábito</Button>
+                </Container>
             </form>
             </HabitModal>
         </>

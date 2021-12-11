@@ -20,9 +20,11 @@ export const CreateHabitProvider = ({children}) => {
         },)
         .then(response => {
             console.log(response)
+            //criar toast de sucesso
         })
         .catch((err) => {
             console.log(err)
+            // criar toast de erro
         })
     }
     return (
