@@ -33,7 +33,7 @@ export default createGlobalStyle`
         --color-card-blue: #E2F2F9;
         --color-light-blue: #A5D9Ec;
         --color-grey-text: #6C6C6C;
-        --color-button-white: #FFFFFF;
+        --color-white: #FFFFFF;
         --color-gradient-blue: linear-gradient(89.51deg, #0090AD 0.32%, #00D1FB 107.08%);
     }
 

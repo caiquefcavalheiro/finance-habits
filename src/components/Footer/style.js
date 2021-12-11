@@ -6,4 +6,8 @@ export const Container = styled.div`
     background: black;
     color: white;
     height: 10%;
+
+    @media screen and (max-width: 800px) {
+        height: 33%;
+    }
 `
