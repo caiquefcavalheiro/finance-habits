@@ -7,7 +7,7 @@ import {FiXCircle} from 'react-icons/fi';
 import { useContext } from "react";
 import { Redirect } from "react-router"
 
-import Button from '../Button';
+import Button from '../../components/Button';
 import { Container, Icon, Modal } from "./style";
 import { SigninContext } from '../../providers/SignIn';
 
@@ -32,10 +32,10 @@ const SignIn = ({openSignup, setOpenSignup, authenticated, setAuthenticated}) =>
         return <Redirect to="/dashboard"/>
     }
     return(
-        // <Modal
-        //     isOpen={openSignup}
-        //     ariaHideApp={false}
-        // >
+        <Modal
+            isOpen={openSignup}
+            ariaHideApp={false}
+        >
             
             <Container>
                 <Icon onClick={ () => setOpenSignup(false)}><FiXCircle/></Icon>
@@ -65,7 +65,7 @@ const SignIn = ({openSignup, setOpenSignup, authenticated, setAuthenticated}) =>
                 </form>
             </Container>
 
-        // </Modal>
+        </Modal>
     )
 }
 

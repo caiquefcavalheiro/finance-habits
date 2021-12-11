@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FiMenu} from 'react-icons/fi'
 import {ContainerIcon, ContainerButtons, Container, Icon, ContainerMenu } from './style';
 import Button from '../Button'
-import SignIn from '../SignIn'
+import SignIn from '../../pages/SignIn'
 import Signup from '../Signup'
 
 function Header ({authenticated, setAuthenticated}) {

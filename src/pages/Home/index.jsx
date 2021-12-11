@@ -3,8 +3,11 @@ import Footer from "../../components/Footer"
 import Button from '../../components/Button'
 import figureHome from "../../assets/figure-home.svg"
 import { MainContainerMobile, MainContainer, Container } from "./style"
+import GoUpSignIn from "../../components/GoupSignIn"
+import { useState } from "react"
 
 const Home = ({authenticated, setAuthenticated}) => {
+    const [signin, setSignin] = useState(false);
 
     return(
         <>
@@ -27,10 +30,11 @@ const Home = ({authenticated, setAuthenticated}) => {
             <div className="group3">
                 <h2>Desenvolva <span>Novos Habitos</span> Financeiros</h2>
                 <h3>Crie hábitos personalizados e se junte a grupos com pessoas com as mesmas metas que você</h3>
-                <Button white>Login</Button>
+                <Button white onClick={() => setSignin(true)}>Login</Button>
                 <Button white>Cadastro</Button>
             </div>
             <Footer />
+            <GoUpSignIn openSignup={signin} setOpenSignup={setSignin} authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </MainContainerMobile>
         </>
     )

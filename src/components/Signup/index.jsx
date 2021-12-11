@@ -7,7 +7,8 @@ import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useContext } from 'react';
 import { SignUpContext } from '../../providers/SignUp';
-import { Icon } from "../SignIn/style"
+// import { Icon } from "../../pages/SignIn/style"
+import { Icon } from '../../pages/SignIn/style';
 import { Redirect } from 'react-router';
 
 

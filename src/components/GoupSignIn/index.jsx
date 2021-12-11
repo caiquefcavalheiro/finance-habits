@@ -8,10 +8,10 @@ import { useContext } from "react";
 import { Redirect } from "react-router"
 
 import Button from '../Button';
-import { Container, Icon, Modal } from "./style";
+import { Container, Icon, MainContainer } from "./style";
 import { SigninContext } from '../../providers/SignIn';
 
-const SignIn = ({openSignup, setOpenSignup, authenticated, setAuthenticated}) => {
+const GoUpSignIn = ({openSignup, setOpenSignup, authenticated, setAuthenticated}) => {
 
     const { toLogin } = useContext(SigninContext)
 
@@ -32,10 +32,10 @@ const SignIn = ({openSignup, setOpenSignup, authenticated, setAuthenticated}) =>
         return <Redirect to="/dashboard"/>
     }
     return(
-        // <Modal
-        //     isOpen={openSignup}
-        //     ariaHideApp={false}
-        // >
+        <MainContainer
+            isOpen={openSignup}
+            ariaHideApp={false}
+        >
             
             <Container>
                 <Icon onClick={ () => setOpenSignup(false)}><FiXCircle/></Icon>
@@ -65,8 +65,8 @@ const SignIn = ({openSignup, setOpenSignup, authenticated, setAuthenticated}) =>
                 </form>
             </Container>
 
-        // </Modal>
+        </MainContainer>
     )
 }
 
-export default SignIn
+export default GoUpSignIn
