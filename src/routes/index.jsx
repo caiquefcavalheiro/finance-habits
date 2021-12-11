@@ -4,6 +4,7 @@ import Dashboard from "../pages/Dashboard";
 import Habit from "../pages/Habit";
 import Groups from "../pages/Groups";
 import { useState, useEffect } from "react";
+import Register from "../pages/Register";
 
 
 function Routes() {
@@ -28,6 +29,9 @@ function Routes() {
             </Route>
             <Route exact path="/dashboard">
                 <Dashboard authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            </Route>
+            <Route>
+                <Register authenticated={authenticated} setAuthenticated={setAuthenticated} exact path="/register"/>
             </Route>
             <Route exact path="/habit">
                 <Habit />
