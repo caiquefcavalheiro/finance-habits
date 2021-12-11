@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useContext, useState } from "react";
 import api from "../../services/api";
 import jwtDecode from "jwt-decode";
 import { useHistory } from 'react-router-dom'
@@ -6,6 +6,8 @@ import { useHistory } from 'react-router-dom'
 export const SigninContext = createContext([])
 
 export const SigninProvider = ({children}) => {
+
+    const [useToken, setUseToken] = useState("")
 
     const history = useHistory()
 
@@ -18,6 +20,8 @@ export const SigninProvider = ({children}) => {
             localStorage.clear()
             localStorage.setItem('@financeHabits:token', access)
             localStorage.setItem('@financeHabits:user_id', JSON.stringify(user_id))
+
+            setUseToken(access)
 
             api.get(`/users/${user_id}/`).then(res => {
                 localStorage.setItem('@financeHabits:user', JSON.stringify(res.data))
@@ -46,8 +50,10 @@ export const SigninProvider = ({children}) => {
     }
 
     return(
-        <SigninContext.Provider value={{toLogin}}>
+        <SigninContext.Provider value={{toLogin, useToken}}>
             {children}
         </SigninContext.Provider>
     )
 }
+
+export const useSign = () => useContext(SigninContext)
