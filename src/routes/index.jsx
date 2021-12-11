@@ -4,6 +4,7 @@ import Dashboard from "../pages/Dashboard";
 import Habit from "../pages/Habit";
 import Groups from "../pages/Groups";
 import { useState, useEffect } from "react";
+import SignIn from "../pages/SignIn";
 
 
 function Routes() {
@@ -25,6 +26,9 @@ function Routes() {
         <Switch>
             <Route exact path="/">
                 <Home authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            </Route>
+            <Route exact path="/signin">
+                <SignIn />
             </Route>
             <Route exact path="/dashboard">
                 <Dashboard authenticated={authenticated} setAuthenticated={setAuthenticated} />
