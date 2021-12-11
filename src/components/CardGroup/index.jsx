@@ -16,12 +16,18 @@ import {
   DivCattegory,
   Description,
   BoxImage,
+  Name,
+  Edit,
+  Check,
+  Close,
+  Wedit,
+  Wclose,
 } from "./styles";
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
 
-const CardHome = ({ category, description, name }) => {
+const CardGroup = ({ category, description, name, callback }) => {
   const [pop, setPop] = useState(false);
   const [anchor, setAnchor] = useState("");
 
@@ -66,7 +72,12 @@ const CardHome = ({ category, description, name }) => {
           >
             <DescPop>{description}</DescPop>
             <BoxButton>
-              <ButtonPop>inscreva-se</ButtonPop>
+              <ButtonPop onclick={() => callback}>Sair</ButtonPop>
+              <div>
+                <Edit />
+                <Check />
+                <Close />
+              </div>
             </BoxButton>
           </PopBox>
         </PopOVER>
@@ -76,13 +87,15 @@ const CardHome = ({ category, description, name }) => {
         <DivCattegory>
           <div>{category}</div>
           <BoxButton>
-            <ButtonDesc>inscreva-se</ButtonDesc>
+            <ButtonDesc onclick={() => callback}>Sair</ButtonDesc>
+            <Wedit />
+            <Wclose />
           </BoxButton>
         </DivCattegory>
 
         <Description>{description}</Description>
         <BoxName>
-          <div>{name}</div>
+          <Name>{name}</Name>
           <BoxImage>
             <Image src={getTheme()} alt={name} />
           </BoxImage>
@@ -92,4 +105,4 @@ const CardHome = ({ category, description, name }) => {
   );
 };
 
-export default CardHome;
+export default CardGroup;

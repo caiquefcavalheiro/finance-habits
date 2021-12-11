@@ -1,7 +1,7 @@
 
 import BasePage from "../../components/BasePage"
 import { useGroups } from "../../providers/Groups"
-import CardHome from '../../components/CardHome'
+import CardGroup from '../../components/CardGroup'
 
 const Home = ({authenticated, setAuthenticated}) => {
 
@@ -11,7 +11,7 @@ const Home = ({authenticated, setAuthenticated}) => {
         <BasePage authenticated={authenticated} setAuthenticated={setAuthenticated} >
             {
                 groups.map( item => (
-                <CardHome 
+                <CardGroup 
                     category={item.category} 
                     description={item.description}
                     name={item.name}
