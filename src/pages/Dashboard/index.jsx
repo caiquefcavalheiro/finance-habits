@@ -1,6 +1,38 @@
+import { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
+import Button from "../../components/Button"
+import CreateHabit from '../../components/CreateHabit'
+import LogoutButton from '../../components/LogoutButton'
+import api from '../../services/api'
 
 function Dashboard({ authenticated, setAuthenticated }) {
+    
+    const [habitModal, setHabitModal] = useState(false)
+
+    const token = localStorage.getItem("@financeHabits:token") 
+    console.log(token)
+
+    const [habits, setHabits] = useState([])
+
+    const loadHabits = () => {
+        api
+        .get("habits/personal/", {
+            headers: {
+                Authorization: `Bearer ${token} `
+            },
+        })
+        .then((response) => {
+            const apiHabits = response.data.map((habit) => ({
+                ...habit,
+            }))
+            setHabits(apiHabits)
+        })
+    }
+
+    useEffect(() => {
+        loadHabits()
+    }, [])
+
     if (!authenticated) {
         return <Redirect to="/"/>
     }
@@ -9,9 +41,20 @@ function Dashboard({ authenticated, setAuthenticated }) {
         setAuthenticated(false)
         localStorage.clear()
     }
+    
+    const openHabitModal = () => {
+        setHabitModal(true)
+    }
     return(
         <>
-        <button onClick={logout} >Sair</button>
+        <LogoutButton onClick={logout} >Sair</LogoutButton>
+        <Button onClick={openHabitModal} >Criar hábito</Button>
+        <CreateHabit habitModal={habitModal} setHabitModal={setHabitModal} />
+        {
+            habits.map((habit) => (
+                <p>{habit.title}</p>
+            ))
+        }
         </>
     )
 }
