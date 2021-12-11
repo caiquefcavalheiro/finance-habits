@@ -71,7 +71,7 @@ const Signup = ({signup, setSignup, authenticated, setAuthenticated}) => {
                 variant="filled" 
                 margin="normal"
                 fullWidth />
-            <Button biggerButton type="submit">Cadastrar</Button>
+            <Button biggerButton white type="submit">Cadastrar</Button>
         </form>
         </Content>
         </ModalSignup>
