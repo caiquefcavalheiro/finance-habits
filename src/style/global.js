@@ -9,8 +9,6 @@ export default createGlobalStyle`
         src: url(${Halter});
     }
 
-    @import url('https://fonts.googleapis.com/css2?family=Gugi&family=Open+Sans:wght@400;500;700;800&family=Roboto:wght@400;500;700;900&display=swap');
-
     *{
         margin: 0;
         padding: 0;
@@ -35,6 +33,7 @@ export default createGlobalStyle`
         --color-card-blue: #E2F2F9;
         --color-light-blue: #A5D9Ec;
         --color-grey-text: #6C6C6C;
+        --color-button-white: #FFFFFF;
         --color-gradient-blue: linear-gradient(89.51deg, #0090AD 0.32%, #00D1FB 107.08%);
     }
 

@@ -62,7 +62,7 @@ const SignIn = ({openSignup, setOpenSignup, authenticated, setAuthenticated}) =>
                         helperText={errors.password?.message}
                     />
 
-                    <Button biggerButton type='submit'>Login</Button>
+                    <Button biggerButton white type='submit'>Login</Button>
                 </form>
             </Container>
 
