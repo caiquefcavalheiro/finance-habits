@@ -5,19 +5,24 @@ import figureHome from "../../assets/figure-home.svg"
 import { MainContainerMobile, MainContainer, Container } from "./style"
 import GoUpSignIn from "../../components/GoupSignIn"
 import { useState } from "react"
+import { Redirect } from "react-router-dom"
 
 const Home = ({authenticated, setAuthenticated}) => {
     const [signin, setSignin] = useState(false);
 
+    if(authenticated) {
+        return <Redirect to="/dashboard" />
+    }
+
     return(
         <>
         <MainContainer>
-            <Header authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            <Header />
             <Container>
                 <div className="group1">
                     <h1>Desenvolva <span>Novos Habitos</span> Financeiros</h1>
                     <h2>Crie hábitos personalizados e se junte a grupos com pessoas com as mesmas metas que você</h2>
-                    <Button white onClick="">Explore</Button>
+                    <Button white onClick={() => console.log()}>Explore</Button>
                 </div>
                 <div className="group2">
                     <img src={figureHome} alt="figure"></img>
@@ -34,7 +39,7 @@ const Home = ({authenticated, setAuthenticated}) => {
                 <Button white>Cadastro</Button>
             </div>
             <Footer />
-            <GoUpSignIn openSignup={signin} setOpenSignup={setSignin} authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            <GoUpSignIn openSignup={signin} setOpenSignup={setSignin} />
         </MainContainerMobile>
         </>
     )
