@@ -9,6 +9,8 @@ export default createGlobalStyle`
         src: url(${Halter});
     }
 
+    @import url('https://fonts.googleapis.com/css2?family=Gugi&family=Open+Sans:wght@400;500;700;800&family=Roboto:wght@400;500;700;900&display=swap');
+
     *{
         margin: 0;
         padding: 0;
@@ -27,24 +29,17 @@ export default createGlobalStyle`
     }
 
     :root {
-        --cor-nubanck: linear-gradient(145deg, rgba(131,11,209,1) 0%, rgba(70,9,110,1) 89%);
-        --cor-inter: linear-gradient(145deg, rgba(244,123,49,1) 0%, rgba(221,91,12,1) 89%);
-        --cor-santander: linear-gradient(145deg, rgba(237,39,15,1) 0%, rgba(180,31,13,1) 89%);
-        --cor-font: #f4f4f4;
-        --color-green: #6CD397;
-        --color-black: #3D3D3D;
-        --color-font: #f4f4f4;
         --radius: 8px;
-        --cor-botao: #0090AD;
-        --cor-fundo-botao: #FFFFFF;
-        --cor-fundo-modal: #C4E6F2;
-        --cor-fundo-input: #F5F5F5;
-        --color-grey-0: #d2d2d233;
+        --color-primary-blue: #00B4D8;
+        --color-dark-blue: #0090Ad;
+        --color-card-blue: #E2F2F9;
+        --color-light-blue: #A5D9Ec;
+        --color-grey-text: #6C6C6C;
+        --color-gradient-blue: linear-gradient(89.51deg, #0090AD 0.32%, #00D1FB 107.08%);
     }
 
     button{
         cursor: pointer;
         border: none;
-        color: var(--color-font);
     }
 `
