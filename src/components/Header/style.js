@@ -20,29 +20,27 @@ export const ContainerMenu = styled(Menu)`
 `
 
 export const Container = styled.div`
+    height: 10%;
     color: #FFFFFF;
     display:flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #00B4D8;
+    background-color: #0090AD;
     padding: 10px 0;
-    border-radius: var(--radius);
 
     h1{
         font-family: 'Gugi', cursive;
+        font-size: 35px;
+        font-weight: normal;
         color: var(--color-font);
-        margin: 0 20px;
-    }
-
-    @media screen and (min-width:1000px) {
-        margin: 17px 120px;
+        margin: 0 40px;
     }
 `
 
 export const Icon = styled.button`
     color: #FFFFFF;
     padding: 5px;
-    background-color: #00B4D8;
+    background-color: #0090AD;
     margin: 0 20px;
 
     svg{
@@ -54,10 +52,13 @@ export const ContainerButtons = styled.div`
     @media screen and (min-width: 1000px) {
         display: block;
     }
+    
+    button:nth-child(1){
+        margin-right: 20px;
+    }
 
-    button{
-        font-size: 14px;
-        margin: 0 10px;
+    button:nth-child(2) {
+        margin-right:40px;
     }
 `
 export const ContainerIcon = styled.div`
