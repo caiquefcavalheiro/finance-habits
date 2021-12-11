@@ -1,13 +1,16 @@
 import CardHabitCard from '../../components/CardHabit'
 import CreateHabit from '../../components/CreateHabit'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Container, Header, PlusButton } from "./style"
 import api from '../../services/api'
+import { useSign } from '../../providers/SignIn'
 
 const BoardHabits = ({habitModal, setHabitModal}) => {
 
-    const token = localStorage.getItem("@financeHabits:token") 
-    console.log(token)
+    const { useToken } = useSign()
+    console.log(useToken)
+
+
 
     const [habits, setHabits] = useState([])
 
@@ -15,20 +18,21 @@ const BoardHabits = ({habitModal, setHabitModal}) => {
         api
         .get("habits/personal/", {
             headers: {
-                Authorization: `Bearer ${token} `
+                Authorization: `Bearer ${useToken} `
             },
         })
         .then((response) => {
-            const apiHabits = response.data.map((habit) => ({
+            setHabits(response.data.map((habit) => ({
                 ...habit,
-            }))
-            setHabits(apiHabits)
+            })))
         })
     }
 
     useEffect(() => {
         loadHabits()
     }, [])
+
+    console.log(habits)
 
     return (
         <Container>
