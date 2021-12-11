@@ -14,7 +14,7 @@ import Footer from "../../components/Footer";
 import { MainContainer, Container, Form } from "./style";
 import Header from "../../components/Header";
 
-const SignIn = ({authenticated, setAuthenticated}) => {
+const SignIn = ({setAuthenticated}) => {
 
     const { toLogin } = useContext(SigninContext)
 
@@ -32,13 +32,10 @@ const SignIn = ({authenticated, setAuthenticated}) => {
         setAuthenticated(true)
     }
     
-    if (authenticated) {
-        return <Redirect to="/dashboard"/>
-    }
     return(
 
         <MainContainer>
-            <Header authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            <Header setAuthenticated={setAuthenticated} />
             <Container>
                 <div className="group2">
                     <img src={figureLogin} alt="figure"></img>
