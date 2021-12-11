@@ -19,7 +19,7 @@ export default createGlobalStyle`
     body{
         font-size: 16px;
         font-family: 'Open Sans', sans-serif;
-        color: var(--color-black);
+        color: var(--color-grey-text);
     }
 
     a{
