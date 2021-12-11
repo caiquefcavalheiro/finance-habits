@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import Button from "../../components/Button"
+import CardHabitCard from '../../components/CardHabit'
 import CreateHabit from '../../components/CreateHabit'
 import LogoutButton from '../../components/LogoutButton'
 import api from '../../services/api'
@@ -51,9 +52,12 @@ function Dashboard({ authenticated, setAuthenticated }) {
         <Button onClick={openHabitModal} >Criar hábito</Button>
         <CreateHabit habitModal={habitModal} setHabitModal={setHabitModal} />
         {
-            habits.map((habit) => (
-                <p>{habit.title}</p>
-            ))
+            habits.map((habit) => <CardHabitCard
+                title={habit.title}
+                category={habit.category}
+                difficulty={habit.difficulty}
+                frequency={habit.frequency}
+            />)
         }
         </>
     )
