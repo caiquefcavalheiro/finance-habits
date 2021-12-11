@@ -1,10 +1,8 @@
-import Button from "../../components/Button";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import figure from "../../assets/figure-register.svg"
 import {MainContainer, MainContainerMobile, Container} from "./style"
-import Signup from "../../components/Signup";
-
+import SignupMobile from "../../components/SignupMobile";
 
 function Register ({authenticated, setAuthenticated}) {
 
@@ -13,7 +11,7 @@ function Register ({authenticated, setAuthenticated}) {
         <MainContainer>
             <Header authenticated={authenticated} setAuthenticated={setAuthenticated} />
             <Container>
-                <Signup />
+                <SignupMobile />
                 <div className="group2">
                     <img src={figure} alt="figure-register"></img>
                 </div>
@@ -23,10 +21,7 @@ function Register ({authenticated, setAuthenticated}) {
         <MainContainerMobile>
             <h1>Finance Habits</h1>
             <div className="group3">
-                <h2>Desenvolva <span>Novos Habitos</span> Financeiros</h2>
-                <h3>Crie hábitos personalizados e se junte a grupos com pessoas com as mesmas metas que você</h3>
-                <Button white>Login</Button>
-                <Button white>Cadastro</Button>
+                <SignupMobile className="group4" />
             </div>
             <Footer />
         </MainContainerMobile>
