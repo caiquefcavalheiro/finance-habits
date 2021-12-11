@@ -31,6 +31,7 @@ const SignIn = ({authenticated, setAuthenticated}) => {
         toLogin(data)
         setAuthenticated(true)
     }
+    
     if (authenticated) {
         return <Redirect to="/dashboard"/>
     }
@@ -67,7 +68,7 @@ const SignIn = ({authenticated, setAuthenticated}) => {
                         />
 
                         <Button biggerButton type='submit'>Login</Button>
-                        <p>Não tem conta ? <Link to='/'>Cadastre-se</Link></p>
+                        <p>Não tem conta ? <Link to='/signup'>Cadastre-se</Link></p>
                     </Form>
                 </div>
             </Container>

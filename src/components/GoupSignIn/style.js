@@ -35,7 +35,7 @@ export const Container = styled.div`
             margin: 4rem auto;
         }
 
-        @media (min-width: 800px){
+        @media (max-width: 800px){
             margin: 0;
 
             button{

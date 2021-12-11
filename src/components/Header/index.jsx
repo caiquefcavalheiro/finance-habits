@@ -6,22 +6,18 @@ import Button from '../Button'
 import Signup from '../Signup'
 import { useHistory } from 'react-router-dom';
 
-function Header ({authenticated, setAuthenticated}) {
-    const [menu, setMenu] = useState(false);
+function Header () {
     const [anchor, setAnchor] = useState("");
-    const [signin, setSignin] = useState(false);
+
     const [signup, setSignup] = useState(false);
 
     const history = useHistory();
 
-    function openSignin() {
-        setSignin(true);
-        setMenu(false);
-    }
+    const [menu, setMenu] = useState(false);
 
-    function openSignup() {
-        setSignup(true);
-        setMenu(false);
+    function ClickIcon (event){
+        setMenu(true); 
+        setAnchor(event.currentTarget)
     }
 
     return (
@@ -29,21 +25,20 @@ function Header ({authenticated, setAuthenticated}) {
             <h1>Finance Habits</h1>
             <div>
                 <ContainerIcon>
-                    <Icon onClick={(event) => {setMenu(true)
-                setAnchor(event.currentTarget)}}><FiMenu/>
+                    <Icon onClick={(event) => ClickIcon(event)}><FiMenu />
                     </Icon>
                     <ContainerMenu anchorEl={anchor} id="basic-menu" open={menu} onClose={() => setMenu(false)}>
                         <MenuItem onClick={() => history.push('/signin')}>Entrar</MenuItem>
-                        <hr/>
-                        <MenuItem onClick={openSignup}>Cadastrar</MenuItem>
-                    </ContainerMenu>
-                </ContainerIcon>
-                <ContainerButtons>
-                    <Button white onClick={() => history.push('/signin')}>Entrar</Button>
-                    <Button white onClick={() => openSignup()}>Cadastrar</Button>
-                </ContainerButtons>
+                        <hr />
+                        <MenuItem onClick={() => history.push("/signup")}>Cadastrar</MenuItem>
+                </ContainerMenu>
+            </ContainerIcon>
+            <ContainerButtons>
+                <Button white onClick={() => history.push('/signin')}>Entrar</Button>
+                <Button white onClick={() => history.push("/signup")}>Cadastrar</Button>
+            </ContainerButtons>
             </div>
-            <Signup signup={signup} setSignup={setSignup} authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            <Signup signup={signup} setSignup={setSignup}/>
         </Container>
     )
 }

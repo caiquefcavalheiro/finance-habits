@@ -4,7 +4,9 @@ import Dashboard from "../pages/Dashboard";
 import Habit from "../pages/Habit";
 import Groups from "../pages/Groups";
 import { useState, useEffect } from "react";
+import Register from "../pages/Register";
 import SignIn from "../pages/SignIn";
+
 
 
 function Routes() {
@@ -25,19 +27,22 @@ function Routes() {
     return(
         <Switch>
             <Route exact path="/">
-                <Home authenticated={authenticated} setAuthenticated={setAuthenticated} />
+                <Home authenticated={authenticated} />
             </Route>
             <Route exact path="/signin">
-                <SignIn />
+                <SignIn authenticated={authenticated} setAuthenticated={setAuthenticated}/>
             </Route>
             <Route exact path="/dashboard">
                 <Dashboard authenticated={authenticated} setAuthenticated={setAuthenticated} />
             </Route>
+            <Route exact path="/signup">
+                <Register authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            </Route>
             <Route exact path="/habit">
-                <Habit />
+                <Habit authenticated={authenticated} />
             </Route>
             <Route exact path="/groups">
-                <Groups />
+                <Groups authenticated={authenticated} />
             </Route>
         </Switch>
 
