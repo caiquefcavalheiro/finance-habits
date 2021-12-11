@@ -1,32 +1,25 @@
 import styled from 'styled-components'
 
-import ReactModal from 'react-modal'
+export const MainContainer = styled.div`
+    width: 100%;
+    height: 380px;
+    position: fixed;
+    background: var(--color-light-blue);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50px 50px 0 0;
 
-export const Modal = styled(ReactModal)`
-        width: 310px;
-        height: 510px;
-        position: absolute;
-        left: 50%;
-        margin-left: -160px;
-        margin-top: -255px;
-        top: 50%;
-        background: var(--cor-fundo-modal);
-        border-radius: 8px;
-        padding: 20px;
-
-    @media (min-width: 800px) {
-        width: 515px;
-        height: 310px;
-
-        margin-left: -257.5px;
-        margin-top: -160px;
-    }
+    bottom: ${props => props.isOpen ? '0' : '-1000px'};
 `
 
 export const Container = styled.div`
 
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 400px;
 
     form {
         display: flex;
@@ -42,7 +35,7 @@ export const Container = styled.div`
             margin: 4rem auto;
         }
 
-        @media (min-width: 800px){
+        @media (max-width: 800px){
             margin: 0;
 
             button{

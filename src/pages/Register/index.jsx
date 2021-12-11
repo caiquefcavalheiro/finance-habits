@@ -1,9 +1,9 @@
 import Button from "../../components/Button";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import SignIn from "../../components/SignIn";
 import figure from "../../assets/figure-register.svg"
 import {MainContainer, MainContainerMobile, Container} from "./style"
+import Signup from "../../components/Signup";
 
 
 function Register ({authenticated, setAuthenticated}) {
@@ -13,7 +13,7 @@ function Register ({authenticated, setAuthenticated}) {
         <MainContainer>
             <Header authenticated={authenticated} setAuthenticated={setAuthenticated} />
             <Container>
-                <SignIn />
+                <Signup />
                 <div className="group2">
                     <img src={figure} alt="figure-register"></img>
                 </div>

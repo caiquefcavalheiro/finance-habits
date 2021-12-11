@@ -1,18 +1,17 @@
 
-import { TextField } from "@mui/material"
-import { yupResolver} from '@hookform/resolvers/yup'
-import * as yup from 'yup'
-import {useForm} from 'react-hook-form'
-import {FiXCircle} from 'react-icons/fi'
-import { useContext } from "react"
-
-import Button from '../Button'
-import { Container, Icon, Modal } from "./style"
-
-import { SigninContext } from '../../providers/SignIn'
+import { TextField } from "@mui/material";
+import { yupResolver} from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import {useForm} from 'react-hook-form';
+import {FiXCircle} from 'react-icons/fi';
+import { useContext } from "react";
 import { Redirect } from "react-router"
 
-const SignIn = ({openSignup, setOpenSignup, authenticated, setAuthenticated}) => {
+import Button from '../Button';
+import { Container, Icon, MainContainer } from "./style";
+import { SigninContext } from '../../providers/SignIn';
+
+const GoUpSignIn = ({openSignup, setOpenSignup, authenticated, setAuthenticated}) => {
 
     const { toLogin } = useContext(SigninContext)
 
@@ -33,7 +32,7 @@ const SignIn = ({openSignup, setOpenSignup, authenticated, setAuthenticated}) =>
         return <Redirect to="/dashboard"/>
     }
     return(
-        <Modal
+        <MainContainer
             isOpen={openSignup}
             ariaHideApp={false}
         >
@@ -66,8 +65,8 @@ const SignIn = ({openSignup, setOpenSignup, authenticated, setAuthenticated}) =>
                 </form>
             </Container>
 
-        </Modal>
+        </MainContainer>
     )
 }
 
-export default SignIn
+export default GoUpSignIn

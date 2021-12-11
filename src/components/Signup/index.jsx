@@ -1,13 +1,12 @@
 import Button from '../Button';
 import { TextField } from '@mui/material';
-import { ModalSignup, Content } from './styles';
+import { ModalSignup, Content,Icon } from './styles';
 import {FiXCircle} from 'react-icons/fi'
 import { useForm } from 'react-hook-form';
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useContext } from 'react';
 import { SignUpContext } from '../../providers/SignUp';
-import { Icon } from "../SignIn/style"
 import { Redirect } from 'react-router';
 
 

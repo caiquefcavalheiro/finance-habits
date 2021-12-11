@@ -3,23 +3,21 @@ import { useState } from 'react';
 import { FiMenu} from 'react-icons/fi'
 import {ContainerIcon, ContainerButtons, Container, Icon, ContainerMenu } from './style';
 import Button from '../Button'
-import SignIn from '../SignIn'
 import Signup from '../Signup'
+import { useHistory } from 'react-router-dom';
 
-function Header ({authenticated, setAuthenticated}) {
-    const [menu, setMenu] = useState(false);
+function Header () {
     const [anchor, setAnchor] = useState("");
-    const [signin, setSignin] = useState(false);
+
     const [signup, setSignup] = useState(false);
 
-    function openSignin() {
-        setSignin(true);
-        setMenu(false);
-    }
+    const history = useHistory();
 
-    function openSignup() {
-        setSignup(true);
-        setMenu(false);
+    const [menu, setMenu] = useState(false);
+
+    function ClickIcon (event){
+        setMenu(true); 
+        setAnchor(event.currentTarget)
     }
 
     return (
@@ -27,22 +25,20 @@ function Header ({authenticated, setAuthenticated}) {
             <h1>Finance Habits</h1>
             <div>
                 <ContainerIcon>
-                    <Icon onClick={(event) => {setMenu(true)
-                setAnchor(event.currentTarget)}}><FiMenu/>
+                    <Icon onClick={(event) => ClickIcon(event)}><FiMenu />
                     </Icon>
                     <ContainerMenu anchorEl={anchor} id="basic-menu" open={menu} onClose={() => setMenu(false)}>
-                        <MenuItem onClick={openSignin}>Entrar</MenuItem>
-                        <hr/>
-                        <MenuItem onClick={openSignup}>Cadastrar</MenuItem>
-                    </ContainerMenu>
-                </ContainerIcon>
-                <ContainerButtons>
-                    <Button white onClick={() => openSignin()}>Entrar</Button>
-                    <Button white onClick={() => openSignup()}>Cadastrar</Button>
-                </ContainerButtons>
+                        <MenuItem onClick={() => history.push('/signin')}>Entrar</MenuItem>
+                        <hr />
+                        <MenuItem onClick={() => history.push("/signup")}>Cadastrar</MenuItem>
+                </ContainerMenu>
+            </ContainerIcon>
+            <ContainerButtons>
+                <Button white onClick={() => history.push('/signin')}>Entrar</Button>
+                <Button white onClick={() => history.push("/signup")}>Cadastrar</Button>
+            </ContainerButtons>
             </div>
-            <SignIn openSignup={signin} setOpenSignup={setSignin} authenticated={authenticated} setAuthenticated={setAuthenticated} />
-            <Signup signup={signup} setSignup={setSignup} authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            <Signup signup={signup} setSignup={setSignup}/>
         </Container>
     )
 }
