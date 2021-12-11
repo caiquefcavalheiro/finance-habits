@@ -1,67 +1,93 @@
 import styled from 'styled-components'
 
-import ReactModal from 'react-modal'
+export const MainContainer = styled.div`
+    width: 100vw;
+    height: 100vh;
 
-export const Modal = styled(ReactModal)`
-        width: 310px;
-        height: 510px;
-        position: absolute;
-        left: 50%;
-        margin-left: -160px;
-        margin-top: -255px;
-        top: 50%;
-        background: var(--cor-fundo-modal);
-        border-radius: 8px;
-        padding: 20px;
-
-    @media (min-width: 800px) {
-        width: 515px;
-        height: 310px;
-
-        margin-left: -257.5px;
-        margin-top: -160px;
+    @media screen and (max-width: 800px) {
+        display: none;
     }
 `
 
 export const Container = styled.div`
-
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    height: 80%;
+    background: var(--color-gradient-blue);
 
-    form {
+    .group1{
+        width: 40%;
+        margin: 0;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+
         
-        margin:  2.5rem 0rem;
+    }
 
-        .MuiOutlinedInput-root{
-            background-color: white;
+    .group2{
+        margin: 0;
+        padding-left: 20px;
+        /* margin-right: 40px; */
+        width: 40%;
+        animation: 3s movement;
+    }
+
+    
+
+    @keyframes movement {
+        to{
+            opacity:100%;
         }
-
-        button{
-            margin: 4rem auto;
+        from{
+            opacity: 0;
         }
+    }
 
-        @media (min-width: 800px){
-            margin: 0;
+    img{
+        width: 100%;
+        max-width: 430px
+    }
 
-            button{
-                margin: 1rem auto;
-            }
+    @media screen and (max-width: 1000px) {
+        justify-content: center;
+        
+        .group2{
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        div h1{
+            font-size: 50px;
         }
     }
 `
 
-export const Icon = styled.button`
-    cursor: pointer;
-    background: transparent;
+export const Form = styled.form`
+    width: 370px;
+    height: 420px;
+    background-color: rgba(255, 255, 255, .5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px 20px;
+    border-radius: 8px;
 
-    color: var(--color-font);
-
-    margin-left: 90%;
-
-    svg{
-        font-size: 25px;
+    h2{
+        color: #fff;
+        font-size: 30px
     }
+
+    p{
+        color: #000;
+        
+        a{
+            color: var(--color-dark-blue);
+        }
+    }
+    
 `
 

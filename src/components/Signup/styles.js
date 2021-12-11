@@ -64,3 +64,17 @@ export const ButtonDiv = styled.button`
     display: flex;
     justify-content: flex-end;
 `
+
+export const Icon = styled.button`
+    cursor: pointer;
+    background: transparent;
+
+    color: var(--color-font);
+
+    margin-left: 90%;
+
+    svg{
+        font-size: 25px;
+    }
+`
+

@@ -3,14 +3,16 @@ import { useState } from 'react';
 import { FiMenu} from 'react-icons/fi'
 import {ContainerIcon, ContainerButtons, Container, Icon, ContainerMenu } from './style';
 import Button from '../Button'
-import SignIn from '../../pages/SignIn'
 import Signup from '../Signup'
+import { useHistory } from 'react-router-dom';
 
 function Header ({authenticated, setAuthenticated}) {
     const [menu, setMenu] = useState(false);
     const [anchor, setAnchor] = useState("");
     const [signin, setSignin] = useState(false);
     const [signup, setSignup] = useState(false);
+
+    const history = useHistory();
 
     function openSignin() {
         setSignin(true);
@@ -31,17 +33,16 @@ function Header ({authenticated, setAuthenticated}) {
                 setAnchor(event.currentTarget)}}><FiMenu/>
                     </Icon>
                     <ContainerMenu anchorEl={anchor} id="basic-menu" open={menu} onClose={() => setMenu(false)}>
-                        <MenuItem onClick={openSignin}>Entrar</MenuItem>
+                        <MenuItem onClick={() => history.push('/signin')}>Entrar</MenuItem>
                         <hr/>
                         <MenuItem onClick={openSignup}>Cadastrar</MenuItem>
                     </ContainerMenu>
                 </ContainerIcon>
                 <ContainerButtons>
-                    <Button white onClick={() => openSignin()}>Entrar</Button>
+                    <Button white onClick={() => history.push('/signin')}>Entrar</Button>
                     <Button white onClick={() => openSignup()}>Cadastrar</Button>
                 </ContainerButtons>
             </div>
-            <SignIn openSignup={signin} setOpenSignup={setSignin} authenticated={authenticated} setAuthenticated={setAuthenticated} />
             <Signup signup={signup} setSignup={setSignup} authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Container>
     )

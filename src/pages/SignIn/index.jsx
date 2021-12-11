@@ -3,15 +3,18 @@ import { TextField } from "@mui/material";
 import { yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import {useForm} from 'react-hook-form';
-import {FiXCircle} from 'react-icons/fi';
 import { useContext } from "react";
-import { Redirect } from "react-router"
+import { Redirect } from "react-router";
+import {Link} from 'react-router-dom';
 
 import Button from '../../components/Button';
-import { Container, Icon, Modal } from "./style";
+import figureLogin from "../../assets/figure-login.svg"
 import { SigninContext } from '../../providers/SignIn';
+import Footer from "../../components/Footer";
+import { MainContainer, Container, Form } from "./style";
+import Header from "../../components/Header";
 
-const SignIn = ({openSignup, setOpenSignup, authenticated, setAuthenticated}) => {
+const SignIn = ({authenticated, setAuthenticated}) => {
 
     const { toLogin } = useContext(SigninContext)
 
@@ -32,40 +35,44 @@ const SignIn = ({openSignup, setOpenSignup, authenticated, setAuthenticated}) =>
         return <Redirect to="/dashboard"/>
     }
     return(
-        <Modal
-            isOpen={openSignup}
-            ariaHideApp={false}
-        >
-            
+
+        <MainContainer>
+            <Header authenticated={authenticated} setAuthenticated={setAuthenticated} />
             <Container>
-                <Icon onClick={ () => setOpenSignup(false)}><FiXCircle/></Icon>
-                <form onSubmit={handleSubmit(onSignIn)}>
-                    <TextField
-                        label='Username'
-                        variant="filled" 
-                        margin="normal"
-                        fullWidth
-                        {...register('username')}
-                        error={!!errors.username?.message}
-                        helperText={errors.username?.message}
-                    />
+                <div className="group2">
+                    <img src={figureLogin} alt="figure"></img>
+                </div>
+                <div className="group1">
+                    <Form onSubmit={handleSubmit(onSignIn)}>
+                        <h2>Entre</h2>
+                        <TextField
+                            label='Username'
+                            variant="outlined" 
+                            margin="normal"
+                            fullWidth
+                            {...register('username')}
+                            error={!!errors.username?.message}
+                            helperText={errors.username?.message}
+                        />
 
-                    <TextField
-                        label='Senha'
-                        type='password'
-                        fullWidth
-                        variant="filled" 
-                        margin="normal"
-                        {...register('password')}
-                        error={!!errors.password?.message}
-                        helperText={errors.password?.message}
-                    />
+                        <TextField
+                            label='Senha'
+                            type='password'
+                            fullWidth
+                            variant="outlined" 
+                            margin="normal"
+                            {...register('password')}
+                            error={!!errors.password?.message}
+                            helperText={errors.password?.message}
+                        />
 
-                    <Button biggerButton white type='submit'>Login</Button>
-                </form>
+                        <Button biggerButton type='submit'>Login</Button>
+                        <p>Não tem conta ? <Link to='/'>Cadastre-se</Link></p>
+                    </Form>
+                </div>
             </Container>
-
-        </Modal>
+            <Footer />
+        </MainContainer>
     )
 }
 

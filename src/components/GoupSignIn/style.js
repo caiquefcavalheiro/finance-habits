@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const MainContainer = styled.div`
     width: 100%;
-    height: 510px;
+    height: 380px;
     position: fixed;
     background: var(--color-light-blue);
     border-radius: 8px;
