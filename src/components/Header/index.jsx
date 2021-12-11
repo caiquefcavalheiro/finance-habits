@@ -37,8 +37,8 @@ function Header ({authenticated, setAuthenticated}) {
                     </ContainerMenu>
                 </ContainerIcon>
                 <ContainerButtons>
-                    <Button onClick={() => openSignin()}>Entrar</Button>
-                    <Button onClick={() => openSignup()}>Cadastrar</Button>
+                    <Button white onClick={() => openSignin()}>Entrar</Button>
+                    <Button white onClick={() => openSignup()}>Cadastrar</Button>
                 </ContainerButtons>
             </div>
             <SignIn openSignup={signin} setOpenSignup={setSignin} authenticated={authenticated} setAuthenticated={setAuthenticated} />
