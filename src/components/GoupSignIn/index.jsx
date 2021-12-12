@@ -4,7 +4,6 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { FiXCircle } from "react-icons/fi";
 import { useContext } from "react";
-import { Redirect } from "react-router";
 import Button from "../Button";
 import { Container, Icon, MainContainer } from "./style";
 import { SigninContext } from "../../providers/SignIn";
