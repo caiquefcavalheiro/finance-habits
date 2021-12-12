@@ -7,11 +7,8 @@ import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useContext } from 'react';
 import { SignUpContext } from '../../providers/SignUp';
-import { Redirect } from 'react-router';
 
-
-const Signup = ({signup, setSignup, authenticated, setAuthenticated}) => {
-
+const Signup = ({signup, setSignup, setAuthenticated}) => {
 
     const { toSignUp } = useContext(SignUpContext)
 
@@ -34,9 +31,6 @@ const Signup = ({signup, setSignup, authenticated, setAuthenticated}) => {
         setAuthenticated(true)
     }
 
-    if (authenticated) {
-        return <Redirect to="/dashboard" />
-    }
     return (
         <ModalSignup
             isOpen={signup}

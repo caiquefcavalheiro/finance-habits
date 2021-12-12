@@ -4,11 +4,13 @@ import Button from '../../components/Button'
 import figureHome from "../../assets/figure-home.svg"
 import { MainContainerMobile, MainContainer, Container } from "./style"
 import GoUpSignIn from "../../components/GoupSignIn"
+import GoUpSignUp from '../../components/GoupSignUp'
 import { useState } from "react"
 import { Redirect } from "react-router-dom"
 
 const Home = ({authenticated, setAuthenticated}) => {
     const [signin, setSignin] = useState(false);
+    const [signup, setSignup] = useState(false);
 
     if(authenticated) {
         return <Redirect to="/dashboard" />
@@ -19,6 +21,8 @@ const Home = ({authenticated, setAuthenticated}) => {
         <MainContainer>
             <Header />
             <Container>
+
+                
                 <div className="group1">
                     <h1>Desenvolva <span>Novos Habitos</span> Financeiros</h1>
                     <h2>Crie hábitos personalizados e se junte a grupos com pessoas com as mesmas metas que você</h2>
@@ -36,10 +40,11 @@ const Home = ({authenticated, setAuthenticated}) => {
                 <h2>Desenvolva <span>Novos Habitos</span> Financeiros</h2>
                 <h3>Crie hábitos personalizados e se junte a grupos com pessoas com as mesmas metas que você</h3>
                 <Button white onClick={() => setSignin(true)}>Login</Button>
-                <Button white>Cadastro</Button>
+                <Button white onClick={() => setSignup(true)}>Cadastro</Button>
             </div>
             <Footer />
-            <GoUpSignIn openSignup={signin} setOpenSignup={setSignin} />
+            <GoUpSignIn openSignin={signin} setOpenSignin={setSignin} setAuthenticated={setAuthenticated} />
+            <GoUpSignUp openSignup={signup} setOpenSignup={setSignup} setAuthenticated={setAuthenticated}/>
         </MainContainerMobile>
         </>
     )

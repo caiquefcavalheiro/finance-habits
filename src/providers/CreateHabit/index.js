@@ -6,7 +6,6 @@ export const CreateHabitContext = createContext([])
 export const CreateHabitProvider = ({children}) => {
     
     const token = localStorage.getItem("@financeHabits:token") 
-    console.log(token)
 
     const toCreateHabit = (data) => {
         api

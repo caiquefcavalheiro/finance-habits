@@ -4,9 +4,7 @@ import { yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import {useForm} from 'react-hook-form';
 import { useContext } from "react";
-import { Redirect } from "react-router";
 import {Link} from 'react-router-dom';
-
 import Button from '../../components/Button';
 import figureLogin from "../../assets/figure-login.svg"
 import { SigninContext } from '../../providers/SignIn';

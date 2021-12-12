@@ -12,7 +12,6 @@ export const SignUpProvider = ({ children }) => {
         api
         .post("/users/", data)
         .then( response => {
-            console.log(data)
             history.push("/dashboard")
             })
             .catch((err) => {

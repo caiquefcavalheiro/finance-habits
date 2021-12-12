@@ -1,6 +1,6 @@
 import CardHabitCard from '../../components/CardHabit'
 import CreateHabit from '../../components/CreateHabit'
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import { Container, Header, PlusButton } from "./style"
 import api from '../../services/api'
 import { useSign } from '../../providers/SignIn'
@@ -8,9 +8,6 @@ import { useSign } from '../../providers/SignIn'
 const BoardHabits = ({habitModal, setHabitModal}) => {
 
     const { useToken } = useSign()
-    console.log(useToken)
-
-
 
     const [habits, setHabits] = useState([])
 
@@ -31,8 +28,6 @@ const BoardHabits = ({habitModal, setHabitModal}) => {
     useEffect(() => {
         loadHabits()
     }, [])
-
-    console.log(habits)
 
     return (
         <Container>
