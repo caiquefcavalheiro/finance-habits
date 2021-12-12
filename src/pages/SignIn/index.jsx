@@ -1,75 +1,83 @@
-
 import { TextField } from "@mui/material";
-import { yupResolver} from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import {useForm} from 'react-hook-form';
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
 import { useContext } from "react";
-import {Link} from 'react-router-dom';
-import Button from '../../components/Button';
-import figureLogin from "../../assets/figure-login.svg"
-import { SigninContext } from '../../providers/SignIn';
+import { Link } from "react-router-dom";
+import Button from "../../components/Button";
+import figureLogin from "../../assets/figure-login.svg";
+import { SigninContext } from "../../providers/SignIn";
 import Footer from "../../components/Footer";
 import { MainContainer, Container, Form } from "./style";
 import Header from "../../components/Header";
 
-const SignIn = ({setAuthenticated}) => {
+const SignIn = ({ setAuthenticated }) => {
+  const { toLogin } = useContext(SigninContext);
 
-    const { toLogin } = useContext(SigninContext)
+  const schema = yup.object().shape({
+    username: yup.string().required("Campo obrigatório"),
+    password: yup.string().required("Campo obrigatório"),
+  });
 
-    const schema = yup.object().shape({
-        username: yup.string().required('Campo obrigatório'),
-        password: yup.string().required('Campo obrigatório')
-    })
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-    const {register, handleSubmit, formState: {errors}} = useForm({
-        resolver:yupResolver(schema)
-    })
+  const onSignIn = (data) => {
+    toLogin(data);
+    setAuthenticated(true);
+  };
 
-    const onSignIn = (data) => {
-        toLogin(data)
-        setAuthenticated(true)
-    }
-    
-    return(
+  return (
+    <MainContainer>
+      <div className="ComponentHeader">
+        <Header />
+      </div>
+      <h1 className="header">Finance Habits</h1>
+      <Container>
+        <div className="group2">
+          <img src={figureLogin} alt="figure"></img>
+        </div>
+        <div className="group1">
+          <Form onSubmit={handleSubmit(onSignIn)}>
+            <h2>Entre</h2>
+            <TextField
+              label="Username"
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              {...register("username")}
+              error={!!errors.username?.message}
+              helperText={errors.username?.message}
+            />
 
-        <MainContainer>
-            <Header setAuthenticated={setAuthenticated} />
-            <Container>
-                <div className="group2">
-                    <img src={figureLogin} alt="figure"></img>
-                </div>
-                <div className="group1">
-                    <Form onSubmit={handleSubmit(onSignIn)}>
-                        <h2>Entre</h2>
-                        <TextField
-                            label='Username'
-                            variant="outlined" 
-                            margin="normal"
-                            fullWidth
-                            {...register('username')}
-                            error={!!errors.username?.message}
-                            helperText={errors.username?.message}
-                        />
+            <TextField
+              label="Senha"
+              type="password"
+              fullWidth
+              variant="outlined"
+              margin="normal"
+              {...register("password")}
+              error={!!errors.password?.message}
+              helperText={errors.password?.message}
+            />
 
-                        <TextField
-                            label='Senha'
-                            type='password'
-                            fullWidth
-                            variant="outlined" 
-                            margin="normal"
-                            {...register('password')}
-                            error={!!errors.password?.message}
-                            helperText={errors.password?.message}
-                        />
+            <Button biggerButton type="submit">
+              Login
+            </Button>
+            <p>
+              Não tem conta ? <Link to="/signup">Cadastre-se</Link>
+            </p>
+          </Form>
+        </div>
+      </Container>
+      <Footer />
+    </MainContainer>
+  );
+};
 
-                        <Button biggerButton type='submit'>Login</Button>
-                        <p>Não tem conta ? <Link to='/signup'>Cadastre-se</Link></p>
-                    </Form>
-                </div>
-            </Container>
-            <Footer />
-        </MainContainer>
-    )
-}
-
-export default SignIn
+export default SignIn;

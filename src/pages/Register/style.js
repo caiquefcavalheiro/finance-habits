@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 
-    @media screen and (max-width: 800px) {
-        display: none;
-    }
-`
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+`;
 
 export const Container = styled.div`
     display: flex;
@@ -15,7 +15,6 @@ export const Container = styled.div`
     align-items: center;
     height: 80%;
     background: var(--color-gradient-blue);
-    }
 
     .group2{
         width: 400px;
@@ -66,27 +65,26 @@ export const Container = styled.div`
             font-size: 50px;
         }
     }
-`
+`;
 
 export const MainContainerMobile = styled.div`
-    width: 100vw;
-    height: 100vh;
-    background: var(--color-gradient-blue);
+  width: 100vw;
+  height: 100vh;
+  background: var(--color-gradient-blue);
 
-    h1{
-            padding-top: 20px;
-            font-family: 'Gugi',cursive;
-            color: var(--color-white);
-            text-align: center;
-        }
+  h1 {
+    padding-top: 20px;
+    font-family: "Gugi", cursive;
+    color: var(--color-white);
+    text-align: center;
+  }
 
-    .group3{
-            display:flex;
-            justify-content: center;
-        }
+  .group3 {
+    display: flex;
+    justify-content: center;
+  }
 
-    @media screen and (min-width: 800px) {
-        display: none;
-    }
-
-`
+  @media screen and (min-width: 800px) {
+    display: none;
+  }
+`;

@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
-import Halter from '../fonts/HALTER.ttf'
+import Halter from "../fonts/HALTER.ttf";
 
 export default createGlobalStyle`
 
@@ -41,4 +41,4 @@ export default createGlobalStyle`
         cursor: pointer;
         border: none;
     }
-`
+`;
