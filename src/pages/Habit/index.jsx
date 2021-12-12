@@ -3,6 +3,7 @@ import { useHabitId } from '../../providers/HabitId';
 import { useSign } from '../../providers/SignIn';
 import {Header as SubHeader} from '../../components/BoardHabits/style';
 import {Container} from '../../components/BoardHabits/style';
+import ListNavButtons from '../../components/ListNavButtons';
 
 function Habit () {
 
@@ -18,8 +19,9 @@ function Habit () {
         <>
         <Header/>
         <Container>
+            <ListNavButtons list={userHabits} index={currentHabitIndex}/>
             <SubHeader>
-                <span className='mobile'>Hábito: </span>{currentHabit.title}
+                {currentHabit.title}
             </SubHeader>
         </Container>
         </>
