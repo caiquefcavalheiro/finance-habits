@@ -6,9 +6,34 @@ import { useHistory } from "react-router-dom";
 export const SigninContext = createContext([]);
 
 export const SigninProvider = ({ children }) => {
-  const [useToken, setUseToken] = useState("");
-
   const history = useHistory();
+
+  const [useToken] = useState(
+    localStorage.getItem("@financeHabits:token") || []
+  );
+
+  const [userId] = useState(
+    localStorage.getItem("@financeHabits:user_id") || ""
+  );
+
+  const [userHabits] = useState(
+    JSON.parse(localStorage.getItem("@financeHabits:userHabits")) || []
+  );
+
+  function getHabits() {
+    api
+      .get("habits/personal/", {
+        headers: {
+          Authorization: `Bearer ${useToken}`,
+        },
+      })
+      .then((response) =>
+        localStorage.setItem(
+          "@financeHabits:userHabits",
+          JSON.stringify(response.data)
+        )
+      );
+  }
 
   const toLogin = (data) => {
     api
@@ -20,8 +45,6 @@ export const SigninProvider = ({ children }) => {
         localStorage.clear();
         localStorage.setItem("@financeHabits:token", access);
         localStorage.setItem("@financeHabits:user_id", JSON.stringify(user_id));
-
-        setUseToken(access);
 
         api
           .get(`/users/${user_id}/`)
@@ -66,7 +89,9 @@ export const SigninProvider = ({ children }) => {
   };
 
   return (
-    <SigninContext.Provider value={{ toLogin, useToken }}>
+    <SigninContext.Provider
+      value={{ toLogin, useToken, userId, getHabits, userHabits }}
+    >
       {children}
     </SigninContext.Provider>
   );
