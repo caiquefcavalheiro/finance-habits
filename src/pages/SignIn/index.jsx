@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Button from "../../components/Button";
 import figureLogin from "../../assets/figure-login.svg";
 import { SigninContext } from "../../providers/SignIn";
@@ -11,7 +11,7 @@ import Footer from "../../components/Footer";
 import { MainContainer, Container, Form } from "./style";
 import Header from "../../components/Header";
 
-const SignIn = ({ setAuthenticated }) => {
+const SignIn = ({ authenticated, setAuthenticated }) => {
   const { toLogin } = useContext(SigninContext);
 
   const schema = yup.object().shape({
@@ -31,6 +31,10 @@ const SignIn = ({ setAuthenticated }) => {
     toLogin(data);
     setAuthenticated(true);
   };
+
+  if (authenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <MainContainer>
