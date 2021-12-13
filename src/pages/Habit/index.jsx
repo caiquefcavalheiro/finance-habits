@@ -11,15 +11,17 @@ import educacao from "../../assets/Educacao.svg"
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
 import { BoxImage, Image } from '../../components/CardGroup/styles';
+import { useParams } from 'react-router-dom';
 
 function Habit () {
 
-    const {currentId} = useHabitId();
+    // const {currentId} = useHabitId();
     const {getHabits} = useSignin();
+    const params = useParams();
     
     getHabits();
     const userHabits = JSON.parse(localStorage.getItem("@financeHabits:userHabits"));
-    const currentHabit = userHabits.find(elem => elem.id === currentId);
+    const currentHabit = userHabits.find(elem => elem.id === Number(params.id));
     const currentHabitIndex = userHabits.indexOf(currentHabit);
 
     const getTheme = () => {
@@ -39,7 +41,7 @@ function Habit () {
         <Header/>
         <Container>
             <SecondaryContainer>
-                <ListNavButtons list={userHabits} index={currentHabitIndex}/>
+                <ListNavButtons list={userHabits} index={currentHabitIndex} id={params.id}/>
                 <div>
                     <SubHeader>
                         {currentHabit.title}

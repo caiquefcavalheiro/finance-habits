@@ -28,7 +28,7 @@ const BoardHabits = ({ habitModal, setHabitModal }) => {
           category={habit.category}
           difficulty={habit.difficulty}
           frequency={habit.frequency}
-          onClick={() => selectHabit(habit.id)}
+          id={habit.id}
         />
       ))}
     </Container>

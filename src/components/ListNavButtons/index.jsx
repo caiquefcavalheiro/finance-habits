@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-import {useHabitId} from '../../providers/HabitId';
 import Button from '../Button';
 import { Container, NextArrowButton, PreviousArrowButton } from './style';
 
-const ListNavButtons = ({list, index}) => {
+const ListNavButtons = ({list, index, id}) => {
     const [dimensions, setDimensions] = useState({ 
         height: window.innerHeight,
         width: window.innerWidth
@@ -12,6 +12,7 @@ const ListNavButtons = ({list, index}) => {
 
     const [isPreviousDisabled, setIsPreviousDisabled] = useState(false);
     const [isNextDisabled, setIsNextDisabled] = useState(false);
+    const history = useHistory();
 
     useEffect(() => {
         function handleResize() {
@@ -25,7 +26,6 @@ const ListNavButtons = ({list, index}) => {
         window.addEventListener('resize', handleResize)
     }, [])
 
-    const {currentId, setCurrentId} = useHabitId();
 
     useEffect(() => {
         if(index > 0){
@@ -40,24 +40,18 @@ const ListNavButtons = ({list, index}) => {
         }else{
             setIsNextDisabled(true);
         }
-    }, [currentId])
+    }, [id])
 
    
     const getPreviousElement = () => {
         if(index > 0){
-            setCurrentId(list[index - 1].id);
-        //     setIsNextDisabled(false);
-        // }else{
-        //     setIsPreviousDisabled(true);
+            history.push(`/habit/${list[index - 1].id}`);
         }
     }
     
     const getNextElement = () => {
         if(index < list.length - 1){
-            setCurrentId(list[index + 1].id)
-        //     setIsPreviousDisabled(false);
-        // }else{
-        //     setIsNextDisabled(true);
+            history.push(`/habit/${list[index + 1].id}`);
         }
     }
     
