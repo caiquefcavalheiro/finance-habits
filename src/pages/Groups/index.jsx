@@ -4,9 +4,14 @@
 import Header from '../../components/Header';
 import {Header as SubHeader} from '../../components/BoardHabits/style';
 import {Container} from '../../components/BoardHabits/style';
-import {SecondaryContainer} from '../Habit/style';
+import {CardsBox, SecondaryContainer} from '../Habit/style';
 import ListNavButtons from '../../components/ListNavButtons';
 import { useParams } from 'react-router-dom';
+import educacao from "../../assets/Educacao.svg"
+import investimento from "../../assets/Investimento.svg";
+import poupanca from "../../assets/Poupanca.svg";
+import { CardInfo } from './style';
+import { BoxImage, Image } from '../../components/CardGroup/styles';
 
 function Groups() {
   const params = useParams();
@@ -16,6 +21,20 @@ function Groups() {
 
   const currentGroup = userGroups.find(elem => elem.id === Number(params.id));
   const currentGroupIndex = userGroups.indexOf(currentGroup);
+  
+  const getTheme = () => {
+    if (currentGroup.category === "Poupança") {
+      return poupanca;
+    }
+    if (currentGroup.category === "Investimento") {
+      return investimento;
+    }
+    if (currentGroup.category === "Educação") {
+      return educacao;
+    }
+  };
+
+  console.log(currentGroup)
 
   return (
     <>
@@ -28,6 +47,15 @@ function Groups() {
             <SubHeader>
               {currentGroup.name}
             </SubHeader>
+            <CardsBox>
+              <CardInfo>
+                  <p>Categoria: {currentGroup.category}</p>
+                  <p>Descrição: {currentGroup.description}</p>
+                  <BoxImage className='desktop'>
+                      <Image src={getTheme()} alt={currentGroup.title} />
+                  </BoxImage>
+              </CardInfo>
+            </CardsBox>
           </div>
         </SecondaryContainer>
       </Container>

@@ -8,7 +8,7 @@ import RadioInput from "../RadioInput";
 import { useForm } from "react-hook-form";
 
 function Edit({ type, data }) {
-  const { editGroup } = useGroups();
+  const { updateGroup } = useGroups();
 
   const [openModal, setopenModal] = useState(false);
 

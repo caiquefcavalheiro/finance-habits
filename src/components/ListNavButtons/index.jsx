@@ -52,7 +52,7 @@ const ListNavButtons = ({list, index, id, type}) => {
             }
         }
     }
-    console.log(list, index, id)
+
     const getNextElement = () => {
         if(index < list.length - 1){
             if(type === 'habit'){

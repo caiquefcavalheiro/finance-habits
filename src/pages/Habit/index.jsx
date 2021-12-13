@@ -1,7 +1,5 @@
-import Circle from 'react-circle';
-
+import Circle from "react-circle";
 import Header from '../../components/Header';
-import { useSignin } from '../../providers/SignIn';
 import {Header as SubHeader} from '../../components/BoardHabits/style';
 import {Container} from '../../components/BoardHabits/style';
 import ListNavButtons from '../../components/ListNavButtons';
@@ -11,28 +9,31 @@ import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
 import { BoxImage, Image } from '../../components/CardGroup/styles';
 import { useParams } from 'react-router-dom';
+import { useHabits } from "../../providers/Habit";
 
-function Habit () {
+function Habit() {
+  //const { currentId } = useHabitId(); // veificar o uso
+  //const { getHabits } = useSignin();
 
-    const {getHabits} = useSignin();
+    const {toGetHabits} = useHabits();
     const params = useParams();
     
-    getHabits();
+    toGetHabits();
     const userHabits = JSON.parse(localStorage.getItem("@financeHabits:userHabits"));
     const currentHabit = userHabits.find(elem => elem.id === Number(params.id));
     const currentHabitIndex = userHabits.indexOf(currentHabit);
 
-    const getTheme = () => {
-        if (currentHabit.category === "Poupança") {
-          return poupanca;
-        }
-        if (currentHabit.category === "Investimento") {
-          return investimento;
-        }
-        if (currentHabit.category === "Educação") {
-          return educacao;
-        }
-    };
+  const getTheme = () => {
+    if (currentHabit.category === "Poupança") {
+      return poupanca;
+    }
+    if (currentHabit.category === "Investimento") {
+      return investimento;
+    }
+    if (currentHabit.category === "Educação") {
+      return educacao;
+    }
+  };
 
     return (
         <>
