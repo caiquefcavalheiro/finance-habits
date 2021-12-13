@@ -1,18 +1,19 @@
 import CardHabitCard from "../../components/CardHabit";
 import CreateHabit from "../../components/CreateHabit";
 import Delete from "../Delete";
-import { Container, Header, PlusButton } from "./style";
-import { useSignin } from "../../providers/SignIn";
+import { Container, PlusButton } from "./style";
+import { useHabits } from "../../providers/Habit";
+import SubHeader from "../SubHeader";
 
 const BoardHabits = ({ habitModal, setHabitModal, deleteHabitModal, SetDeleteHabitModal }) => {
   
-  const { userHabits } = useSignin()
+  const { userHabits } = useHabits();
 
   return (
     <Container>
-      <Header>
+      <SubHeader type="Group">
         Meus Hábitos <PlusButton />
-      </Header>
+      </SubHeader>
       <CreateHabit habitModal={habitModal} setHabitModal={setHabitModal} />
       {userHabits.map((habit, index) => (
         <>
