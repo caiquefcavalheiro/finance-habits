@@ -8,6 +8,20 @@ export const HabitProvider = ({ children }) => {
 
   const [userHabits] = useState(JSON.parse(localStorage.getItem('@financeHabits:userHabits')))
 
+  const toGetHabits = () => {
+    api
+      .get("habits/personal/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) =>
+        localStorage.setItem(
+          "@financeHabits:userHabits",
+          JSON.stringify(response.data)
+        )
+      );
+  }
   const toCreateHabit = (data) => {
     api
       .post('habits/', 
@@ -60,7 +74,7 @@ export const HabitProvider = ({ children }) => {
   }
 
   return (
-    <HabitContext.Provider value={{ toCreateHabit, toDeleteHabit, updateHabit, userHabits}}>
+    <HabitContext.Provider value={{ toCreateHabit, toDeleteHabit, updateHabit, userHabits, toGetHabits}}>
       {children}
     </HabitContext.Provider>
   );
