@@ -23,16 +23,21 @@ export const GroupProvider = ({ children }) => {
   }, [page]);
 
   function editGroup(data) {
-    const { title, category, difficulty, frequency, id } = data;
+    const { nameGroup, descriptionGroup, id } = data;
     api
       .patch(
         `groups/${id}`,
-        { title, category, difficulty, frequency },
+        {
+          name: nameGroup,
+          description: descriptionGroup,
+        },
         {
           headers: { Authorization: `Bearer ${useToken}` },
         }
       )
-      .then((response) => console.log(response))
+      .then((response) =>
+        console.log("chamar função para ajustar o local storage")
+      )
       .catch((error) => console.log(error));
   }
 

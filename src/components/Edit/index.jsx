@@ -1,4 +1,6 @@
 import { useGroups } from "../../providers/Groups";
+import { useGoals } from "../../providers/Goals";
+import { useActivies } from "../../providers/Activities";
 import { TextField } from "@mui/material";
 import { FiEdit } from "react-icons/fi";
 import { useState } from "react";
@@ -6,49 +8,61 @@ import ReactModal from "react-modal";
 import Button from "../Button";
 import RadioInput from "../RadioInput";
 import { useForm } from "react-hook-form";
+import "./style";
 
 function Edit({ type, data }) {
   const { editGroup } = useGroups();
+  const { editGoals } = useGoals();
+  const { editActivities } = useActivies();
+  // const { editHabit } = useHabits();
+
+  const { id } = data;
 
   const [openModal, setopenModal] = useState(false);
 
   const { register, handleSubmit } = useForm();
 
-  let whichForm = 0;
-
-  if (type === "habbits") {
-    return;
-  } else if (type === "groups") {
-    return;
-  } else if (type === "activities") {
-    return;
-  } else if (type === "goals") {
-    return;
-  }
-
   function formHabit(data) {
     //não poder passar valores vazios
+    const { titleHabit } = data;
+    if (titleHabit !== "") {
+      editHabit(data);
+    }
     console.log(data);
   }
 
   function formGroup(data) {
+    const { nameGroup, descriptionGroup } = data;
+    //não poder passar valores vazios
+    if (nameGroup !== "" && descriptionGroup !== "") {
+      editGroup(data);
+    }
+  }
+
+  function formGoal(data) {
     //não poder passar valores vazios
     console.log(data);
   }
 
-  function formGoal(data) {
-    console.log(data);
-  }
-
   function formActivity(data) {
+    //não poder passar valores vazios
     console.log(data);
   }
 
   return (
     <>
       <FiEdit onClick={() => setopenModal(true)} />
-      <ReactModal isOpen={openModal} onRequestClose={() => setopenModal(false)}>
-        <form onSubmit={handleSubmit(formHabit)}>
+      <ReactModal
+        isOpen={openModal}
+        onRequestClose={() => setopenModal(false)}
+        ariaHideApp={false}
+      >
+        <form type={type} onSubmit={handleSubmit(formHabit)}>
+          <input
+            style={{ display: "none" }}
+            value={id}
+            {...register("id")}
+          ></input>
           <TextField
             label="title"
             variant="outlined"

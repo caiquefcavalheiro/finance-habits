@@ -28,8 +28,31 @@ export const CreateHabitProvider = ({ children }) => {
         // criar toast de erro
       });
   };
+
+  function editHabit(data) {
+    const { id, titleHabit, difficultyHabit, frequencyHabit } = data;
+    api
+      .patch(
+        `/habits/${id}`,
+        {
+          title: titleHabit,
+          difficulty: difficultyHabit,
+          frequency: frequencyHabit,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then
+      // atualizar local storage
+      ()
+      .catch((error) => console.log(error));
+  }
+
   return (
-    <CreateHabitContext.Provider value={{ toCreateHabit }}>
+    <CreateHabitContext.Provider value={{ toCreateHabit, editHabit }}>
       {children}
     </CreateHabitContext.Provider>
   );

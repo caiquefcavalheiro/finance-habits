@@ -3,7 +3,7 @@ import Edit from "../../components/Edit";
 function Groups() {
   return (
     <>
-      <Edit />
+      <Edit data={{ id: 10 }} />
     </>
   );
 }
