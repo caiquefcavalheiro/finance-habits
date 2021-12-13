@@ -1,10 +1,11 @@
-function Groups () {
+import Edit from "../../components/Edit";
 
-    return (
-        <>
-
-        </>
-    )
+function Groups() {
+  return (
+    <>
+      <Edit />
+    </>
+  );
 }
 
 export default Groups;

@@ -37,7 +37,7 @@ const GoUpSignIn = ({ openSignin, setOpenSignin, setAuthenticated }) => {
         </Icon>
         <form onSubmit={handleSubmit(onSignIn)}>
           <TextField
-            label="Username"
+            label="Usuário"
             variant="outlined"
             margin="normal"
             fullWidth

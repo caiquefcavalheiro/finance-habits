@@ -97,4 +97,4 @@ export const SigninProvider = ({ children }) => {
   );
 };
 
-export const useSign = () => useContext(SigninContext);
+export const useSignin = () => useContext(SigninContext);
