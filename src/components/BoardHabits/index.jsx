@@ -1,10 +1,10 @@
 import CardHabitCard from "../../components/CardHabit";
 import CreateHabit from "../../components/CreateHabit";
 import { Container, Header, PlusButton } from "./style";
-import { useSignin } from "../../providers/SignIn";
+import { useHabits } from "../../providers/Habit";
 
 const BoardHabits = ({ habitModal, setHabitModal }) => {
-  const { userHabits } = useSignin();
+  const { userHabits } = useHabits();
 
   return (
     <Container>

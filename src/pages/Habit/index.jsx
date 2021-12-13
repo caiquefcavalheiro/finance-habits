@@ -2,7 +2,6 @@ import Circle from 'react-circle';
 
 import Header from '../../components/Header';
 import { useHabitId } from '../../providers/HabitId';
-import { useSign } from '../../providers/SignIn';
 import {Header as SubHeader} from '../../components/BoardHabits/style';
 import {Container} from '../../components/BoardHabits/style';
 import ListNavButtons from '../../components/ListNavButtons';
@@ -11,14 +10,14 @@ import educacao from "../../assets/Educacao.svg"
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
 import { BoxImage, Image } from '../../components/CardGroup/styles';
+import { useHabits } from '../../providers/Habit';
 
 function Habit () {
 
     const {currentId} = useHabitId();
-    const {getHabits} = useSign();
+
+    const {userHabits} = useHabits()
     
-    getHabits();
-    const userHabits = JSON.parse(localStorage.getItem("@financeHabits:userHabits"));
     const currentHabit = userHabits.find(elem => elem.id === currentId);
     const currentHabitIndex = userHabits.indexOf(currentHabit);
 

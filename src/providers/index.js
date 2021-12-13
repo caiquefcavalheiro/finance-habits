@@ -1,7 +1,7 @@
 import { SigninProvider } from "./SignIn";
 import { GroupProvider } from "./Groups";
 import { SignUpProvider } from "./SignUp";
-import { CreateHabitProvider } from "./CreateHabit";
+import { HabitProvider } from "./Habit";
 import { HabitIdProvider } from "./HabitId";;
 
 const Providers = ( { children }) => {
@@ -9,11 +9,11 @@ const Providers = ( { children }) => {
         <SigninProvider>
             <SignUpProvider>
                 <GroupProvider>
-                    <CreateHabitProvider>
+                    <HabitProvider>
                         <HabitIdProvider>
                             {children}
                         </HabitIdProvider>
-                    </CreateHabitProvider>
+                    </HabitProvider>
                 </GroupProvider>
             </SignUpProvider>
         </SigninProvider>
