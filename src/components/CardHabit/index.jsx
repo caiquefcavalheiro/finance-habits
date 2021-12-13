@@ -23,7 +23,7 @@ import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
 import { FrequencyAndDifficult, Check } from "./styles"
 
-const CardHabitCard = ({ title, category, difficulty, frequency }) => {
+const CardHabitCard = ({ title, category, difficulty, frequency, ...rest}) => {
 
     const [pop, setPop] = useState(false);
     const [anchor, setAnchor] = useState("");
@@ -42,7 +42,7 @@ const CardHabitCard = ({ title, category, difficulty, frequency }) => {
     
     return (
         <>
-      <BoxMobile>
+      <BoxMobile {...rest}>
         <CardH
           onClick={(evt) => {
             setPop(true);
@@ -80,7 +80,7 @@ const CardHabitCard = ({ title, category, difficulty, frequency }) => {
         </PopOVER>
       </BoxMobile>
 
-      <BoxDesktop>
+      <BoxDesktop {...rest}>
         <DivCattegory>
           <div>{category}</div>
           <BoxButton>

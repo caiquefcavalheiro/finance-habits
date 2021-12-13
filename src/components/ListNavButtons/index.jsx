@@ -10,6 +10,9 @@ const ListNavButtons = ({list, index}) => {
         width: window.innerWidth
     });
 
+    const [isPreviousDisabled, setIsPreviousDisabled] = useState(false);
+    const [isNextDisabled, setIsNextDisabled] = useState(false);
+
     useEffect(() => {
         function handleResize() {
             setDimensions({
@@ -22,26 +25,48 @@ const ListNavButtons = ({list, index}) => {
         window.addEventListener('resize', handleResize)
     }, [])
 
-    const {setCurrentId} = useHabitId();
+    const {currentId, setCurrentId} = useHabitId();
+
+    useEffect(() => {
+        if(index > 0){
+            
+            setIsPreviousDisabled(false);
+        }else{
+            setIsPreviousDisabled(true);
+        }
+
+        if(index < list.length - 1){
+            setIsNextDisabled(false);
+        }else{
+            setIsNextDisabled(true);
+        }
+    }, [currentId])
+
    
     const getPreviousElement = () => {
         if(index > 0){
             setCurrentId(list[index - 1].id);
+        //     setIsNextDisabled(false);
+        // }else{
+        //     setIsPreviousDisabled(true);
         }
     }
     
     const getNextElement = () => {
         if(index < list.length - 1){
             setCurrentId(list[index + 1].id)
+        //     setIsPreviousDisabled(false);
+        // }else{
+        //     setIsNextDisabled(true);
         }
     }
     
     return(
         <Container>
-            <PreviousArrowButton position={dimensions} onClick={getPreviousElement} />  
-            <NextArrowButton position={dimensions} onClick={getNextElement}/>
-            <Button onClick={getPreviousElement}>Anterior</Button>
-            <Button onClick={getNextElement}>Próximo</Button>
+            <PreviousArrowButton position={dimensions} onClick={getPreviousElement} disabled={isPreviousDisabled}/>  
+            <NextArrowButton position={dimensions} onClick={getNextElement} disabled={isNextDisabled}/>
+            <Button onClick={getPreviousElement} disabled={isPreviousDisabled}>Anterior</Button>
+            <Button onClick={getNextElement} disabled={isNextDisabled}>Próximo</Button>
         </Container>
     )
 }
