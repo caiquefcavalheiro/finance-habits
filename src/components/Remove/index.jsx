@@ -1,18 +1,27 @@
 
 import {FiX} from 'react-icons/fi'
 
+import { useHabits } from '../../providers/Habit'
+import { useGroups } from '../../providers/Groups'
+import { useGoals} from '../../providers/Goals'
+import { Container } from './style'
+
 const Remove= ({type, data}) => {
+
+    const { toDeleteHabit } = useHabits()
+    const { unsubscribeGroup } = useGroups()
+    const { toDeleteGoals} = useGoals()
 
     const toRemove = () => {
         switch (type) {
             case 'group':
-                //chamar provider de desisnscrição de grupo
+                unsubscribeGroup(data)
                 break
             case 'habit':
-                //chamar provider de deleçãode habito
+                toDeleteHabit(data)
                 break
             case 'goals':
-                // chamar provider de deleção de meta de grupo
+                toDeleteGoals(data)
                 break
 
             default:
@@ -22,7 +31,9 @@ const Remove= ({type, data}) => {
 
 
     return(
-        <FiX onClick={toRemove}/>
+        <Container>
+            <FiX onClick={toRemove}/>
+        </Container>
     )
 }
 
