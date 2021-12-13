@@ -22,8 +22,11 @@ import educacao from "../../assets/Educacao.svg"
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
 import { FrequencyAndDifficult, Check } from "./styles"
+import Delete from "../Delete";
 
-const CardHabitCard = ({ title, category, difficulty, frequency }) => {
+const CardHabitCard = ({ title, category, difficulty, frequency, onClick }) => {
+
+    const [deleteHabitModal, SetDeleteHabitModal] = useState(false)
 
     const [pop, setPop] = useState(false);
     const [anchor, setAnchor] = useState("");
@@ -73,7 +76,7 @@ const CardHabitCard = ({ title, category, difficulty, frequency }) => {
               <div>
                 <Edit />
                 <Check />
-                <Close />
+                <Close onClick={() => SetDeleteHabitModal(true)} />
               </div>
             </BoxButton>
           </PopBox>
@@ -86,7 +89,7 @@ const CardHabitCard = ({ title, category, difficulty, frequency }) => {
           <BoxButton>
             <Wedit />
             <Check/>
-            <Wclose />
+            <Wclose onClick={() => SetDeleteHabitModal(true)} />
           </BoxButton>
         </DivCattegory>
         <FrequencyAndDifficult>
@@ -100,6 +103,7 @@ const CardHabitCard = ({ title, category, difficulty, frequency }) => {
           </BoxImage>
         </BoxName>
       </BoxDesktop>
+      <Delete deleteHabitModal={deleteHabitModal} SetDeleteHabitModal={SetDeleteHabitModal} habit={title} />
     </>   
     )
 }

@@ -2,7 +2,7 @@ import Circle from 'react-circle';
 
 import Header from '../../components/Header';
 import { useHabitId } from '../../providers/HabitId';
-import { useSign } from '../../providers/SignIn';
+import { useSignin } from '../../providers/SignIn';
 import {Header as SubHeader} from '../../components/BoardHabits/style';
 import {Container} from '../../components/BoardHabits/style';
 import ListNavButtons from '../../components/ListNavButtons';
@@ -15,7 +15,7 @@ import { BoxImage, Image } from '../../components/CardGroup/styles';
 function Habit () {
 
     const {currentId} = useHabitId();
-    const {getHabits} = useSign();
+    const {getHabits} = useSignin ();
     
     getHabits();
     const userHabits = JSON.parse(localStorage.getItem("@financeHabits:userHabits"));

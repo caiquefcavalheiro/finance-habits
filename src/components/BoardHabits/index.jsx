@@ -1,10 +1,12 @@
 import CardHabitCard from "../../components/CardHabit";
 import CreateHabit from "../../components/CreateHabit";
+import Delete from "../Delete";
 import { Container, Header, PlusButton } from "./style";
 import { useSignin } from "../../providers/SignIn";
 
-const BoardHabits = ({ habitModal, setHabitModal }) => {
-  const { userHabits } = useSignin();
+const BoardHabits = ({ habitModal, setHabitModal, deleteHabitModal, SetDeleteHabitModal }) => {
+  
+  const { userHabits } = useSignin()
 
   return (
     <Container>
@@ -13,13 +15,15 @@ const BoardHabits = ({ habitModal, setHabitModal }) => {
       </Header>
       <CreateHabit habitModal={habitModal} setHabitModal={setHabitModal} />
       {userHabits.map((habit, index) => (
-        <CardHabitCard
+        <>
+          <CardHabitCard
           key={index}
           title={habit.title}
           category={habit.category}
           difficulty={habit.difficulty}
-          frequency={habit.frequency}
-        />
+          frequency={habit.frequency} />
+          <Delete habit={habit} deleteHabitModal={deleteHabitModal} SetDeleteHabitModal={SetDeleteHabitModal} />
+          </>
       ))}
     </Container>
   );
