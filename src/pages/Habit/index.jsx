@@ -1,7 +1,6 @@
 import Circle from 'react-circle';
 
 import Header from '../../components/Header';
-import { useHabitId } from '../../providers/HabitId';
 import { useSignin } from '../../providers/SignIn';
 import {Header as SubHeader} from '../../components/BoardHabits/style';
 import {Container} from '../../components/BoardHabits/style';
@@ -15,7 +14,6 @@ import { useParams } from 'react-router-dom';
 
 function Habit () {
 
-    // const {currentId} = useHabitId();
     const {getHabits} = useSignin();
     const params = useParams();
     
@@ -41,7 +39,7 @@ function Habit () {
         <Header/>
         <Container>
             <SecondaryContainer>
-                <ListNavButtons list={userHabits} index={currentHabitIndex} id={params.id}/>
+                <ListNavButtons list={userHabits} index={currentHabitIndex} id={params.id} type='habit'/>
                 <div>
                     <SubHeader>
                         {currentHabit.title}

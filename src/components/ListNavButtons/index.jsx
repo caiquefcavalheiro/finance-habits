@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Button from '../Button';
 import { Container, NextArrowButton, PreviousArrowButton } from './style';
 
-const ListNavButtons = ({list, index, id}) => {
+const ListNavButtons = ({list, index, id, type}) => {
     const [dimensions, setDimensions] = useState({ 
         height: window.innerHeight,
         width: window.innerWidth
@@ -45,13 +45,21 @@ const ListNavButtons = ({list, index, id}) => {
    
     const getPreviousElement = () => {
         if(index > 0){
-            history.push(`/habit/${list[index - 1].id}`);
+            if(type === 'habit'){
+                history.push(`/habit/${list[index - 1].id}`);
+            }else if (type === 'group') {
+                history.push(`/groups/${list[index - 1].id}`);
+            }
         }
     }
-    
+    console.log(list, index, id)
     const getNextElement = () => {
         if(index < list.length - 1){
-            history.push(`/habit/${list[index + 1].id}`);
+            if(type === 'habit'){
+                history.push(`/habit/${list[index + 1].id}`);
+            }else if (type === 'group') {
+                history.push(`/groups/${list[index + 1].id}`);
+            }
         }
     }
     

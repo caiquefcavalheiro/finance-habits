@@ -4,24 +4,18 @@ import { Container, Header, PlusButton } from "./style";
 import { useSignin } from "../../providers/SignIn";
 import { useHistory } from "react-router-dom";
 import { useHabitId } from "../../providers/HabitId";
+import CardGroup from "../CardGroup";
 
 const BoardHabits = ({ habitModal, setHabitModal }) => {
   const { userHabits } = useSignin();
-  const history = useHistory();
-  const {setCurrentId} = useHabitId();
-
-  const selectHabit = (id) => {
-    setCurrentId(id)
-    history.push(`/habit`)
-  }
-
+  const userGroups = JSON.parse(localStorage.getItem("@financeHabits:userGroups")); //***** */
   return (
     <Container>
       <Header>
         Meus Hábitos <PlusButton />
       </Header>
       <CreateHabit habitModal={habitModal} setHabitModal={setHabitModal} />
-      {userHabits.map((habit, index) => (
+      {/* {userHabits.map((habit, index) => (
         <CardHabitCard
           key={index}
           title={habit.title}
@@ -30,7 +24,22 @@ const BoardHabits = ({ habitModal, setHabitModal }) => {
           frequency={habit.frequency}
           id={habit.id}
         />
-      ))}
+      ))} */}
+
+
+      {/* início */}
+      {userGroups.map((habit, index) => (
+        <CardGroup
+          key={index}
+          name={habit.name}
+          category={habit.category}
+          description={habit.description}
+          id={habit.id}
+        />
+      ))}                   
+      {/* final */}
+
+      
     </Container>
   );
 };
