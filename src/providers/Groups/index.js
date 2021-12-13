@@ -1,34 +1,55 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import api from "../../services/api";
+import { useSignin } from "../SignIn";
 
-export const GroupsContext = createContext([])
+export const GroupsContext = createContext([]);
 
-export const GroupProvider = ({children}) => {
-    const [groups, setGroups] = useState([])
-    const [page, setPage] = useState(1)
+export const GroupProvider = ({ children }) => {
+  const { useToken } = useSignin();
 
-    useEffect(()=>{
-        api.get(`groups/?page=${page}`).then( res => {
-            const {next, results} = res.data;
-            if(next !== null){
+  const [groups, setGroups] = useState([]);
+  const [page, setPage] = useState(1);
 
-                setGroups((state) => [...state, ...results])
-                setPage(page + 1)
-            }else{
-                setGroups((state) => [...state, ...results])
-            }
-        })
-    },[page])
+  useEffect(() => {
+    api.get(`groups/?page=${page}`).then((res) => {
+      const { next, results } = res.data;
+      if (next !== null) {
+        setGroups((state) => [...state, ...results]);
+        setPage(page + 1);
+      } else {
+        setGroups((state) => [...state, ...results]);
+      }
+    });
+  }, [page]);
 
-    const groupList = groups.filter( item => item.category === 'Educação' || item.category === 'Investimento' || item.category === 'Poupança')
+  function editGroup(data) {
+    const { title, category, difficulty, frequency, id } = data;
+    api
+      .patch(
+        `groups/${id}`,
+        { title, category, difficulty, frequency },
+        {
+          headers: { Authorization: `Bearer ${useToken}` },
+        }
+      )
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  }
 
-    localStorage.setItem('@financeHabits:groupList', JSON.stringify(groupList))
+  const groupList = groups.filter(
+    (item) =>
+      item.category === "Educação" ||
+      item.category === "Investimento" ||
+      item.category === "Poupança"
+  );
 
-    return(
-        <GroupsContext.Provider value={{groupList}}>
-            {children}
-        </GroupsContext.Provider>
-    )
-}
+  localStorage.setItem("@financeHabits:groupList", JSON.stringify(groupList));
 
-export const useGroups = () => (useContext(GroupsContext))
+  return (
+    <GroupsContext.Provider value={{ groupList, editGroup }}>
+      {children}
+    </GroupsContext.Provider>
+  );
+};
+
+export const useGroups = () => useContext(GroupsContext);
