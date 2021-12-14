@@ -1,10 +1,10 @@
 import { createContext, useContext, useState } from "react";
 import api from "../../services/api";
 
-export const GroupsContext = createContext([]);
+export const GroupsContext = createContext();
 
 export const GroupProvider = ({ children }) => {
-  const token = localStorage.getItem("@financeHabits:token")
+  const token = localStorage.getItem("@financeHabits:token");
 
   const [groupList, setGroupList] = useState(JSON.parse(localStorage.getItem('@financeHabits:groupList')) || [])
 
@@ -51,7 +51,6 @@ export const GroupProvider = ({ children }) => {
   }
 
   const createGroups = (data) => {
-
     api
     .post(`/groups/`, data, 
       { headers: { Authorization: `Bearer ${token}`} }
@@ -65,6 +64,7 @@ export const GroupProvider = ({ children }) => {
   }
 
   const updateGroup = (data) => {
+
     api
     .post(`/groups/${data.id}`, data,
       { headers: { Authorization: `Bearer ${token}`} }
@@ -93,14 +93,12 @@ export const GroupProvider = ({ children }) => {
   }
 
   const unsubscribeGroup = (data) => {
-
-    const {id} = data
+    const { id } = data;
 
     api.delete(`/groups/${id}/unsubscribe/`,
       { headers: { Authorization: `Bearer ${token}`} }
     ).then( res => {
       allGroupsUser()
-      setUserGroups(JSON.parse(localStorage.getItem('@financeHabits:userGroups')))
       //criar toast de sucesso
     }).catch( err => {
       console.log(err)

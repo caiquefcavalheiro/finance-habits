@@ -1,5 +1,5 @@
-import {Route, Switch} from "react-router";
-import Home from '../pages/Home'
+import { Route, Switch } from "react-router";
+import Home from "../pages/Home";
 import Dashboard from "../pages/Dashboard";
 import Habit from "../pages/Habit";
 import Groups from "../pages/Groups";
@@ -7,8 +7,6 @@ import { useState, useEffect } from "react";
 import Register from "../pages/Register";
 import SignIn from "../pages/SignIn";
 import PageGroup from "../pages/PageGroup";
-
-
 
 function Routes() {
 

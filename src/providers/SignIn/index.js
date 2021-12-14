@@ -3,7 +3,7 @@ import api from "../../services/api";
 import jwtDecode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 
-export const SigninContext = createContext([]);
+export const SigninContext = createContext();
 
 export const SigninProvider = ({ children }) => {
   const history = useHistory();
@@ -62,9 +62,7 @@ export const SigninProvider = ({ children }) => {
   };
 
   return (
-    <SigninContext.Provider
-      value={{ toLogin }}
-    >
+    <SigninContext.Provider value={{ toLogin }}>
       {children}
     </SigninContext.Provider>
   );
