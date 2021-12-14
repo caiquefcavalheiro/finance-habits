@@ -53,6 +53,8 @@ export const CardH = styled.div`
   flex-direction: column;
   box-shadow: 4px 4px #dcdcdc;
   border: solid 1px #0090ad;
+  margin: 0.5rem;
+  border-radius: 8px;
   div {
     font-family: "Roboto", sans-serif;
     font-size: 20px;

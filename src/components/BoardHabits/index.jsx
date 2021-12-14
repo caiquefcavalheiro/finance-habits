@@ -4,29 +4,32 @@ import { Container, Header, PlusButton } from "./style";
 import CardGroup from "../CardGroup"; // 8888888888888888888888
 import { useHabits } from "../../providers/Habit";
 import SubHeader from "../SubHeader";
-
+import { DisplayContainer } from "../DisplayContainer";
 
 const BoardHabits = ({ habitModal, setHabitModal }) => {
   const { userHabits } = useHabits();
-  const userGroups = JSON.parse(localStorage.getItem("@financeHabits:userGroups")); //***** */
+  const userGroups = JSON.parse(
+    localStorage.getItem("@financeHabits:userGroups")
+  ); //***** */
 
   return (
-    <Container>
-      <SubHeader type="Group">
+    <DisplayContainer type="row">
+      <SubHeader type="Habit">
         Meus Hábitos <PlusButton />
       </SubHeader>
       <CreateHabit habitModal={habitModal} setHabitModal={setHabitModal} />
-      {/* {userHabits.map((habit, index) => (
-        <CardHabitCard
-          key={index}
-          title={habit.title}
-          category={habit.category}
-          difficulty={habit.difficulty}
-          frequency={habit.frequency}
-          id={habit.id}
-        />
-      ))} */}
-
+      <Container>
+        {userHabits.map((habit, index) => (
+          <CardHabitCard
+            key={index}
+            title={habit.title}
+            category={habit.category}
+            difficulty={habit.difficulty}
+            frequency={habit.frequency}
+            id={habit.id}
+          />
+        ))}
+      </Container>
 
       {/* início */}
       {userGroups.map((habit, index) => (
@@ -37,11 +40,9 @@ const BoardHabits = ({ habitModal, setHabitModal }) => {
           description={habit.description}
           id={habit.id}
         />
-      ))}                   
+      ))}
       {/* final */}
-
-      
-    </Container>
+    </DisplayContainer>
   );
 };
 export default BoardHabits;
