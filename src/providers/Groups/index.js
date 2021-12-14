@@ -53,7 +53,10 @@ export const GroupProvider = ({ children }) => {
 
   const createGroups = (data) => {
     api
-      .post(`/groups/`, data, { headers: { Authorization: `Bearer ${token}` } })
+      .post(
+        `/groups/`, 
+        data, 
+        { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
         localStorage.setItem(
           "@financeHabits:userGroups",
