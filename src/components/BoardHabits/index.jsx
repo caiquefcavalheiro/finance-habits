@@ -1,6 +1,6 @@
 import CardHabitCard from "../../components/CardHabit";
 import CreateHabit from "../../components/CreateHabit";
-import { Container, Header, PlusButton } from "./style";
+import { Container, PlusButton } from "./style";
 import CardGroup from "../CardGroup"; // 8888888888888888888888
 import { useHabits } from "../../providers/Habit";
 import SubHeader from "../SubHeader";
