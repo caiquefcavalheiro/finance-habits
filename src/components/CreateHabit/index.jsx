@@ -9,6 +9,7 @@ import { CloseModalButton } from "../CloseModalButton";
 import { useHabits } from "../../providers/Habit";
 
 const CreateHabit = ({ habitModal, setHabitModal }) => {
+  
   const { toCreateHabit } = useHabits();
 
   const schema = yup.object().shape({

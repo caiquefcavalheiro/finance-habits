@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { AiOutlinePlus } from "react-icons/ai";
 
+export const DashboardBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+`
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
