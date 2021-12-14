@@ -32,7 +32,6 @@ const BoardHabits = ({ habitModal, setHabitModal }) => {
         ))}
       </Container>
     </DisplayContainer>
-      {/* início */}
     <DisplayContainer type='column'>
     <SubHeader type="Group">
          <PlusButton />
@@ -48,7 +47,6 @@ const BoardHabits = ({ habitModal, setHabitModal }) => {
       ))}
     </DisplayContainer>
       
-      {/* final */}
     </>
   );
 };

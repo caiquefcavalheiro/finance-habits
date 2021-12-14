@@ -10,11 +10,10 @@ import poupanca from "../../assets/Poupanca.svg";
 import { BoxImage, Image } from "../../components/CardGroup/styles";
 import { useParams } from "react-router-dom";
 import { useHabits } from "../../providers/Habit";
+import CheckButton from "../../components/CheckButton";
 
 function Habit() {
-  //const { currentId } = useHabitId(); // veificar o uso
-  //const { getHabits } = useSignin();
-
+  
   const { toGetHabits } = useHabits();
   const params = useParams();
 
@@ -22,6 +21,7 @@ function Habit() {
   const userHabits = JSON.parse(
     localStorage.getItem("@financeHabits:userHabits")
   );
+  
   const currentHabit = userHabits.find((elem) => elem.id === Number(params.id));
   const currentHabitIndex = userHabits.indexOf(currentHabit);
 
@@ -52,23 +52,23 @@ function Habit() {
             <SubHeader tittle={currentHabit.title}/>
             <CardsBox>
               <CardAchieved>
-                <h2>Ícones</h2>
+                <h2><CheckButton type='habits' data={currentHabit} /></h2>
                 <Circle
                   animate={true}
                   animationDuration="1s"
-                  responsive={true} // Boolean: Make SVG adapt to parent size
-                  size={30} // Number: Defines the size of the circle.
-                  lineWidth={20} // Number: Defines the thickness of the circle's stroke.
-                  progress={currentHabit.how_much_achieved} // Number: Update to change the progress and percentage.
-                  progressColor="#0090AD" // String: Color of "progress" portion of circle.
-                  bgColor="#A5D9EC" // String: Color of "empty" portion of circle.
-                  textColor="#0090AD" // String: Color of percentage text color.
+                  responsive={true} 
+                  size={30} 
+                  lineWidth={20} 
+                  progress={currentHabit.how_much_achieved}
+                  progressColor="#0090AD" 
+                  bgColor="#A5D9EC" 
+                  textColor="#0090AD" 
                   textStyle={{
-                    font: "bold 5rem Helvetica, Arial, sans-serif", // CSSProperties: Custom styling for percentage.
+                    font: "bold 5rem Helvetica, Arial, sans-serif", 
                   }}
-                  percentSpacing={10} // Number: Adjust spacing of "%" symbol and number.
-                  roundedStroke={true} // Boolean: Rounded/Flat line ends
-                  showPercentage={true} // Boolean: Show/hide percentage.
+                  percentSpacing={10} 
+                  roundedStroke={true} 
+                  showPercentage={true}
                   showPercentageSymbol={true}
                 />
                 <BoxImage className="desktop">

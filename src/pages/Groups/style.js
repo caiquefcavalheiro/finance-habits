@@ -74,6 +74,7 @@ export const ScrollBox = styled.div`
 
         .is-open{
             color: var(--color-dark-blue);
+            border: 1px solid var(--color-dark-blue);
         }
         p{
             width: 210px
