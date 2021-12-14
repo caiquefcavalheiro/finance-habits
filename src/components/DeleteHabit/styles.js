@@ -4,9 +4,9 @@ import ReactModal from "react-modal"
 export const DeleteModal = styled(ReactModal)`
     position: fixed;
         bottom: 0px;
-        height: 400px;
+        height: 200px;
         width: 100%;
-        height: 80%;
+        height: 40%;
         margin: 0 auto;
         background: var(--color-light-blue);
         border-radius: 50px 50px 0px 0px;
@@ -22,5 +22,14 @@ export const DeleteModal = styled(ReactModal)`
         border-radius: 8px;
         left: 50%;
         top: 35%;
+    }
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 2.5rem auto;
+    }
+    button {
+        margin: 1rem;
     }
 `

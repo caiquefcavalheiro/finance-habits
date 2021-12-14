@@ -21,8 +21,10 @@ const DeleteHabit = ({deleteModal, setDeleteModal, data}) => {
         isOpen={deleteModal}
         ariaHideApp={false}>
         <CloseModalButton onClick={closeModal} />
+            <section>
             <div>Deseja deletar o hábito?</div>
             <Button onClick={() => handleDelete(data)} >Deletar</Button>
+            </section>
         </DeleteModal>
     )
 }
