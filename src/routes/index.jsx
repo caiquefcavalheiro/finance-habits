@@ -6,52 +6,51 @@ import Groups from "../pages/Groups";
 import { useState, useEffect } from "react";
 import Register from "../pages/Register";
 import SignIn from "../pages/SignIn";
+import PageGroup from "../pages/PageGroup";
 
 function Routes() {
-  const [authenticated, setAuthenticated] = useState(false);
 
-  useEffect(() => {
-    let isMounted = true;
-    const token = localStorage.getItem("@financeHabits:token");
-    if (token && isMounted) {
-      setAuthenticated(true);
-    }
-    return () => {
-      isMounted = false;
-    };
-  }, [authenticated]);
+    const [authenticated, setAuthenticated] = useState(false)
 
-  return (
-    <Switch>
-      <Route exact path="/">
-        <Home authenticated={authenticated} />
-      </Route>
-      <Route exact path="/signin">
-        <SignIn
-          authenticated={authenticated}
-          setAuthenticated={setAuthenticated}
-        />
-      </Route>
-      <Route exact path="/dashboard">
-        <Dashboard
-          authenticated={authenticated}
-          setAuthenticated={setAuthenticated}
-        />
-      </Route>
-      <Route exact path="/signup">
-        <Register
-          authenticated={authenticated}
-          setAuthenticated={setAuthenticated}
-        />
-      </Route>
-      <Route exact path="/habit/:id">
-        <Habit authenticated={authenticated} />
-      </Route>
-      <Route exact path="/groups/:id">
-        <Groups authenticated={authenticated} />
-      </Route>
-    </Switch>
-  );
+    useEffect(() => {
+        let isMounted = true
+        const token = localStorage.getItem("@financeHabits:token")
+        if (token && isMounted) {
+            setAuthenticated(true)
+        }
+        return () => {
+            isMounted = false
+        }
+    }, [authenticated])
+
+    return(
+        <Switch>
+            <Route exact path="/">
+                <Home authenticated={authenticated} />
+            </Route>
+            <Route exact path="/signin">
+                <SignIn authenticated={authenticated} setAuthenticated={setAuthenticated}/>
+            </Route>
+            <Route exact path="/dashboard">
+                <Dashboard authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            </Route>
+            <Route exact path="/signup">
+                <Register authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            </Route>
+            <Route exact path="/habit/:id">
+                <Habit authenticated={authenticated} />
+            </Route>
+            <Route exact path="/groups/:id">
+                <Groups authenticated={authenticated} />
+            </Route>
+
+            <Route exact path='/groups'>
+                <PageGroup authenticated={authenticated} />
+            </Route>
+        </Switch>
+
+    )
+
 }
 
 export default Routes;

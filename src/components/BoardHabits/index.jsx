@@ -6,13 +6,10 @@ import { useHabits } from "../../providers/Habit";
 import SubHeader from "../SubHeader";
 import { DisplayContainer } from "../DisplayContainer";
 
-import Delete from "../DeleteHabit";
 
 const BoardHabits = ({
   habitModal,
   setHabitModal,
-  deleteModal,
-  setDeleteModal,
 }) => {
   const { userHabits } = useHabits();
   const userGroups = JSON.parse(

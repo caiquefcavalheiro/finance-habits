@@ -48,7 +48,7 @@ export const BoxDashboard = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 20px;
+  //margin-top: 20px;
 
   /* @media (min-width: 600px) {
     display: flex;

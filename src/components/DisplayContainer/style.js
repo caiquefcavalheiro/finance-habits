@@ -13,6 +13,7 @@ export const Column = styled.div`
   align-items: center;
   box-shadow: 0px 0px 2px 2px #00000040;
 
+
   @media (min-width: 600px) {
     min-height: 795px;
     min-width: 374px;
@@ -63,6 +64,8 @@ export const Full = styled.div`
   flex-direction: column;
   align-items: center;
   box-shadow: 0px 0px 2px 2px #00000040;
+
+  margin: 20px auto;
 
   @media (min-width: 600px) {
     align-items: baseline;
