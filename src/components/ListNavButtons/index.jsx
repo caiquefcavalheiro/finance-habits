@@ -29,7 +29,6 @@ const ListNavButtons = ({list, index, id, type}) => {
 
     useEffect(() => {
         if(index > 0){
-            
             setIsPreviousDisabled(false);
         }else{
             setIsPreviousDisabled(true);

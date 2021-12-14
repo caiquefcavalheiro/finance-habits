@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Card } from "../Habit/style";
+import Collapsible from 'react-collapsible';
 
 
 export const CardInfo = styled(Card)`
@@ -31,7 +32,10 @@ export const CardInfo = styled(Card)`
 
 export const CardExtra = styled(Card)`
     min-width: 238px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    @media screen and (min-width: 600px){
+        margin: 10px;
+    }
 `
 
 export const SupportHeader = styled.p`
@@ -49,6 +53,47 @@ export const SupportHeader = styled.p`
 export const Icon = styled.div`
     position: absolute;
     right: 10px;
+`
+
+export const ScrollBox = styled.div`
+    .Collapsible{
+        width: 230px;
+        margin: 10px auto;
+        padding: 0 10px;
+        height: auto;
+        border-radius: var(--radius);
+        background-color: var(--color-card-blue);
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .is-closed{
+            color: var(--color-grey-text);
+        }
+
+        .is-open{
+            color: var(--color-dark-blue);
+        }
+        p{
+            width: 210px
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding: 10px 0;
+        }
+
+        @media screen and (min-width: 600px){
+            background-color: var(--color-light-blue);
+            margin: 10px 0;
+        }
+    }
+    @media screen and (min-width: 600px){
+        margin: 10px;
+        width: 250px;
+        height: 210px;
+        overflow: auto;
+    }
 `
 
 export const MiniCard = styled.div`
@@ -75,4 +120,30 @@ export const MiniCard = styled.div`
         background-color: var(--color-light-blue);
         margin: 10px 0;
     }
+`
+
+export const CollapsibleStyled = styled(Collapsible)`
+    /* width: 230px;
+    margin: 10px auto;
+    padding: 0 10px;
+    height: 60px;
+    border-radius: var(--radius);
+    background-color: var(--color-card-blue);
+    color: var(--color-grey-text);
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    p{
+        width: 210px
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    @media screen and (min-width: 600px){
+        background-color: var(--color-light-blue);
+        margin: 10px 0;
+    } */
 `
