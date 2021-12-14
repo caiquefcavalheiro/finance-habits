@@ -1,5 +1,8 @@
-import { Container } from "./styles";
-
-export const CloseModalButton = ({ ...rest }) => {
-  return <Container {...rest}>X</Container>;
-};
+import { Container } from "./styles"
+import {CgClose} from "react-icons/cg"
+export const CloseModalButton = ({...rest}) => {
+    
+    return (
+        <Container {...rest}><CgClose/></Container>
+    )
+}
