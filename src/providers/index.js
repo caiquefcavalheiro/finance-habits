@@ -1,19 +1,16 @@
 import { SigninProvider } from "./SignIn";
 import { GroupProvider } from "./Groups";
 import { SignUpProvider } from "./SignUp";
-import { CreateHabitProvider } from "./CreateHabit";
-import { HabitIdProvider } from "./HabitId";;
+import { HabitProvider } from "./Habit";
 
 const Providers = ( { children }) => {
     return(
         <SigninProvider>
             <SignUpProvider>
                 <GroupProvider>
-                    <CreateHabitProvider>
-                        <HabitIdProvider>
-                            {children}
-                        </HabitIdProvider>
-                    </CreateHabitProvider>
+                    <HabitProvider>
+                        {children}
+                    </HabitProvider>
                 </GroupProvider>
             </SignUpProvider>
         </SigninProvider>

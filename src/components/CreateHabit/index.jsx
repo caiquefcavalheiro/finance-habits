@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { CreateHabitContext } from "../../providers/CreateHabit";
 import { TextField } from "@mui/material";
 import RadioInput from "../RadioInput";
 import { HabitModal, Container, Content } from "./styles";
@@ -8,9 +6,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "../Button";
 import { CloseModalButton } from "../CloseModalButton";
+import { useHabits } from "../../providers/Habit";
 
 const CreateHabit = ({ habitModal, setHabitModal }) => {
-  const { toCreateHabit } = useContext(CreateHabitContext);
+  const { toCreateHabit } = useHabits();
 
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
