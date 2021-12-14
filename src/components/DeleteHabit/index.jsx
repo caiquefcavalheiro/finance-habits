@@ -2,20 +2,13 @@ import { useHabits } from "../../providers/Habit"
 import { DeleteModal } from "./styles"
 import Button from "../Button"
 import { CloseModalButton } from "../CloseModalButton"
-const DeleteHabit = ({deleteModal, setDeleteModal}) => {
+
+const DeleteHabit = ({deleteModal, setDeleteModal, data}) => {
 
     const { toDeleteHabit } = useHabits()
 
-    const handleDelete = ({ title, category, difficulty, frequency }) => {
-        const dados = {
-            title,
-            category,
-            difficulty,
-            frequency,
-            how_much_achieved: 0,
-            user: Number(localStorage.getItem("@financeHabits:user_id")),
-          };
-        toDeleteHabit(dados)
+    const handleDelete = (data) => {
+        toDeleteHabit(data)
         closeModal()
     }
 
@@ -29,7 +22,7 @@ const DeleteHabit = ({deleteModal, setDeleteModal}) => {
         ariaHideApp={false}>
         <CloseModalButton onClick={closeModal} />
             <div>Deseja deletar o hábito?</div>
-            <Button onClick={handleDelete} >Deletar</Button>
+            <Button onClick={() => handleDelete(data)} >Deletar</Button>
         </DeleteModal>
     )
 }

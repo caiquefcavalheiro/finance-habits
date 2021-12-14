@@ -1,34 +1,58 @@
 import CardHabitCard from "../../components/CardHabit";
 import CreateHabit from "../../components/CreateHabit";
-import { Container, PlusButton } from "./style";
+import { Container, PlusButton, DashboardBox } from "./style";
 import { useHabits } from "../../providers/Habit";
 import SubHeader from "../SubHeader";
-import DeleteHabit from "../DeleteHabit";
+import {DisplayContainer} from "../DisplayContainer"
+import CardGroup from "../CardGroup";
+import Delete from "../DeleteHabit"
 
 const BoardHabits = ({ habitModal, setHabitModal, deleteModal, setDeleteModal }) => {
   
   const { userHabits } = useHabits();
-  const userGroups = JSON.parse(localStorage.getItem("@financeHabits:userGroups")); //***** */
+  const userGroups = JSON.parse(
+    localStorage.getItem("@financeHabits:userGroups")
+  )
 
   return (
-    <Container>
+    <DashboardBox>
+    <DisplayContainer type="row">
       <SubHeader type="Habit">
         Meus Hábitos <PlusButton />
       </SubHeader>
       <CreateHabit habitModal={habitModal} setHabitModal={setHabitModal} />
-      {userHabits.map((habit, index) => (
-        <>
+      <Container>
+        {userHabits.map((habit, index) => (
+          <>
           <CardHabitCard
             key={index}
             title={habit.title}
             category={habit.category}
             difficulty={habit.difficulty}
-            frequency={habit.frequency} />
-        
-        <DeleteHabit deleteModal={deleteModal} setDeleteModal={setDeleteModal} />
-        </>
+            frequency={habit.frequency}
+            id={habit.id} 
+            />
+            <Delete deleteModal={deleteModal} setDeleteModal={setDeleteModal} data={habit} />
+            </>
+        ))}
+      </Container>
+
+      {/* início */}
+      <DisplayContainer type="column" >
+      <SubHeader type="Group">Meus grupos</SubHeader>
+      {userGroups.map((habit, index) => (
+        <CardGroup
+          key={index}
+          name={habit.name}
+          category={habit.category}
+          description={habit.description}
+          id={habit.id}
+        />
       ))}
-    </Container>
+      </DisplayContainer>
+      {/* final */}
+    </DisplayContainer>
+    </DashboardBox>
   );
 };
 export default BoardHabits;

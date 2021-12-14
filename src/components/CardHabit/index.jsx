@@ -25,15 +25,18 @@ import poupanca from "../../assets/Poupanca.svg";
 import { FrequencyAndDifficult, Check } from "./styles"
 import { useHistory } from "react-router-dom";
 
-const CardHabitCard = ({ title, category, difficulty, frequency, id}) => {
+const CardHabitCard = (data) => {
+
+  const {title, category, difficulty, frequency, id} = data
 
     const [deleteModal, setDeleteModal] = useState(false)
     const [pop, setPop] = useState(false);
     const [anchor, setAnchor] = useState("");
     const history = useHistory();
 
-    const openModal = () => {
+    const openModal = (e) => {
       setDeleteModal(true)
+      e.stopPropagation()
     }
 
     const getTheme = () => {
@@ -112,7 +115,7 @@ const CardHabitCard = ({ title, category, difficulty, frequency, id}) => {
           </BoxImage>
         </BoxName>
       </BoxDesktop>
-      <DeleteHabit deleteModal={deleteModal} setDeleteModal={setDeleteModal} />
+      <DeleteHabit deleteModal={deleteModal} setDeleteModal={setDeleteModal} data={data} />
     </>   
     )
 }
