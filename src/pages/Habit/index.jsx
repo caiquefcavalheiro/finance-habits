@@ -11,6 +11,7 @@ import { BoxImage, Image } from "../../components/CardGroup/styles";
 import { useParams } from "react-router-dom";
 import { useHabits } from "../../providers/Habit";
 import CheckButton from "../../components/CheckButton";
+import { BoxDashboard } from "../../components/BoardHabits/style";
 
 function Habit() {
   
@@ -40,53 +41,56 @@ function Habit() {
   return (
     <>
       <Header />
-      <DisplayContainer>
-        <SecondaryContainer>
-          <ListNavButtons
-            list={userHabits}
-            index={currentHabitIndex}
-            id={params.id}
-            type="habit"
-          />
-          <CardsConatiner>
-            <SubHeader tittle={currentHabit.title}/>
-            <CardsBox>
-              <CardAchieved>
-                <h2><CheckButton type='habits' data={currentHabit} /></h2>
-                <Circle
-                  animate={true}
-                  animationDuration="1s"
-                  responsive={true} 
-                  size={30} 
-                  lineWidth={20} 
-                  progress={currentHabit.how_much_achieved}
-                  progressColor="#0090AD" 
-                  bgColor="#A5D9EC" 
-                  textColor="#0090AD" 
-                  textStyle={{
-                    font: "bold 5rem Helvetica, Arial, sans-serif", 
-                  }}
-                  percentSpacing={10} 
-                  roundedStroke={true} 
-                  showPercentage={true}
-                  showPercentageSymbol={true}
-                />
-                <BoxImage className="desktop">
-                  <Image src={getTheme()} alt={currentHabit.title} />
-                </BoxImage>
-              </CardAchieved>
-              <CardInfo>
-                <p>Categoria: {currentHabit.category}</p>
-                <p>Dificuldade: {currentHabit.difficulty}</p>
-                <p>Frequência: {currentHabit.frequency}</p>
-                <BoxImage className="desktop">
-                  <Image src={getTheme()} alt={currentHabit.title} />
-                </BoxImage>
-              </CardInfo>
-            </CardsBox>
-          </CardsConatiner>
-        </SecondaryContainer>
-      </DisplayContainer>
+      <BoxDashboard>
+        <DisplayContainer>
+          <SecondaryContainer>
+            <ListNavButtons
+              list={userHabits}
+              index={currentHabitIndex}
+              id={params.id}
+              type="habit"
+            />
+            <CardsConatiner>
+              <SubHeader tittle={currentHabit.title}/>
+              <CardsBox>
+                <CardAchieved>
+                  <h2><CheckButton type='habits' data={currentHabit} /></h2>
+                  <Circle
+                    animate={true}
+                    animationDuration="1s"
+                    responsive={true} 
+                    size={30} 
+                    lineWidth={20} 
+                    progress={currentHabit.how_much_achieved}
+                    progressColor="#0090AD" 
+                    bgColor="#A5D9EC" 
+                    textColor="#0090AD" 
+                    textStyle={{
+                      font: "bold 5rem Helvetica, Arial, sans-serif", 
+                    }}
+                    percentSpacing={10} 
+                    roundedStroke={true} 
+                    showPercentage={true}
+                    showPercentageSymbol={true}
+                  />
+                  <BoxImage className="desktop">
+                    <Image src={getTheme()} alt={currentHabit.title} />
+                  </BoxImage>
+                </CardAchieved>
+                <CardInfo>
+                  <p>Categoria: {currentHabit.category}</p>
+                  <p>Dificuldade: {currentHabit.difficulty}</p>
+                  <p>Frequência: {currentHabit.frequency}</p>
+                  <BoxImage className="desktop">
+                    <Image src={getTheme()} alt={currentHabit.title} />
+                  </BoxImage>
+                </CardInfo>
+              </CardsBox>
+            </CardsConatiner>
+          </SecondaryContainer>
+        </DisplayContainer>
+      </BoxDashboard>
+      
     </>
   );
 }

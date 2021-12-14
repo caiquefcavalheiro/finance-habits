@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Card } from "../Habit/style";
-import Collapsible from 'react-collapsible';
 
 
 export const CardInfo = styled(Card)`
@@ -74,8 +73,8 @@ export const ScrollBox = styled.div`
 
         .is-open{
             color: var(--color-dark-blue);
-            border: 1px solid var(--color-dark-blue);
         }
+        
         p{
             width: 210px
             overflow: hidden;
@@ -123,29 +122,3 @@ export const MiniCard = styled.div`
     }
 `
 
-export const CollapsibleStyled = styled(Collapsible)`
-    
-    /* width: 230px;
-    margin: 10px auto;
-    padding: 0 10px;
-    height: 60px;
-    border-radius: var(--radius);
-    background-color: var(--color-card-blue);
-    color: var(--color-grey-text);
-    font-size: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    p{
-        width: 210px
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-    @media screen and (min-width: 600px){
-        background-color: var(--color-light-blue);
-        margin: 10px 0;
-    } */
-`

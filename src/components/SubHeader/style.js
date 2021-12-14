@@ -11,6 +11,8 @@ export const HeaderBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+
 `;
 
 export const PlusButton = styled(AiOutlinePlus)`
