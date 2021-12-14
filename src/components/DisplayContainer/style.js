@@ -5,10 +5,9 @@ export const Column = styled.div`
   background: #d2d2d233;
   height: 445px;
   width: 270px;
-  left: 50px;
-  top: 168px;
+
   border-radius: 8px;
-  margin: 2rem auto;
+
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -22,6 +21,7 @@ export const Column = styled.div`
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: flex-start;
+    margin-right: 20px;
   }
 `;
 
@@ -30,10 +30,9 @@ export const Row = styled.div`
   background: #d2d2d233;
   height: 445px;
   width: 270px;
-  left: 50px;
-  top: 168px;
+  margin-bottom: 20px;
   border-radius: 8px;
-  margin: 2rem auto;
+
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -43,6 +42,8 @@ export const Row = styled.div`
   @media (min-width: 600px) {
     width: 784px;
     min-height: 795px;
+    margin-bottom: 0px;
+    margin-right: 20px;
   }
 `;
 
@@ -50,10 +51,9 @@ export const Full = styled.div`
   min-height: 445px;
   background: #d2d2d233;
   width: 270px;
-  left: 50px;
-  top: 168px;
+
   border-radius: 8px;
-  margin: 2rem auto;
+
   padding: 1rem;
   display: flex;
   flex-direction: column;
