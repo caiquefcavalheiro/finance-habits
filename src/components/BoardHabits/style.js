@@ -11,7 +11,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media (min-width: 600px) {
+  @media (min-width: 1170px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
@@ -33,4 +33,23 @@ export const PlusButton = styled(AiOutlinePlus)`
   color: white;
   float: right;
   margin-right: 0.5rem;
+`;
+
+export const BoxDashboard = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  @media (min-width: 600px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  @media (min-width: 800px) {
+    flex-direction: row;
+  }
 `;
