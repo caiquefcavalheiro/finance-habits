@@ -26,7 +26,7 @@ export const HabitProvider = ({ children }) => {
   const toDeleteHabit = ( data ) => {
 
     const habit_id = data.id
-    
+    console.log(habit_id)
     api
       .delete(`/habits/${habit_id}/`, data, {
         headers: { Authorization: `Bearer ${token}`}

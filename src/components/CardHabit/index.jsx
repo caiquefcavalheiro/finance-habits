@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DeleteHabit from "../DeleteHabit";
 import {
   CardH,
   TittlePop,
@@ -22,14 +23,16 @@ import educacao from "../../assets/Educacao.svg"
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
 import { FrequencyAndDifficult, Check } from "./styles"
-import Delete from "../Delete";
 
-const CardHabitCard = ({ title, category, difficulty, frequency, onClick }) => {
+const CardHabitCard = ({ title, category, difficulty, frequency }) => {
 
-    const [deleteHabitModal, SetDeleteHabitModal] = useState(false)
-
+    const [deleteModal, setDeleteModal] = useState(false)
     const [pop, setPop] = useState(false);
     const [anchor, setAnchor] = useState("");
+
+    const openModal = () => {
+      setDeleteModal(true)
+    }
 
     const getTheme = () => {
         if (category === "Poupança") {
@@ -75,8 +78,8 @@ const CardHabitCard = ({ title, category, difficulty, frequency, onClick }) => {
             <BoxButton>
               <div>
                 <Edit />
-                <Check />
-                <Close onClick={() => SetDeleteHabitModal(true)} />
+                <Check/>
+                <Close onClick={openModal} />
               </div>
             </BoxButton>
           </PopBox>
@@ -89,7 +92,7 @@ const CardHabitCard = ({ title, category, difficulty, frequency, onClick }) => {
           <BoxButton>
             <Wedit />
             <Check/>
-            <Wclose onClick={() => SetDeleteHabitModal(true)} />
+            <Wclose onClick={openModal} />
           </BoxButton>
         </DivCattegory>
         <FrequencyAndDifficult>
@@ -103,7 +106,7 @@ const CardHabitCard = ({ title, category, difficulty, frequency, onClick }) => {
           </BoxImage>
         </BoxName>
       </BoxDesktop>
-      <Delete deleteHabitModal={deleteHabitModal} SetDeleteHabitModal={SetDeleteHabitModal} habit={title} />
+      <DeleteHabit deleteModal={deleteModal} setDeleteModal={setDeleteModal} />
     </>   
     )
 }

@@ -10,7 +10,6 @@ import { useHabits } from "../../providers/Habit";
 
 const CreateHabit = ({ habitModal, setHabitModal }) => {
   
-  //const { toCreateHabit } = useContext(HabitsContext);
   const { toCreateHabit } = useHabits();
 
   const schema = yup.object().shape({
