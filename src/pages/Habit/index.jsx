@@ -11,6 +11,7 @@ import { BoxImage, Image } from "../../components/CardGroup/styles";
 import { useParams } from "react-router-dom";
 import { useHabits } from "../../providers/Habit";
 import CheckButton from "../../components/CheckButton";
+import RefreshButton from "../../components/RefreshButton";
 import { BoxDashboard } from "../../components/BoardHabits/style";
 
 function Habit() {
@@ -54,7 +55,13 @@ function Habit() {
               <SubHeader tittle={currentHabit.title}/>
               <CardsBox>
                 <CardAchieved>
-                  <h2><CheckButton type='habits' data={currentHabit} /></h2>
+                  <h2>
+                    {currentHabit.achieved ? (
+                      <RefreshButton type='habits' data={currentHabit} />
+                    ) : (
+                      <CheckButton type='habits' data={currentHabit} />
+                    )}
+                  </h2>
                   <Circle
                     animate={true}
                     animationDuration="1s"
