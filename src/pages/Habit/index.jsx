@@ -1,9 +1,9 @@
 import Circle from "react-circle";
 import Header from "../../components/Header";
-import { Header as SubHeader } from "../../components/BoardHabits/style";
-import { Container } from "../../components/BoardHabits/style";
+import SubHeader from "../../components/SubHeader";
+import { DisplayContainer } from "../../components/DisplayContainer";
 import ListNavButtons from "../../components/ListNavButtons";
-import { CardAchieved, CardInfo, CardsBox, SecondaryContainer } from "./style";
+import { CardAchieved, CardInfo, CardsBox, CardsConatiner, SecondaryContainer } from "./style";
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
@@ -40,7 +40,7 @@ function Habit() {
   return (
     <>
       <Header />
-      <Container>
+      <DisplayContainer>
         <SecondaryContainer>
           <ListNavButtons
             list={userHabits}
@@ -48,8 +48,8 @@ function Habit() {
             id={params.id}
             type="habit"
           />
-          <div>
-            <SubHeader>{currentHabit.title}</SubHeader>
+          <CardsConatiner>
+            <SubHeader tittle={currentHabit.title}/>
             <CardsBox>
               <CardAchieved>
                 <h2>Ícones</h2>
@@ -84,9 +84,9 @@ function Habit() {
                 </BoxImage>
               </CardInfo>
             </CardsBox>
-          </div>
+          </CardsConatiner>
         </SecondaryContainer>
-      </Container>
+      </DisplayContainer>
     </>
   );
 }

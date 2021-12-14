@@ -10,6 +10,12 @@ export const SecondaryContainer = styled.div`
     }
 `
 
+export const CardsConatiner = styled.div`
+    @media screen and (min-width: 600px){
+        width: 100%;
+    }
+`
+
 export const CardsBox = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -18,6 +24,9 @@ export const CardsBox = styled.div`
     }
 
     @media screen and (min-width: 600px){
+        width: 100%;
+        justify-content: space-around;
+
         .desktop{
             display: flex;
             justify-content: center;
