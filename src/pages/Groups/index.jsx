@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 import educacao from "../../assets/Educacao.svg"
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
-import { CardInfo } from './style';
+import { CardExtra, CardInfo, Icon, MiniCard, SupportHeader } from './style';
 import { BoxImage, Image } from '../../components/CardGroup/styles';
 
 function Groups() {
@@ -34,7 +34,7 @@ function Groups() {
     }
   };
 
-  console.log(currentGroup)
+  console.log(currentGroup. activity, currentGroup)
 
   return (
     <>
@@ -51,10 +51,45 @@ function Groups() {
               <CardInfo>
                   <p>Categoria: {currentGroup.category}</p>
                   <p>Descrição: {currentGroup.description}</p>
+                  <p className='title'>Título: {currentGroup.name}</p>
                   <BoxImage className='desktop'>
                       <Image src={getTheme()} alt={currentGroup.title} />
                   </BoxImage>
               </CardInfo>
+              <CardExtra>
+                <SupportHeader>
+                  Atividade
+                  <Icon>+</Icon>  
+                </SupportHeader>
+                {currentGroup.activities.length > 0 && currentGroup.activities.map(elem => {
+                  return(
+                    <MiniCard key={elem.id}>
+                      <p>Título: {elem.title}</p>
+                      <p>Criado: {elem.realization_time}</p>
+                    </MiniCard>
+                  )
+                })}
+                <BoxImage className='desktop'>
+                    <Image src={getTheme()} alt={currentGroup.title} />
+                </BoxImage>
+              </CardExtra>
+              <CardExtra>
+                <SupportHeader>
+                  Meta
+                  <Icon>+</Icon> 
+                </SupportHeader>
+                {currentGroup.goals.map(elem => {
+                    return(
+                      <MiniCard key={elem.id}>
+                        <p>Título: {elem.title}</p>
+                        <p>Dificuldade: {elem.difficulty}</p>
+                      </MiniCard>
+                    )
+                  })} 
+                  <BoxImage className='desktop'>
+                      <Image src={getTheme()} alt={currentGroup.title} />
+                  </BoxImage>
+              </CardExtra>
             </CardsBox>
           </div>
         </SecondaryContainer>
