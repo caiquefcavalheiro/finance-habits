@@ -8,7 +8,7 @@ import SubHeader from "../SubHeader";
 
 const BoardHabits = ({ habitModal, setHabitModal }) => {
   const { userHabits } = useHabits();
-  const userGroups = JSON.parse(localStorage.getItem("@financeHabits:userGroups")); //***** */
+  //const userGroups = JSON.parse(localStorage.getItem("@financeHabits:userGroups")); //***** */
 
   return (
     <Container>
@@ -29,7 +29,7 @@ const BoardHabits = ({ habitModal, setHabitModal }) => {
 
 
       {/* início */}
-      {userGroups.map((habit, index) => (
+{/*       {userGroups.map((habit, index) => (
         <CardGroup
           key={index}
           name={habit.name}
@@ -37,7 +37,7 @@ const BoardHabits = ({ habitModal, setHabitModal }) => {
           description={habit.description}
           id={habit.id}
         />
-      ))}                   
+      ))}  */}                  
       {/* final */}
 
       

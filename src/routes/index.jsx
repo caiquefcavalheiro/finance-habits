@@ -6,6 +6,7 @@ import Groups from "../pages/Groups";
 import { useState, useEffect } from "react";
 import Register from "../pages/Register";
 import SignIn from "../pages/SignIn";
+import PageGroup from "../pages/PageGroup";
 
 
 
@@ -43,6 +44,10 @@ function Routes() {
             </Route>
             <Route exact path="/groups/:id">
                 <Groups authenticated={authenticated} />
+            </Route>
+
+            <Route exact path='/groups'>
+                <PageGroup authenticated={authenticated} />
             </Route>
         </Switch>
 

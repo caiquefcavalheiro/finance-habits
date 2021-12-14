@@ -21,10 +21,14 @@ import {
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
+import { useGroups } from "../../providers/Groups";
 
-const CardSearch = ({ category, description, name,callback }) => {
+const CardSearch = ({ item }) => {
   const [pop, setPop] = useState(false);
   const [anchor, setAnchor] = useState("");
+  const { subscribeGroup } = useGroups()
+
+  const { category, name, description } = item
 
   const getTheme = () => {
     if (category === "Poupança") {
@@ -67,7 +71,7 @@ const CardSearch = ({ category, description, name,callback }) => {
           >
             <DescPop>{description}</DescPop>
             <BoxButton>
-              <ButtonPop onclick={() => callback}>inscreva-se</ButtonPop>
+              <ButtonPop onClick={() => subscribeGroup(item)}>inscreva-se</ButtonPop>
             </BoxButton>
           </PopBox>
         </PopOVER>
@@ -77,7 +81,7 @@ const CardSearch = ({ category, description, name,callback }) => {
         <DivCattegory>
           <div>{category}</div>
           <BoxButton>
-            <ButtonDesc onclick={() => callback}>inscreva-se</ButtonDesc>
+            <ButtonDesc onClick={() => subscribeGroup(item)}>inscreva-se</ButtonDesc>
           </BoxButton>
         </DivCattegory>
 
