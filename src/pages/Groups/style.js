@@ -124,6 +124,7 @@ export const MiniCard = styled.div`
 `
 
 export const CollapsibleStyled = styled(Collapsible)`
+    
     /* width: 230px;
     margin: 10px auto;
     padding: 0 10px;

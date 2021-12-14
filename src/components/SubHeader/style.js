@@ -3,6 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 
 export const HeaderBox = styled.div`
   position: relative;
+  min-height: 53px;
   height: 53px;
   width: 100%;
   background-color: #00b4d8;
