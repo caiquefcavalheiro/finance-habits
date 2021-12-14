@@ -3,9 +3,8 @@ import Circle from "react-circle";
 
 import Edit from "../../components/Edit";
 import Header from "../../components/Header";
-import { Header as SubHeader } from "../../components/BoardHabits/style";
+import SubHeader from '../../components/SubHeader';
 import { DisplayContainer } from '../../components/DisplayContainer';
-import { Container } from "../../components/BoardHabits/style";
 import { CardsBox, SecondaryContainer } from "../Habit/style";
 import ListNavButtons from "../../components/ListNavButtons";
 import { useParams } from "react-router-dom";
@@ -50,9 +49,8 @@ function Groups() {
 
   return (
     <>
-      {/* <Edit type="habit" data={{ id: 10 }} /> */}
       <Header />
-      <DisplayContainer type='column'>
+      <DisplayContainer>
         <SecondaryContainer>
           <ListNavButtons
             list={userGroups}
@@ -61,7 +59,7 @@ function Groups() {
             type="group"
           />
           <div>
-            <SubHeader>{currentGroup.name}</SubHeader>
+            <SubHeader tittle={currentGroup.name}/>
             <CardsBox>
               <CardInfo>
                 <p>Categoria: {currentGroup.category}</p>

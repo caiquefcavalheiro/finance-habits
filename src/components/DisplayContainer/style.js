@@ -62,14 +62,14 @@ export const Full = styled.div`
 
   @media (min-width: 600px) {
     align-items: baseline;
-    width: 784px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    max-width: 1200px;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
   }
 
   @media (min-width: 1110px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 1100px;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr 1fr; */
   }
 `;
