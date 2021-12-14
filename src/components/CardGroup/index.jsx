@@ -46,8 +46,8 @@ const CardGroup = ({ category, description, name, callback, id }) => {
   };
 
   const goToGroup = () => {
-    history.push(`/groups/${id}`)
-  }
+    history.push(`/groups/${id}`);
+  };
 
   return (
     <>
@@ -58,7 +58,7 @@ const CardGroup = ({ category, description, name, callback, id }) => {
             setAnchor(evt.currentTarget);
           }}
         >
-          <div>category</div>
+          {/* <div>category</div> */}
           <TittlePop>{name}</TittlePop>
         </CardH>
         <PopOVER
