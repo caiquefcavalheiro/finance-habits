@@ -1,23 +1,29 @@
 import Circle from "react-circle";
-import Header from '../../components/Header';
-import {Header as SubHeader} from '../../components/BoardHabits/style';
-import {Container} from '../../components/BoardHabits/style';
-import ListNavButtons from '../../components/ListNavButtons';
-import { CardAchieved, CardInfo, CardsBox, SecondaryContainer } from './style';
-import educacao from "../../assets/Educacao.svg"
+import Header from "../../components/Header";
+import { Header as SubHeader } from "../../components/BoardHabits/style";
+import { Container } from "../../components/BoardHabits/style";
+import ListNavButtons from "../../components/ListNavButtons";
+import { CardAchieved, CardInfo, CardsBox, SecondaryContainer } from "./style";
+import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
-import { BoxImage, Image } from '../../components/CardGroup/styles';
-import { useHabits } from '../../providers/Habit';
+import { BoxImage, Image } from "../../components/CardGroup/styles";
+import { useParams } from "react-router-dom";
+import { useHabits } from "../../providers/Habit";
 
 function Habit() {
   //const { currentId } = useHabitId(); // veificar o uso
   //const { getHabits } = useSignin();
 
-    const {userHabits} = useHabits()
-    
-    const currentHabit = userHabits.find(elem => elem.id === 420);
-    const currentHabitIndex = userHabits.indexOf(currentHabit);
+  const { toGetHabits } = useHabits();
+  const params = useParams();
+
+  toGetHabits();
+  const userHabits = JSON.parse(
+    localStorage.getItem("@financeHabits:userHabits")
+  );
+  const currentHabit = userHabits.find((elem) => elem.id === Number(params.id));
+  const currentHabitIndex = userHabits.indexOf(currentHabit);
 
   const getTheme = () => {
     if (currentHabit.category === "Poupança") {
@@ -36,7 +42,12 @@ function Habit() {
       <Header />
       <Container>
         <SecondaryContainer>
-          <ListNavButtons list={userHabits} index={currentHabitIndex} />
+          <ListNavButtons
+            list={userHabits}
+            index={currentHabitIndex}
+            id={params.id}
+            type="habit"
+          />
           <div>
             <SubHeader>{currentHabit.title}</SubHeader>
             <CardsBox>

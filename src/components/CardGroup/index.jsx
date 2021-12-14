@@ -26,10 +26,12 @@ import {
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
+import { useHistory } from "react-router-dom";
 
-const CardGroup = ({ category, description, name, callback }) => {
+const CardGroup = ({ category, description, name, callback, id }) => {
   const [pop, setPop] = useState(false);
   const [anchor, setAnchor] = useState("");
+  const history = useHistory();
 
   const getTheme = () => {
     if (category === "Poupança") {
@@ -43,9 +45,13 @@ const CardGroup = ({ category, description, name, callback }) => {
     }
   };
 
+  const goToGroup = () => {
+    history.push(`/groups/${id}`)
+  }
+
   return (
     <>
-      <BoxMobile>
+      <BoxMobile onClick={goToGroup}>
         <CardH
           onClick={(evt) => {
             setPop(true);
@@ -83,7 +89,7 @@ const CardGroup = ({ category, description, name, callback }) => {
         </PopOVER>
       </BoxMobile>
 
-      <BoxDesktop>
+      <BoxDesktop onClick={goToGroup}>
         <DivCattegory>
           <div>{category}</div>
           <BoxButton>

@@ -20,4 +20,8 @@ export const Container = styled.button`
     :hover{
         opacity: 85%;
     } 
+
+    :disabled {
+        background-color: var(--color-light-blue);
+    }
 `

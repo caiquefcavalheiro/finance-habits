@@ -8,6 +8,7 @@ import DeleteHabit from "../DeleteHabit";
 const BoardHabits = ({ habitModal, setHabitModal, deleteModal, setDeleteModal }) => {
   
   const { userHabits } = useHabits();
+  const userGroups = JSON.parse(localStorage.getItem("@financeHabits:userGroups")); //***** */
 
   return (
     <Container>
