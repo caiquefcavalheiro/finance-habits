@@ -18,45 +18,44 @@ import {
   Close,
   Wedit,
   Wclose,
-} from "../CardGroup/styles"
-import educacao from "../../assets/Educacao.svg"
+} from "../CardGroup/styles";
+import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
-import { FrequencyAndDifficult, Check } from "./styles"
+import { FrequencyAndDifficult, Check } from "./styles";
 import { useHistory } from "react-router-dom";
 
 const CardHabitCard = (data) => {
+  const { title, category, difficulty, frequency, id } = data;
 
-  const {title, category, difficulty, frequency, id} = data
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [pop, setPop] = useState(false);
+  const [anchor, setAnchor] = useState("");
+  const history = useHistory();
 
-    const [deleteModal, setDeleteModal] = useState(false)
-    const [pop, setPop] = useState(false);
-    const [anchor, setAnchor] = useState("");
-    const history = useHistory();
+  const openModal = (e) => {
+    setDeleteModal(true);
+    e.stopPropagation();
+  };
 
-    const openModal = (e) => {
-      setDeleteModal(true)
-      e.stopPropagation()
+  const getTheme = () => {
+    if (category === "Poupança") {
+      return poupanca;
     }
-
-    const getTheme = () => {
-      if (category === "Poupança") {
-        return poupanca;
-      }
-      if (category === "Investimento") {
-        return investimento;
-      }
-      if (category === "Educação") {
-        return educacao;
-      }
-    };
-    
-    const goToHabit = () => {
-      history.push(`/habit/${id}`)
+    if (category === "Investimento") {
+      return investimento;
     }
+    if (category === "Educação") {
+      return educacao;
+    }
+  };
 
-    return (
-        <>
+  const goToHabit = () => {
+    history.push(`/habit/${id}`);
+  };
+
+  return (
+    <>
       <BoxMobile onClick={goToHabit}>
         <CardH
           onClick={(evt) => {
@@ -64,7 +63,7 @@ const CardHabitCard = (data) => {
             setAnchor(evt.currentTarget);
           }}
         >
-          <div>{category}</div>
+          {/* <div>{category}</div> */}
           <TittlePop>{title}</TittlePop>
         </CardH>
         <PopOVER
@@ -87,7 +86,7 @@ const CardHabitCard = (data) => {
             <BoxButton>
               <div>
                 <Edit />
-                <Check/>
+                <Check />
                 <Close onClick={openModal} />
               </div>
             </BoxButton>
@@ -100,13 +99,13 @@ const CardHabitCard = (data) => {
           <div>{category}</div>
           <BoxButton>
             <Wedit />
-            <Check/>
+            <Check />
             <Wclose onClick={openModal} />
           </BoxButton>
         </DivCattegory>
         <FrequencyAndDifficult>
-            <p>Dificuldade: {difficulty}</p>
-            <p>Frequência: {frequency}</p>
+          <p>Dificuldade: {difficulty}</p>
+          <p>Frequência: {frequency}</p>
         </FrequencyAndDifficult>
         <BoxName>
           <Name>{title}</Name>
@@ -115,8 +114,12 @@ const CardHabitCard = (data) => {
           </BoxImage>
         </BoxName>
       </BoxDesktop>
-      <DeleteHabit deleteModal={deleteModal} setDeleteModal={setDeleteModal} data={data} />
-    </>   
-    )
-}
-export default CardHabitCard
+      <DeleteHabit
+        deleteModal={deleteModal}
+        setDeleteModal={setDeleteModal}
+        data={data}
+      />
+    </>
+  );
+};
+export default CardHabitCard;

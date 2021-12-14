@@ -1,6 +1,6 @@
 import { PlusButton, HeaderBox } from "./style";
 
-const SubHeader = ({ type, tittle }) => {
+const SubHeader = ({ type, tittle = "" }) => {
   return (
     <>
       {type === "Habit" ? (

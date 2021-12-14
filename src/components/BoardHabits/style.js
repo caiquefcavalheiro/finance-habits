@@ -5,9 +5,10 @@ export const DashboardBox = styled.div`
   display: flex;
   flex-direction: row;
   margin: 0 auto;
-`
+`;
 
 export const Container = styled.div`
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,6 +16,13 @@ export const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+`;
+
+export const ContainerColumn = styled.div`
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 export const Header = styled.div`
   background: var(--color-primary-blue);
