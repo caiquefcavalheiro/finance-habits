@@ -1,23 +1,20 @@
-import { SigninProvider } from "./SignIn";
-import { GroupProvider } from "./Groups";
-import { SignUpProvider } from "./SignUp";
-import { CreateHabitProvider } from "./CreateHabit";
-import { HabitIdProvider } from "./HabitId";
 import { ActiviesProvider } from "./Activities";
 import { GoalsProvider } from "./Goals";
+import { GroupProvider } from "./Groups";
+import { HabitProvider } from "./Habit";
+import { SigninProvider } from "./SignIn";
+import { SignUpProvider } from "./SignUp";
 
 const Providers = ({ children }) => {
   return (
     <SigninProvider>
       <SignUpProvider>
         <GroupProvider>
-          <CreateHabitProvider>
+          <HabitProvider>
             <ActiviesProvider>
-              <GoalsProvider>
-                <HabitIdProvider>{children}</HabitIdProvider>
-              </GoalsProvider>
+              <GoalsProvider>{children}</GoalsProvider>
             </ActiviesProvider>
-          </CreateHabitProvider>
+          </HabitProvider>
         </GroupProvider>
       </SignUpProvider>
     </SigninProvider>

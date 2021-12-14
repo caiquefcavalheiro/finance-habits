@@ -6,7 +6,7 @@ const GoalsContext = createContext();
 export const GoalsProvider = ({ children }) => {
   const token = localStorage.getItem("@financeHabits:token");
 
-  function editGoals(data) {
+  function toUpdateGoals(data) {
     const { id, difficultyGoal, titleGoal } = data;
 
     api.patch(
@@ -20,8 +20,10 @@ export const GoalsProvider = ({ children }) => {
     );
   }
 
+  function toDeleteGoals() {}
+
   return (
-    <GoalsContext.Provider value={{ editGoals }}>
+    <GoalsContext.Provider value={{ toUpdateGoals, toDeleteGoals }}>
       {children}
     </GoalsContext.Provider>
   );

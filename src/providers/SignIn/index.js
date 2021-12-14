@@ -1,39 +1,12 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 import api from "../../services/api";
 import jwtDecode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 
-export const SigninContext = createContext([]);
+export const SigninContext = createContext();
 
 export const SigninProvider = ({ children }) => {
   const history = useHistory();
-
-  const [useToken] = useState(
-    localStorage.getItem("@financeHabits:token") || []
-  );
-
-  const [userId] = useState(
-    localStorage.getItem("@financeHabits:user_id") || ""
-  );
-
-  const [userHabits] = useState(
-    JSON.parse(localStorage.getItem("@financeHabits:userHabits")) || []
-  );
-
-  function getHabits() {
-    api
-      .get("habits/personal/", {
-        headers: {
-          Authorization: `Bearer ${useToken}`,
-        },
-      })
-      .then((response) =>
-        localStorage.setItem(
-          "@financeHabits:userHabits",
-          JSON.stringify(response.data)
-        )
-      );
-  }
 
   const toLogin = (data) => {
     api
@@ -89,9 +62,7 @@ export const SigninProvider = ({ children }) => {
   };
 
   return (
-    <SigninContext.Provider
-      value={{ toLogin, useToken, userId, getHabits, userHabits }}
-    >
+    <SigninContext.Provider value={{ toLogin }}>
       {children}
     </SigninContext.Provider>
   );

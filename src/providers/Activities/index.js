@@ -6,7 +6,7 @@ const ActivitiesContext = createContext();
 export const ActiviesProvider = ({ children }) => {
   const token = localStorage.getItem("@financeHabits:token");
 
-  function editActivies(data) {
+  function toUpdateActivies(data) {
     const { nameActivity, id } = data;
 
     api.patch(
@@ -21,7 +21,7 @@ export const ActiviesProvider = ({ children }) => {
   }
 
   return (
-    <ActivitiesContext.Provider value={{ editActivies }}>
+    <ActivitiesContext.Provider value={{ toUpdateActivies }}>
       {children}
     </ActivitiesContext.Provider>
   );

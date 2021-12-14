@@ -4,17 +4,24 @@ import { useActivies } from "../../providers/Activities";
 import { TextField } from "@mui/material";
 import { FiEdit } from "react-icons/fi";
 import { useState } from "react";
-import ReactModal from "react-modal";
 import Button from "../Button";
 import RadioInput from "../RadioInput";
 import { useForm } from "react-hook-form";
-import "./style";
+import { useHabits } from "../../providers/Habit";
+import {
+  FormActivities,
+  FormGoals,
+  FormGroup,
+  FormHabit,
+  IconX,
+  ReactModalStyled,
+} from "./style";
 
 function Edit({ type, data }) {
-  const { editGroup } = useGroups();
-  const { editGoals } = useGoals();
-  const { editActivities } = useActivies();
-  // const { editHabit } = useHabits();
+  const { updateGroup } = useGroups();
+  const { toUpdateGoals } = useGoals();
+  const { toUpdateActivies } = useActivies();
+  const { toUpdateHabit } = useHabits();
 
   const { id } = data;
 
@@ -23,41 +30,51 @@ function Edit({ type, data }) {
   const { register, handleSubmit } = useForm();
 
   function formHabit(data) {
-    //não poder passar valores vazios
     const { titleHabit } = data;
     if (titleHabit !== "") {
-      editHabit(data);
+      toUpdateHabit(data);
+    } else {
+      //toast não pode ter o titulo o vazio
     }
-    console.log(data);
   }
 
   function formGroup(data) {
     const { nameGroup, descriptionGroup } = data;
-    //não poder passar valores vazios
     if (nameGroup !== "" && descriptionGroup !== "") {
-      editGroup(data);
+      updateGroup(data);
     }
   }
 
   function formGoal(data) {
-    //não poder passar valores vazios
-    console.log(data);
+    const { titleGoal } = data;
+    if (titleGoal !== "") {
+      toUpdateGoals(data);
+    }
   }
 
   function formActivity(data) {
-    //não poder passar valores vazios
-    console.log(data);
+    const { nameActivity } = data;
+    if (nameActivity !== "") {
+      toUpdateActivies(data);
+    }
   }
+
+  const [habitTitle, setHabitTitle] = useState(data.title);
+  const [groupName, setGroupName] = useState(data.name);
+  const [groupDescription, setGroupDescription] = useState(data.description);
+  const [goalTitle, setGoalTitle] = useState(data.title);
+  const [activitiesName, setActivitiesName] = useState(data.name);
 
   return (
     <>
       <FiEdit onClick={() => setopenModal(true)} />
-      <ReactModal
+      <ReactModalStyled
         isOpen={openModal}
         onRequestClose={() => setopenModal(false)}
         ariaHideApp={false}
       >
-        <form type={type} onSubmit={handleSubmit(formHabit)}>
+        <FormHabit type={type} onSubmit={handleSubmit(formHabit)}>
+          <IconX onClick={() => setopenModal(false)} />
           <input
             style={{ display: "none" }}
             value={id}
@@ -67,10 +84,9 @@ function Edit({ type, data }) {
             label="title"
             variant="outlined"
             margin="normal"
-            fullWidth
             {...register("titleHabit")}
-            //value={data.title}
-            value="data"
+            onChange={(event) => setHabitTitle(event.target.value)}
+            value={habitTitle}
           />
           <h3>Dificuldade</h3>
           <div>
@@ -130,37 +146,39 @@ function Edit({ type, data }) {
             />
           </div>
           <Button type="submit">Editar</Button>
-        </form>
-        <form onSubmit={(event) => formGroup(event)}>
+        </FormHabit>
+        <FormGroup onSubmit={(event) => formGroup(event)}>
+          <IconX onClick={() => setopenModal(false)} />
           <TextField
             name="nameGroup"
-            value="Nome"
+            value={groupName}
+            onChange={(event) => setGroupName(event.target.value)}
             label="Nome"
             variant="outlined"
             margin="normal"
-            fullWidth
             {...register("nameGroup")}
           />
           <TextField
             name="descriptionGroup"
-            value="Descrição"
+            value={groupDescription}
+            onChange={(event) => setGroupDescription(event.target.value)}
             label="Descrição"
             variant="outlined"
             margin="normal"
-            fullWidth
             minRows={4}
             {...register("descriptionGroup")}
           />
           <Button type="submit">Editar</Button>
-        </form>
-        <form onSubmit={(event) => formGoal(event)}>
+        </FormGroup>
+        <FormGoals type={type} onSubmit={(event) => formGoal(event)}>
+          <IconX onClick={() => setopenModal(false)} />
           <TextField
             name="titleGoal"
-            value="Nome"
+            onChange={(event) => setGoalTitle(event.target.value)}
+            value={goalTitle}
             label="Nome"
             variant="outlined"
             margin="normal"
-            fullWidth
             {...register("titleGoal")}
           />
           <h3>Dificuldade</h3>
@@ -192,20 +210,21 @@ function Edit({ type, data }) {
             />
           </div>
           <Button type="submit">Editar</Button>
-        </form>
-        <form onSubmit={(event) => formActivity(event)}>
+        </FormGoals>
+        <FormActivities type={type} onSubmit={(event) => formActivity(event)}>
+          <IconX onClick={() => setopenModal(false)} />
           <TextField
             name="nameActivity"
-            value="Nome"
+            onChange={(event) => setActivitiesName(event.target.value)}
+            value={activitiesName}
             label="Nome"
             variant="outlined"
             margin="normal"
-            fullWidth
             {...register("nameActivity")}
           />
           <Button type="submit">Editar</Button>
-        </form>
-      </ReactModal>
+        </FormActivities>
+      </ReactModalStyled>
     </>
   );
 }
