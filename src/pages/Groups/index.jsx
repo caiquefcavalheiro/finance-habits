@@ -13,6 +13,7 @@ import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
 import { CardExtra, CardInfo, CollapsibleStyled, Icon, MiniCard, ScrollBox, SupportHeader } from "./style";
 import { BoxImage, Image } from "../../components/CardGroup/styles";
+import CheckButton from '../../components/CheckButton';
 
 function Groups() {
   const params = useParams();
@@ -99,7 +100,10 @@ function Groups() {
                   {currentGroup.goals.map((elem) => {
                     return (
                       <CollapsibleStyled key={elem.id} trigger={<p>Título: {elem.title} <br/>Dificuldade: {elem.difficulty}</p>}>
-                        <h2><Edit type='goals' data={elem}/></h2>
+                        <h2>
+                          <Edit type='goals' data={elem}/>
+                          <CheckButton type='goals' data={elem} />
+                        </h2>
                         <Circle
                           animate={true}
                           animationDuration="1s"
