@@ -9,19 +9,86 @@ export const ActiviesProvider = ({ children }) => {
   function toUpdateActivies(data) {
     const { nameActivity, id } = data;
 
-    api.patch(
-      `/activities/${id}/`,
-      { title: nameActivity },
-      {
+    api
+      .patch(
+        `/activities/${id}/`,
+        { title: nameActivity },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then
+      //toast de sucesso ao atualizar
+      ();
+  }
+
+  function toCreateActivities(data) {
+    api
+      .post(
+        "/activities/",
+        { data },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(
+        (response) => {}
+        //toast de sucesso ao criar/ atualizar grupos
+      )
+      .catch(
+        (error) => {}
+        //erro ao criar
+      );
+  }
+
+  function toGetActivities(data) {
+    const { id } = data; // id do grupo não da atividade
+    api
+      .get(`/activities/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
-    );
+      })
+      .then(
+        (response) => {}
+        // atualizar algum local que tenha as atividades;
+      )
+      .catch(
+        (error) => {}
+        //atualização deu erro
+      );
+  }
+
+  function toDeleteActivities(data) {
+    const { id } = data;
+    api
+      .delete(`/activities/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then
+      // toast confirmando delete;
+      ()
+      .catch(
+        (error) => {}
+        //toast reportando que o delete deu errado
+      );
   }
 
   return (
-    <ActivitiesContext.Provider value={{ toUpdateActivies }}>
+    <ActivitiesContext.Provider
+      value={{
+        toUpdateActivies,
+        toCreateActivities,
+        toGetActivities,
+        toDeleteActivities,
+      }}
+    >
       {children}
     </ActivitiesContext.Provider>
   );

@@ -15,7 +15,7 @@ const BoardHabits = ({ habitModal, setHabitModal, deleteModal, setDeleteModal })
   )
 
   return (
-    <DashboardBox>
+    <>
     <DisplayContainer type="row">
       <SubHeader type="Habit">
         Meus Hábitos <PlusButton />
@@ -36,10 +36,12 @@ const BoardHabits = ({ habitModal, setHabitModal, deleteModal, setDeleteModal })
             </>
         ))}
       </Container>
-
+    </DisplayContainer>
       {/* início */}
-      <DisplayContainer type="column" >
-      <SubHeader type="Group">Meus grupos</SubHeader>
+    <DisplayContainer type='column'>
+    <SubHeader type="Group">
+         <PlusButton />
+      </SubHeader>
       {userGroups.map((habit, index) => (
         <CardGroup
           key={index}
@@ -49,10 +51,10 @@ const BoardHabits = ({ habitModal, setHabitModal, deleteModal, setDeleteModal })
           id={habit.id}
         />
       ))}
-      </DisplayContainer>
-      {/* final */}
     </DisplayContainer>
-    </DashboardBox>
+      
+      {/* final */}
+    </>
   );
 };
 export default BoardHabits;
