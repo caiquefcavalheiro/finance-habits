@@ -59,6 +59,11 @@ function Edit({ type, data }) {
     }
   }
 
+  function clickIcon(event) {
+    setopenModal(true);
+    event.stopPropagation();
+  }
+
   const [habitTitle, setHabitTitle] = useState(
     data.title === undefined ? "" : data.title
   );
@@ -77,7 +82,7 @@ function Edit({ type, data }) {
 
   return (
     <>
-      <FiEdit onClick={() => setopenModal(true)} />
+      <FiEdit onClick={(event) => clickIcon(event)} />
       <ReactModalStyled
         isOpen={openModal}
         onRequestClose={() => setopenModal(false)}
@@ -96,7 +101,7 @@ function Edit({ type, data }) {
             margin="normal"
             {...register("titleHabit")}
             onChange={(event) => setHabitTitle(event.target.value)}
-            value={habitTitle}
+            defaultValue={habitTitle}
           />
           <h3>Dificuldade</h3>
           <div>
@@ -157,12 +162,12 @@ function Edit({ type, data }) {
           </div>
           <Button type="submit">Editar</Button>
         </FormHabit>
-        <FormGroup type={type} onSubmit={(event) => formGroup(event)}>
+        <FormGroup type={type} onSubmit={handleSubmit(formGroup)}>
           <IconX onClick={() => setopenModal(false)} />
           <TextField
             name="nameGroup"
-            value={groupName}
             onChange={(event) => setGroupName(event.target.value)}
+            defaultValue={groupName}
             label="Nome"
             variant="outlined"
             margin="normal"
@@ -170,8 +175,8 @@ function Edit({ type, data }) {
           />
           <TextField
             name="descriptionGroup"
-            value={groupDescription}
             onChange={(event) => setGroupDescription(event.target.value)}
+            defaultValue={groupDescription}
             label="Descrição"
             variant="outlined"
             margin="normal"
@@ -180,12 +185,12 @@ function Edit({ type, data }) {
           />
           <Button type="submit">Editar</Button>
         </FormGroup>
-        <FormGoals type={type} onSubmit={(event) => formGoal(event)}>
+        <FormGoals type={type} onSubmit={() => handleSubmit(formGoal)}>
           <IconX onClick={() => setopenModal(false)} />
           <TextField
             name="titleGoal"
             onChange={(event) => setGoalTitle(event.target.value)}
-            value={goalTitle}
+            defaultValue={goalTitle}
             label="Nome"
             variant="outlined"
             margin="normal"
@@ -224,9 +229,9 @@ function Edit({ type, data }) {
         <FormActivities type={type} onSubmit={(event) => formActivity(event)}>
           <IconX onClick={() => setopenModal(false)} />
           <TextField
+            defaultValue={activitiesName}
             name="nameActivity"
             onChange={(event) => setActivitiesName(event.target.value)}
-            value={activitiesName}
             label="Nome"
             variant="outlined"
             margin="normal"
