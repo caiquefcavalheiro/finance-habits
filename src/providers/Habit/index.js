@@ -45,10 +45,10 @@ export const HabitProvider = ({ children }) => {
   };
 
   const toDeleteHabit = (data) => {
-    const habit_id = data.id;
-
+    
+    const { id } = data
     api
-      .delete(`/habits/${habit_id}/`, data, {
+      .delete(`/habits/${id}/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
