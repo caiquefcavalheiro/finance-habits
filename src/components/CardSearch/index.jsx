@@ -51,8 +51,8 @@ const CardSearch = ({ item }) => {
             setAnchor(evt.currentTarget);
           }}
         >
-          <div>category</div>
-          <TittlePop>{name}</TittlePop>
+          <div className="category">Categoria: {category}</div>
+          <TittlePop><h3>{name}</h3></TittlePop>
         </CardH>
         <PopOVER
           id={"basic-popover"}

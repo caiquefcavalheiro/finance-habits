@@ -3,6 +3,12 @@ import { Popover } from "@mui/material";
 import { Box } from "@mui/system";
 
 export const BoxMobile = styled.div`
+  margin: 7px;
+
+  .category{
+    font-size: 11px;
+  }
+
   @media screen and (min-width: 600px) {
     display: none;
   }
@@ -24,6 +30,8 @@ export const BoxDesktop = styled.div`
   color: #6c6c6c;
   font-family: 'Halter';
   text-transform: uppercase;
+
+  margin: 10px;
 
   @media screen and (min-width: 600px) {
     display: block;
@@ -68,6 +76,10 @@ export const ButtonPop = styled.button`
 
 export const TittlePop = styled.div`
   text-align: center;
+  h3{
+    font-size: 14px;
+    
+  }
 `;
 
 export const DescPop = styled.div`
