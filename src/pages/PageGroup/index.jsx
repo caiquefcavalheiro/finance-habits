@@ -2,6 +2,8 @@ import { useEffect } from "react"
 
 import CardSearch from "../../components/CardSearch"
 import {useGroups} from '../../providers/Groups'
+import { DisplayContainer } from "../../components/DisplayContainer"
+import { SubHeader } from '../../components/SubHeader'
 
 const PageGroup = () => {
 
@@ -12,20 +14,20 @@ const PageGroup = () => {
     },[])
 
     return(
-        <>
-        
-        <main>
-            {
-                groupList.map( item => (
-                    <CardSearch
-                        item={item}
-                        key={item.id}
-                    />
-                ))
-            }
+        <DisplayContainer type={'row'}>
+            
+            <main>
+                {
+                    groupList.map( item => (
+                        <CardSearch
+                            item={item}
+                            key={item.id}
+                        />
+                    ))
+                }
 
-        </main>
-        </>
+            </main>
+        </DisplayContainer>
     )
 }
 
