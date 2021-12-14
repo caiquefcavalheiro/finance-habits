@@ -23,7 +23,7 @@ export const Container = styled.div`
 
 
 export const PreviousArrowButton = styled(BsTriangleFill)`
-    color: var(--color-dark-blue);
+    color: ${props => props.disabled ? 'var(--color-light-blue)' : 'var(--color-dark-blue)'};
     transform: rotate(-90deg);
     font-size: 25px;
     position: fixed;

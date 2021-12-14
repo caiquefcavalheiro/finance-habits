@@ -10,11 +10,11 @@ const Providers = ({ children }) => {
     <SigninProvider>
       <SignUpProvider>
         <GroupProvider>
-          <HabitProvider>
-            <ActiviesProvider>
-              <GoalsProvider>{children}</GoalsProvider>
-            </ActiviesProvider>
-          </HabitProvider>
+          <ActiviesProvider>
+            <GoalsProvider>
+              <HabitProvider>{children}</HabitProvider>
+            </GoalsProvider>
+          </ActiviesProvider>
         </GroupProvider>
       </SignUpProvider>
     </SigninProvider>

@@ -29,7 +29,7 @@ export const CardsBox = styled.div`
     }
 `
 
-const Card = styled.div`
+export const Card = styled.div`
     @media screen and (min-width: 600px){
         width: 395px;
         height: 270px;

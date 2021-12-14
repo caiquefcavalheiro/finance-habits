@@ -59,11 +59,21 @@ function Edit({ type, data }) {
     }
   }
 
-  const [habitTitle, setHabitTitle] = useState(data.title);
-  const [groupName, setGroupName] = useState(data.name);
-  const [groupDescription, setGroupDescription] = useState(data.description);
-  const [goalTitle, setGoalTitle] = useState(data.title);
-  const [activitiesName, setActivitiesName] = useState(data.name);
+  const [habitTitle, setHabitTitle] = useState(
+    data.title === undefined ? "" : data.title
+  );
+  const [groupName, setGroupName] = useState(
+    data.name === undefined ? "" : data.name
+  );
+  const [groupDescription, setGroupDescription] = useState(
+    data.description === undefined ? "" : data.description
+  );
+  const [goalTitle, setGoalTitle] = useState(
+    data.title === undefined ? "" : data.title
+  );
+  const [activitiesName, setActivitiesName] = useState(
+    data.name === undefined ? "" : data.name
+  );
 
   return (
     <>
@@ -147,7 +157,7 @@ function Edit({ type, data }) {
           </div>
           <Button type="submit">Editar</Button>
         </FormHabit>
-        <FormGroup onSubmit={(event) => formGroup(event)}>
+        <FormGroup type={type} onSubmit={(event) => formGroup(event)}>
           <IconX onClick={() => setopenModal(false)} />
           <TextField
             name="nameGroup"

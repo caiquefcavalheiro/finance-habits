@@ -44,10 +44,10 @@ function Routes() {
           setAuthenticated={setAuthenticated}
         />
       </Route>
-      <Route exact path="/habit">
+      <Route exact path="/habit/:id">
         <Habit authenticated={authenticated} />
       </Route>
-      <Route exact path="/groups">
+      <Route exact path="/groups/:id">
         <Groups authenticated={authenticated} />
       </Route>
     </Switch>
