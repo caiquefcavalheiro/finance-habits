@@ -5,6 +5,7 @@ import CardGroup from "../CardGroup";
 import { useHabits } from "../../providers/Habit";
 import SubHeader from "../SubHeader";
 import { DisplayContainer } from "../DisplayContainer";
+import { useGroups } from "../../providers/Groups";
 
 
 const BoardHabits = ({
@@ -12,9 +13,7 @@ const BoardHabits = ({
   setHabitModal,
 }) => {
   const { userHabits } = useHabits();
-  const userGroups = JSON.parse(
-    localStorage.getItem("@financeHabits:userGroups")
-  );
+  const {userGroups} = useGroups()
 
   return (
     <BoxDashboard>
@@ -41,13 +40,10 @@ const BoardHabits = ({
         <SubHeader type="Group">
           <PlusButton />
         </SubHeader>
-        {userGroups.map((habit, index) => (
+        {userGroups.map((group, index) => (
           <CardGroup
             key={index}
-            name={habit.name}
-            category={habit.category}
-            description={habit.description}
-            id={habit.id}
+            group={group}
           />
         ))}
       </DisplayContainer>

@@ -6,8 +6,8 @@ export const HabitContext = createContext();
 export const HabitProvider = ({ children }) => {
   const token = localStorage.getItem("@financeHabits:token");
 
-  const [userHabits] = useState(
-    JSON.parse(localStorage.getItem("@financeHabits:userHabits"))
+  const [userHabits, setUserHabits] = useState(
+    JSON.parse(localStorage.getItem("@financeHabits:userHabits")) || []
   );
 
   const toGetHabits = () => {
@@ -17,13 +17,13 @@ export const HabitProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) =>
-        localStorage.setItem(
-          "@financeHabits:userHabits",
-          JSON.stringify(response.data)
-        )
-      );
-  };
+      .then((response) => {
+        localStorage.setItem("@financeHabits:userHabits", JSON.stringify(response.data))
+        setUserHabits(response.data)
+      })
+
+  }
+  
   const toCreateHabit = (data) => {
     api
       .post(
@@ -32,10 +32,7 @@ export const HabitProvider = ({ children }) => {
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
-        localStorage.setItem(
-          "@financeHabits:userHabits",
-          JSON.stringify([...userHabits, response])
-        );
+        toGetHabits()
         //criar toast de sucesso
       })
       .catch((err) => {
@@ -52,11 +49,7 @@ export const HabitProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        const newHabit = userHabits.filter((item) => item.id !== data.id);
-        localStorage.setItem(
-          "@financeHabits:userHabits",
-          JSON.stringify(newHabit)
-        );
+        toGetHabits()
         //criar toast de sucesso
       })
       .catch((err) => {
@@ -80,11 +73,7 @@ export const HabitProvider = ({ children }) => {
         }
       )
       .then((res) => {
-        const newHabit = userHabits.filter((item) => item.id !== data.id);
-        localStorage.setItem(
-          "@financeHabits:userHabits",
-          JSON.stringify([...newHabit, data])
-        );
+        toGetHabits()
         //criar toast de sucesso
       })
       .catch((err) => {
