@@ -20,13 +20,13 @@ export const ActiviesProvider = ({ children }) => {
           },
         }
       )
-      .then(res => {
-        toast.success('Suas alterações foram salvas com sucesso!')
-      }).catch( err => {
-        toast.error('Ops. Algo deu errado. Tente novamente.')
+      .then((res) => {
+        toast.success("Suas alterações foram salvas com sucesso!");
       })
-      //toast de sucesso ao atualizar
-      ();
+      .catch((err) => {
+        toast.error("Ops. Algo deu errado. Tente novamente.");
+      })();
+    //toast de sucesso ao atualizar
   }
 
   function toCreateActivities(data) {
@@ -40,15 +40,12 @@ export const ActiviesProvider = ({ children }) => {
           },
         }
       )
-      .then(
-        (response) => {
-          toast.success('Atividade criada com sucesso!')
-        }
-
-      )
+      .then((response) => {
+        toast.success("Atividade criada com sucesso!");
+      })
       .catch(
         (error) => {
-          toast.error('Ops. Algo deu errado. Tente novamente.')
+          toast.error("Ops. Algo deu errado. Tente novamente.");
         }
         //erro ao criar
       );
@@ -63,9 +60,7 @@ export const ActiviesProvider = ({ children }) => {
         },
       })
       .then(
-        (response) => {
-
-        }
+        (response) => {}
         // atualizar algum local que tenha as atividades;
       )
       .catch(
@@ -82,14 +77,14 @@ export const ActiviesProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then(res => {
-        toast.success('Atividade excluída com sucesso!')
+      .then((res) => {
+        toast.success("Atividade excluída com sucesso!");
       })
       // toast confirmando delete;
       ()
       .catch(
         (error) => {
-          toast.error('Ops. Algo deu errado. Tente novamente.')
+          toast.error("Ops. Algo deu errado. Tente novamente.");
         }
         //toast reportando que o delete deu errado
       );
