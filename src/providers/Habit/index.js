@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import api from "../../services/api";
+import toast from "react-hot-toast";
 
 export const HabitContext = createContext();
 
@@ -33,11 +34,11 @@ export const HabitProvider = ({ children }) => {
       )
       .then((response) => {
         toGetHabits()
-        //criar toast de sucesso
+        toast.success('Seu hábito foi criado!')
       })
       .catch((err) => {
         console.log(err);
-        //criar toast de falha
+        toast.error('Ops. Algo deu errado. Tente novamente.')
       });
   };
 
@@ -50,11 +51,11 @@ export const HabitProvider = ({ children }) => {
       })
       .then((res) => {
         toGetHabits()
-        //criar toast de sucesso
+        toast.success('Hábito apagado!')
       })
       .catch((err) => {
         console.log(err);
-        //criar toast de falha
+        toast.error('Ops. Algo deu errado. Tente novamente.')
       });
   };
 
@@ -74,11 +75,11 @@ export const HabitProvider = ({ children }) => {
       )
       .then((res) => {
         toGetHabits()
-        //criar toast de sucesso
+        toast.success('Suas alterações foram salvas!')
       })
       .catch((err) => {
         console.log(err);
-        //criar toast de falha
+        toast.error('Ops. Algo deu errado. Tente novamente.')
       });
   };
 
