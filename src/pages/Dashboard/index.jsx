@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import BoardHabits from "../../components/Board";
 import CreateGroup from "../../components/CreateGroup";

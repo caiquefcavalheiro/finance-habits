@@ -89,6 +89,13 @@ export const ButtonPop = styled.button`
   color: #ffffff;
   background-color: #0090ad;
   font-size: 10px;
+  box-shadow: 1px 1px 1px 1px #b2bbbf;
+  :hover {
+    box-shadow: 0px 0px;
+    position: relative;
+    left: 3px;
+    top: 3px;
+  }
 `;
 
 export const TittlePop = styled.div`
@@ -142,6 +149,13 @@ export const ButtonDesc = styled.button`
   color: #0090ad;
   background-color: #e2f2f9;
   font-size: 10px;
+  box-shadow: 1px 1px 1px 1px #b2bbbf;
+  :hover {
+    box-shadow: 0px 0px;
+    position: relative;
+    left: 3px;
+    top: 3px;
+  }
 `;
 
 export const DivCattegory = styled.div`

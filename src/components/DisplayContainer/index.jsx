@@ -1,4 +1,4 @@
-import { Column, Row, Full } from "./style";
+import { Column, Row, Full, Grid } from "./style";
 
 export const DisplayContainer = ({ children, type }) => {
   return (
@@ -7,6 +7,8 @@ export const DisplayContainer = ({ children, type }) => {
         <Column>{children}</Column>
       ) : type === "row" ? (
         <Row>{children}</Row>
+      ) : type === "grid" ? (
+        <Grid>{children}</Grid>
       ) : (
         <Full>{children}</Full>
       )}
