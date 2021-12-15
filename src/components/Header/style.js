@@ -49,7 +49,8 @@ export const Icon = styled.button`
 export const ContainerButtons = styled.div`
   display: none;
   @media screen and (min-width: 1000px) {
-    display: block;
+    display: flex;
+    align-items: center;
   }
 
   button {

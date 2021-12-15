@@ -13,6 +13,14 @@ export const MainContainer = styled.div`
     text-align: center;
   }
 
+  .ComponentHeader {
+    height: 10%;
+
+    div {
+      height: 100%;
+    }
+  }
+
   @media screen and (max-width: 800px) {
     .header {
       display: block;
