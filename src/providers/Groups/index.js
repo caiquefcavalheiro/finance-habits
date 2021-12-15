@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import toast from "react-hot-toast";
 
@@ -70,7 +70,7 @@ export const GroupProvider = ({ children }) => {
     .post(`/groups/${data.id}`, data,
       { headers: { Authorization: `Bearer ${token}`} }
     ).then( res => {
-      allGroupsUser()
+      //allGroupsUser()
       toast.success('Suas mudanças foram salvas')
     }).catch( err => {
       console.log(err)

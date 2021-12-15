@@ -6,12 +6,12 @@ import { useHabits } from "../../providers/Habit";
 import SubHeader from "../SubHeader";
 import { DisplayContainer } from "../DisplayContainer";
 import { useGroups } from "../../providers/Groups";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CreateGroup from "../CreateGroup";
 
 const Board = () => {
-  const { userHabits } = useHabits();
-  const { userGroups } = useGroups();
+  const { userHabits, toGetHabits } = useHabits();
+  const { userGroups, allGroupsUser } = useGroups();
 
   const [habitModal, setHabitModal] = useState(false)
   const [createGroupModal, setCreateGroupModal] = useState(false)
@@ -23,6 +23,11 @@ const Board = () => {
 const openGroupModal = () => {
     setCreateGroupModal(true)
 }
+
+useEffect(() => {
+  allGroupsUser()
+  toGetHabits()
+}, [])
 
   return (
     <BoxDashboard>

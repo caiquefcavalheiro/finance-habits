@@ -19,12 +19,17 @@ import { useHabits } from "../../providers/Habit";
 import CheckButton from "../../components/CheckButton";
 import RefreshButton from "../../components/RefreshButton";
 import { BoxDashboard } from "../../components/Board/style";
+import { useEffect } from "react";
+import Edit from "../../components/Edit";
 
 function Habit({ authenticated, setAuthenticated }) {
   const { toGetHabits } = useHabits();
   const params = useParams();
 
-  toGetHabits();
+  useEffect(() => {
+    toGetHabits()
+  },[])
+
   const userHabits =
     JSON.parse(localStorage.getItem("@financeHabits:userHabits")) || [];
 
@@ -63,7 +68,9 @@ function Habit({ authenticated, setAuthenticated }) {
               <SubHeader tittle={currentHabit.title} />
               <CardsBox>
                 <CardAchieved>
+                
                   <h2>
+                    <Edit type='habit' data={currentHabit} />
                     {currentHabit.achieved ? (
                       <RefreshButton type="habits" data={currentHabit} />
                     ) : (

@@ -1,11 +1,28 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import api from "../../services/api";
 import toast from "react-hot-toast";
 
 const ActivitiesContext = createContext();
 
 export const ActiviesProvider = ({ children }) => {
-  const token = localStorage.getItem("@financeHabits:token");
+  const token = localStorage.getItem("@financeHabits:token")
+
+  const [userGroups, setUserGroups] = useState(JSON.parse(localStorage.getItem('@financeHabits:userGroups')) || [])
+
+  const allGroupsUser = () => {
+    api
+    .get(`/groups/subscriptions/`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((res) => {
+      localStorage.setItem(
+        "@financeHabits:userGroups",
+        JSON.stringify(res.data)
+      )
+      setUserGroups(res.data)
+    })
+    .catch((err) => console.log(err))
+  }
 
   function toUpdateActivies(data) {
     const { nameActivity, id } = data;
@@ -21,12 +38,11 @@ export const ActiviesProvider = ({ children }) => {
         }
       )
       .then(res => {
+        allGroupsUser()
         toast.success('Suas alterações foram salvas com sucesso!')
       }).catch( err => {
         toast.error('Ops. Algo deu errado. Tente novamente.')
       })
-      //toast de sucesso ao atualizar
-      ();
   }
 
   function toCreateActivities(data) {
@@ -42,36 +58,25 @@ export const ActiviesProvider = ({ children }) => {
       )
       .then(
         (response) => {
+          allGroupsUser()
           toast.success('Atividade criada com sucesso!')
-        }
-
-      )
+        })
       .catch(
         (error) => {
           toast.error('Ops. Algo deu errado. Tente novamente.')
-        }
-        //erro ao criar
-      );
+        });
   }
 
   function toGetActivities(data) {
-    const { id } = data; // id do grupo não da atividade
+    const { id } = data
     api
       .get(`/activities/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then(
-        (response) => {
-
-        }
-        // atualizar algum local que tenha as atividades;
-      )
-      .catch(
-        (error) => {}
-        //atualização deu erro
-      );
+      .then().catch(
+        (error) => {});
   }
 
   function toDeleteActivities(data) {
@@ -83,16 +88,13 @@ export const ActiviesProvider = ({ children }) => {
         },
       })
       .then(res => {
+        allGroupsUser()
         toast.success('Atividade excluída com sucesso!')
       })
-      // toast confirmando delete;
-      ()
       .catch(
         (error) => {
           toast.error('Ops. Algo deu errado. Tente novamente.')
-        }
-        //toast reportando que o delete deu errado
-      );
+        });
   }
 
   return (
