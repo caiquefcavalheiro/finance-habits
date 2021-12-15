@@ -15,7 +15,7 @@ import poupanca from "../../assets/Poupanca.svg";
 import { CardsBox, CardExtra, CardInfo, Icon, MiniCard, ScrollBox, SupportHeader } from "./style";
 import { BoxImage, Image } from "../../components/CardGroup/styles";
 import CheckButton from '../../components/CheckButton';
-import { BoxDashboard } from '../../components/BoardHabits/style';
+import { BoxDashboard } from '../../components/Board/style';
 import { useGroups } from '../../providers/Groups';
 import RefreshButton from '../../components/RefreshButton';
 
