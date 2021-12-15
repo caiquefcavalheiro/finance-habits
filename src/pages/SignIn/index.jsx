@@ -29,12 +29,12 @@ const SignIn = ({ authenticated, setAuthenticated }) => {
 
   const onSignIn = (data) => {
     toLogin(data);
-    setAuthenticated(true);
+//    setAuthenticated(true);
   };
 
-  if (authenticated) {
-    return <Redirect to="/dashboard" />;
-  }
+  //if (authenticated) {
+  //  return <Redirect to="/dashboard" />;
+  //}
 
   return (
     <MainContainer>

@@ -10,6 +10,7 @@ import { useState } from "react";
 import CreateGroup from "../CreateGroup";
 
 const Board = () => {
+
   const { userHabits } = useHabits();
   const { userGroups } = useGroups();
 
