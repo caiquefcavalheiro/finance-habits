@@ -45,7 +45,7 @@ export const GroupProvider = ({ children }) => {
         "@financeHabits:userGroups",
         JSON.stringify(res.data)
       )
-      setUserGroups(JSON.parse(localStorage.getItem('@financeHabits:userGroups')))
+      setUserGroups(res.data)
     })
     .catch((err) => console.log(err))
   }
@@ -108,7 +108,7 @@ export const GroupProvider = ({ children }) => {
 
 
   return (
-    <GroupsContext.Provider value={{ groupList, userGroups, createGroups, updateGroup, subscribeGroup, unsubscribeGroup, allGroups }}>
+    <GroupsContext.Provider value={{ groupList, userGroups, createGroups, updateGroup, subscribeGroup, unsubscribeGroup, allGroups, allGroupsUser }}>
       {children}
     </GroupsContext.Provider>
   );

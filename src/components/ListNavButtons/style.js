@@ -28,7 +28,7 @@ export const PreviousArrowButton = styled(BsTriangleFill)`
     font-size: 25px;
     position: fixed;
     top: ${props => `${props.position.height/2}px`};
-    left: ${props => `${props.position.width/2 - 135}px`};
+    left: ${props => `${props.position.width/2 - 140}px`};
     
     @media screen and (min-width: 600px){
         display: none;
@@ -37,6 +37,6 @@ export const PreviousArrowButton = styled(BsTriangleFill)`
 
 export const NextArrowButton = styled(PreviousArrowButton)`
     transform: rotate(90deg);
-    left: ${props => `${props.position.width/2 + 110}px`};
+    left: ${props => `${props.position.width/2 + 115}px`};
 `
 
