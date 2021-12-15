@@ -13,7 +13,10 @@ const SubHeader = ({ type, tittle='', children }) => {
           <PlusButton />
         </HeaderBox>
       ) : (
-        <HeaderBox>{tittle}{children}</HeaderBox>
+        <HeaderBox>
+          {tittle}
+          {children}
+        </HeaderBox>
       )}
     </>
   );
