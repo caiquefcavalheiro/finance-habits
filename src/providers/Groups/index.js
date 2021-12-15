@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import api from "../../services/api";
+import toast from "react-hot-toast";
 
 export const GroupsContext = createContext();
 
@@ -45,7 +46,7 @@ export const GroupProvider = ({ children }) => {
         "@financeHabits:userGroups",
         JSON.stringify(res.data)
       )
-      setUserGroups(JSON.parse(localStorage.getItem('@financeHabits:userGroups')))
+      setUserGroups(res.data)
     })
     .catch((err) => console.log(err))
   }
@@ -56,10 +57,10 @@ export const GroupProvider = ({ children }) => {
       { headers: { Authorization: `Bearer ${token}`} }
     ).then( res => {
       allGroupsUser()
-      // toste de sucesso
+      toast.success('Grupo criado com sucesso!')
     }).catch(err => {
       console.log(err)
-      //toste de erro
+      toast.error('Ops. Algo deu errado. Tente novamente')
     })
   }
 
@@ -70,10 +71,10 @@ export const GroupProvider = ({ children }) => {
       { headers: { Authorization: `Bearer ${token}`} }
     ).then( res => {
       allGroupsUser()
-      //toste de sucesso
+      toast.success('Suas mudanças foram salvas')
     }).catch( err => {
       console.log(err)
-      //toste de falha
+      toast.error('Ops. Algo deu errado. Tente novamente')
     })
   }
 
@@ -85,10 +86,10 @@ export const GroupProvider = ({ children }) => {
       { headers: { Authorization: `Bearer ${token}`} }
     ).then(res => {
       allGroupsUser()
-      //toste de sucesso
+      toast.success('Parabéns. Você entrou no grupo')
     }).catch(err => {
       console.log(err)
-      // toste de falha
+      toast.error('Ops. Algo deu errado. Tente novamente')
     })
   }
 
@@ -99,16 +100,16 @@ export const GroupProvider = ({ children }) => {
       { headers: { Authorization: `Bearer ${token}`} }
     ).then( res => {
       allGroupsUser()
-      //criar toast de sucesso
+      toast.success('Você saiu do grupo')
     }).catch( err => {
       console.log(err)
-      //toste de falha
+      toast.error('Ops. Algo deu errado. Tente novamente')
     })
   }
 
 
   return (
-    <GroupsContext.Provider value={{ groupList, userGroups, createGroups, updateGroup, subscribeGroup, unsubscribeGroup, allGroups }}>
+    <GroupsContext.Provider value={{ groupList, userGroups, createGroups, updateGroup, subscribeGroup, unsubscribeGroup, allGroups, allGroupsUser }}>
       {children}
     </GroupsContext.Provider>
   );

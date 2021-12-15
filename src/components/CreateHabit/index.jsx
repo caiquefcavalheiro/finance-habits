@@ -20,6 +20,7 @@ const CreateHabit = ({ habitModal, setHabitModal }) => {
   });
 
   const {
+    reset,
     register,
     formState: { errors },
     handleSubmit,
@@ -38,7 +39,9 @@ const CreateHabit = ({ habitModal, setHabitModal }) => {
     };
     toCreateHabit(dados);
     closeModal();
+    reset()
   };
+  
 
   const closeModal = () => {
     setHabitModal(false);
@@ -53,7 +56,7 @@ const CreateHabit = ({ habitModal, setHabitModal }) => {
             error={!!errors.title?.message}
             helperText={errors.title?.message}
             label="Título"
-            variant="filled"
+            variant="outlined"
             margin="normal"
             fullWidth
           />
@@ -61,6 +64,7 @@ const CreateHabit = ({ habitModal, setHabitModal }) => {
             <p>Dificuldade</p>
             <Content>
               <RadioInput
+                defaultChecked
                 register={register}
                 name="difficulty"
                 label="Fácil"
@@ -89,6 +93,7 @@ const CreateHabit = ({ habitModal, setHabitModal }) => {
             <p>Categoria</p>
             <Content>
               <RadioInput
+                defaultChecked
                 register={register}
                 name="category"
                 value="Poupança"
@@ -117,6 +122,7 @@ const CreateHabit = ({ habitModal, setHabitModal }) => {
             <p>Frequência</p>
             <Content>
               <RadioInput
+                defaultChecked
                 register={register}
                 name="frequency"
                 value="Diária"

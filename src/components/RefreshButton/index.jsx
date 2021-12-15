@@ -1,4 +1,5 @@
 import { FiRefreshCw } from 'react-icons/fi';
+import { useGroups } from '../../providers/Groups';
 import { useHabits } from '../../providers/Habit';
 import api from '../../services/api';
 
@@ -7,9 +8,9 @@ const RefreshButton = ({type, data}) => {
     const {id} = data;
     const token = localStorage.getItem("@financeHabits:token");
     const {toGetHabits} = useHabits();
+    const {allGroupsUser} = useGroups();
 
     const handleRefresh = () => {
-        // console.log(data)
         api.patch(
             `/${type}/${id}/`,
             { how_much_achieved: 0, achieved: false },
@@ -18,9 +19,13 @@ const RefreshButton = ({type, data}) => {
                 Authorization: `Bearer ${token}`,
                 },
             }
-        ).then(res => console.log(res.data));
-        
-        toGetHabits();
+            ).then(_ => {
+                if(type === 'habits'){
+                    toGetHabits();
+                }else if(type === 'goals'){
+                    allGroupsUser();
+                }
+            })        
     }
 
     return (

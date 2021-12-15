@@ -6,16 +6,16 @@ import Edit from "../../components/Edit";
 import Header from "../../components/Header";
 import SubHeader from "../../components/SubHeader";
 import { DisplayContainer } from "../../components/DisplayContainer";
-import { CardsBox, SecondaryContainer } from "../Habit/style";
+import { SecondaryContainer } from "../Habit/style";
 import ListNavButtons from "../../components/ListNavButtons";
 import { useParams } from "react-router-dom";
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
 import {
+  CardsBox,
   CardExtra,
   CardInfo,
-  CollapsibleStyled,
   Icon,
   MiniCard,
   ScrollBox,
@@ -23,16 +23,14 @@ import {
 } from "./style";
 import { BoxImage, Image } from "../../components/CardGroup/styles";
 import CheckButton from "../../components/CheckButton";
-import { BoxDashboard } from "../../components/BoardHabits/style";
+import { BoxDashboard } from "../../components/Board/style";
+import { useGroups } from "../../providers/Groups";
+import RefreshButton from "../../components/RefreshButton";
 
 function Groups() {
   const params = useParams();
   const [pageWidth, setPageWidth] = useState(window.innerWidth);
-
-  // const token = localStorage.getItem("@financeHabits:token");
-  const userGroups = JSON.parse(
-    localStorage.getItem("@financeHabits:userGroups")
-  );
+  const { userGroups } = useGroups();
 
   const currentGroup = userGroups.find((elem) => elem.id === Number(params.id));
   const currentGroupIndex = userGroups.indexOf(currentGroup);
@@ -90,7 +88,7 @@ function Groups() {
                       currentGroup.activities.map((elem) => {
                         return (
                           <MiniCard key={elem.id}>
-                            <p>Título: {elem.title}</p>
+                            <p>{elem.title}</p>
                             <p>Criado: {elem.realization_time}</p>
                           </MiniCard>
                         );
@@ -113,14 +111,18 @@ function Groups() {
                           key={elem.id}
                           trigger={
                             <p>
-                              Título: {elem.title} <br />
+                              {elem.title} <br />
                               Dificuldade: {elem.difficulty}
                             </p>
                           }
                         >
                           <h2>
                             <Edit type="goals" data={elem} />
-                            <CheckButton type="goals" data={elem} />
+                            {elem.achieved ? (
+                              <RefreshButton type="goals" data={elem} />
+                            ) : (
+                              <CheckButton type="goals" data={elem} />
+                            )}
                           </h2>
                           <Circle
                             animate={true}

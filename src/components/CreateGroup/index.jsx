@@ -20,6 +20,7 @@ const CreateGroup = ({createGroupModal, setCreateGroupModal}) => {
     })
 
     const {
+        reset,
         register,
         formState: { errors },
         handleSubmit,
@@ -35,6 +36,7 @@ const CreateGroup = ({createGroupModal, setCreateGroupModal}) => {
         }
         createGroups(dados)
         closeModal()
+        reset()
     }
     
     const closeModal = () => {
@@ -47,19 +49,19 @@ const CreateGroup = ({createGroupModal, setCreateGroupModal}) => {
             <form onSubmit={handleSubmit(handleCreateGroup)} >
             <TextField
                 {...register("name")}
-                error={!!errors.title?.message}
-                helperText={errors.title?.message}
+                error={!!errors.name?.message}
+                helperText={errors.name?.message}
                 label="Nome"
-                variant="filled"
+                variant="outlined"
                 margin="normal"
                 fullWidth
             />
             <TextField
                 {...register("description")}
-                error={!!errors.title?.message}
-                helperText={errors.title?.message}
+                error={!!errors.description?.message}
+                helperText={errors.description?.message}
                 label="Descrição"
-                variant="filled"
+                variant="outlined"
                 margin="normal"
                 fullWidth
             />
@@ -67,6 +69,7 @@ const CreateGroup = ({createGroupModal, setCreateGroupModal}) => {
             <p>Categoria</p>
             <Content>
               <RadioInput
+                defaultChecked
                 register={register}
                 name="category"
                 value="Poupança"

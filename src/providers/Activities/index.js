@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import api from "../../services/api";
+import toast from "react-hot-toast";
 
 const ActivitiesContext = createContext();
 
@@ -19,7 +20,11 @@ export const ActiviesProvider = ({ children }) => {
           },
         }
       )
-      .then
+      .then(res => {
+        toast.success('Suas alterações foram salvas com sucesso!')
+      }).catch( err => {
+        toast.error('Ops. Algo deu errado. Tente novamente.')
+      })
       //toast de sucesso ao atualizar
       ();
   }
@@ -36,11 +41,15 @@ export const ActiviesProvider = ({ children }) => {
         }
       )
       .then(
-        (response) => {}
-        //toast de sucesso ao criar/ atualizar grupos
+        (response) => {
+          toast.success('Atividade criada com sucesso!')
+        }
+
       )
       .catch(
-        (error) => {}
+        (error) => {
+          toast.error('Ops. Algo deu errado. Tente novamente.')
+        }
         //erro ao criar
       );
   }
@@ -54,7 +63,9 @@ export const ActiviesProvider = ({ children }) => {
         },
       })
       .then(
-        (response) => {}
+        (response) => {
+
+        }
         // atualizar algum local que tenha as atividades;
       )
       .catch(
@@ -71,11 +82,15 @@ export const ActiviesProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then
+      .then(res => {
+        toast.success('Atividade excluída com sucesso!')
+      })
       // toast confirmando delete;
       ()
       .catch(
-        (error) => {}
+        (error) => {
+          toast.error('Ops. Algo deu errado. Tente novamente.')
+        }
         //toast reportando que o delete deu errado
       );
   }

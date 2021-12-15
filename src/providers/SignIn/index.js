@@ -2,6 +2,7 @@ import { createContext, useContext } from "react";
 import api from "../../services/api";
 import jwtDecode from "jwt-decode";
 import { useHistory } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export const SigninContext = createContext();
 
@@ -53,11 +54,11 @@ export const SigninProvider = ({ children }) => {
           })
           .catch((err) => console.log(err));
 
-        //incluir tost
+        toast.success('Bem-vindo ao FinanceHabits')
         history.push("/dashboard");
       })
       .catch((err) => {
-        // incluir tost
+        toast.error('Ops, algo deu errado. Tente novamente')
       });
   };
 
