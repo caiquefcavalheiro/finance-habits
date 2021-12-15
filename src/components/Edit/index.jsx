@@ -61,7 +61,7 @@ function Edit({ type, data }) {
 
   function clickIcon(event) {
     setopenModal(true);
-    // event.stopPropagation();
+    event.stopPropagation();
   }
 
   const [habitTitle, setHabitTitle] = useState(
@@ -82,7 +82,7 @@ function Edit({ type, data }) {
 
   return (
     <>
-      <FiEdit onClick={(event) => clickIcon(event)} />
+      <FiEdit onClick={clickIcon} />
       <ReactModalStyled
         isOpen={openModal}
         onRequestClose={() => setopenModal(false)}

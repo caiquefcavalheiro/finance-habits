@@ -25,9 +25,8 @@ function Habit({ authenticated, setAuthenticated }) {
   const params = useParams();
 
   toGetHabits();
-  const userHabits = JSON.parse(
-    localStorage.getItem("@financeHabits:userHabits")
-  );
+  const userHabits =
+    JSON.parse(localStorage.getItem("@financeHabits:userHabits")) || [];
 
   const currentHabit = userHabits.find((elem) => elem.id === Number(params.id));
   const currentHabitIndex = userHabits.indexOf(currentHabit);

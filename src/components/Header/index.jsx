@@ -31,10 +31,8 @@ function Header({ setAuthenticated }) {
   }
 
   function Logout() {
-    console.log(setAuthenticated);
     if (setAuthenticated !== undefined) {
       setAuthenticated(false);
-      console.log(2);
     }
     localStorage.clear();
     return <Redirect to="/" />;
