@@ -82,7 +82,7 @@ function Edit({ type, data }) {
 
   return (
     <>
-      <FiEdit onClick={(event) => clickIcon(event)} />
+      <FiEdit onClick={clickIcon} />
       <ReactModalStyled
         isOpen={openModal}
         onRequestClose={() => setopenModal(false)}

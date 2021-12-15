@@ -14,15 +14,19 @@ import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
 import { BoxImage, Image } from "../../components/CardGroup/styles";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import { useHabits } from "../../providers/Habit";
 import CheckButton from "../../components/CheckButton";
 import RefreshButton from "../../components/RefreshButton";
 import { BoxDashboard } from "../../components/Board/style";
 
-function Habit() {
-  const { userHabits } = useHabits();
+function Habit({ authenticated, setAuthenticated }) {
+  const { toGetHabits } = useHabits();
   const params = useParams();
+
+  toGetHabits();
+  const userHabits =
+    JSON.parse(localStorage.getItem("@financeHabits:userHabits")) || [];
 
   const currentHabit = userHabits.find((elem) => elem.id === Number(params.id));
   const currentHabitIndex = userHabits.indexOf(currentHabit);
@@ -39,11 +43,13 @@ function Habit() {
     }
   };
 
-  console.log(currentHabit);
+  if (!authenticated) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>
-      <Header />
+      <Header setAuthenticated={setAuthenticated} />
       <BoxDashboard>
         <DisplayContainer>
           <SecondaryContainer>

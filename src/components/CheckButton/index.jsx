@@ -46,13 +46,16 @@ const CheckButton = ({type, data}) => {
                 })
         }
     }
+    toGetHabits();
+  };
 
-    
-    return(
-        <FiCheck color='#0090Ad' onClick={handleCheck} style={{cursor: 'pointer'}}/>
-    )
-    
-}
+  return (
+    <FiCheck
+      color="#0090Ad"
+      onClick={handleCheck}
+      style={{ cursor: "pointer" }}
+    />
+  );
+};
 
-
-export default CheckButton
+export default CheckButton;

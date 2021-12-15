@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import Circle from "react-circle";
 import Collapsible from "react-collapsible";
-
 import Edit from "../../components/Edit";
 import Header from "../../components/Header";
 import SubHeader from "../../components/SubHeader";
 import { DisplayContainer } from "../../components/DisplayContainer";
 import { SecondaryContainer } from "../Habit/style";
 import ListNavButtons from "../../components/ListNavButtons";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
@@ -27,7 +26,7 @@ import { BoxDashboard } from "../../components/Board/style";
 import { useGroups } from "../../providers/Groups";
 import RefreshButton from "../../components/RefreshButton";
 
-function Groups() {
+function Groups({ authenticated, setAuthenticated }) {
   const params = useParams();
   const [pageWidth, setPageWidth] = useState(window.innerWidth);
   const { userGroups } = useGroups();
@@ -55,9 +54,12 @@ function Groups() {
     }
   };
 
+  if (!authenticated) {
+    return <Redirect to="/" />;
+  }
   return (
     <>
-      <Header />
+      <Header setAuthenticated={setAuthenticated} />
       <BoxDashboard>
         <DisplayContainer>
           <SecondaryContainer>
