@@ -64,7 +64,7 @@ export const HabitProvider = ({ children }) => {
     const { id, titleHabit, difficultyHabit, frequencyHabit } = data;
     api
       .patch(
-        `/habits/${id}`,
+        `/habits/${id}/`,
         {
           title: titleHabit,
           difficulty: difficultyHabit,
@@ -75,8 +75,8 @@ export const HabitProvider = ({ children }) => {
         }
       )
       .then((res) => {
-        toGetHabits();
-        toast.success("Suas alterações foram salvas!");
+        //toGetHabits()
+        toast.success('Suas alterações foram salvas!')
       })
       .catch((err) => {
         console.log(err);

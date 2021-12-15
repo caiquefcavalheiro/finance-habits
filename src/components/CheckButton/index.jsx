@@ -49,8 +49,9 @@ const CheckButton = ({ type, data }) => {
           }
         });
     }
-  };
-  toGetHabits();
+  }
+  
+  //toGetHabits();
   return (
     <FiCheck
       color="#0090Ad"

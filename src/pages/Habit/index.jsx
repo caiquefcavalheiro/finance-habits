@@ -19,10 +19,17 @@ import { useHabits } from "../../providers/Habit";
 import CheckButton from "../../components/CheckButton";
 import RefreshButton from "../../components/RefreshButton";
 import { BoxDashboard } from "../../components/Board/style";
+import { useEffect } from "react";
+import Edit from "../../components/Edit";
 
 function Habit() {
-  const { userHabits } = useHabits();
+  const { userHabits, toGetHabits } = useHabits();
   const params = useParams();
+
+  useEffect(() => {
+    toGetHabits()
+  },[])
+
 
   const currentHabit = userHabits.find((elem) => elem.id === Number(params.id));
   const currentHabitIndex = userHabits.indexOf(currentHabit);
@@ -55,7 +62,9 @@ function Habit() {
               <SubHeader tittle={currentHabit.title} />
               <CardsBox>
                 <CardAchieved>
+                
                   <h2>
+                    <Edit type='habit' data={currentHabit} />
                     {currentHabit.achieved ? (
                       <RefreshButton type="habits" data={currentHabit} />
                     ) : (
