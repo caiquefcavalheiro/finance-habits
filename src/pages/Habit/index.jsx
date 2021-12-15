@@ -14,19 +14,22 @@ import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
 import { BoxImage, Image } from "../../components/CardGroup/styles";
-import { Redirect, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useHabits } from "../../providers/Habit";
 import CheckButton from "../../components/CheckButton";
 import RefreshButton from "../../components/RefreshButton";
 import { BoxDashboard } from "../../components/Board/style";
+import { useEffect } from "react";
+import Edit from "../../components/Edit";
 
-function Habit({ authenticated, setAuthenticated }) {
-  const { toGetHabits } = useHabits();
+function Habit() {
+  const { userHabits, toGetHabits } = useHabits();
   const params = useParams();
 
-  toGetHabits();
-  const userHabits =
-    JSON.parse(localStorage.getItem("@financeHabits:userHabits")) || [];
+  useEffect(() => {
+    toGetHabits()
+  },[])
+
 
   const currentHabit = userHabits.find((elem) => elem.id === Number(params.id));
   const currentHabitIndex = userHabits.indexOf(currentHabit);
@@ -43,15 +46,11 @@ function Habit({ authenticated, setAuthenticated }) {
     }
   };
 
-  if (!authenticated) {
-    return <Redirect to="/" />;
-  }
-
   return (
     <>
-      <Header setAuthenticated={setAuthenticated} />
+      <Header />
       <BoxDashboard>
-        <DisplayContainer>
+        <DisplayContainer type="grid">
           <SecondaryContainer>
             <ListNavButtons
               list={userHabits}
@@ -63,7 +62,9 @@ function Habit({ authenticated, setAuthenticated }) {
               <SubHeader tittle={currentHabit.title} />
               <CardsBox>
                 <CardAchieved>
+                
                   <h2>
+                    <Edit type='habit' data={currentHabit} />
                     {currentHabit.achieved ? (
                       <RefreshButton type="habits" data={currentHabit} />
                     ) : (

@@ -18,10 +18,10 @@ import {
 } from "./style";
 
 function Edit({ type, data }) {
-  const { updateGroup } = useGroups();
+  const { updateGroup, allGroupsUser } = useGroups();
   const { toUpdateGoals } = useGoals();
   const { toUpdateActivies } = useActivies();
-  const { toUpdateHabit } = useHabits();
+  const { toUpdateHabit, toGetHabits } = useHabits();
 
   const { id } = data;
 
@@ -33,6 +33,7 @@ function Edit({ type, data }) {
     const { titleHabit } = data;
     if (titleHabit !== "") {
       toUpdateHabit(data);
+      toGetHabits()
     } else {
       //toast não pode ter o titulo o vazio
     }
@@ -48,7 +49,8 @@ function Edit({ type, data }) {
   function formGoal(data) {
     const { titleGoal } = data;
     if (titleGoal !== "") {
-      toUpdateGoals(data);
+      toUpdateGoals(data)
+      allGroupsUser()
     }
   }
 
@@ -185,7 +187,7 @@ function Edit({ type, data }) {
           />
           <Button type="submit">Editar</Button>
         </FormGroup>
-        <FormGoals type={type} onSubmit={() => handleSubmit(formGoal)}>
+        <FormGoals type={type} onSubmit={handleSubmit(formGoal)}>
           <IconX onClick={() => setopenModal(false)} />
           <TextField
             name="titleGoal"
@@ -226,7 +228,7 @@ function Edit({ type, data }) {
           </div>
           <Button type="submit">Editar</Button>
         </FormGoals>
-        <FormActivities type={type} onSubmit={(event) => formActivity(event)}>
+        <FormActivities type={type} onSubmit={handleSubmit(formActivity)}>
           <IconX onClick={() => setopenModal(false)} />
           <TextField
             defaultValue={activitiesName}

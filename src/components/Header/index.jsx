@@ -11,8 +11,14 @@ import {
 import Button from "../Button";
 import Signup from "../Signup";
 import { Redirect, useHistory } from "react-router-dom";
+import { useHabits } from "../../providers/Habit"
+import { useGroups } from "../../providers/Groups"
 
 function Header({ setAuthenticated }) {
+
+  const { setUserHabits } = useHabits()
+  const { setUserGroups } = useGroups()
+
   const history = useHistory();
   const historyPath = history.location.pathname;
   const [anchor, setAnchor] = useState("");
@@ -36,6 +42,8 @@ function Header({ setAuthenticated }) {
       setAuthenticated(false);
     }
     localStorage.clear();
+    setUserHabits([])
+    setUserGroups([])
     return <Redirect to="/" />;
   }
 

@@ -11,7 +11,7 @@ import Footer from "../../components/Footer";
 import { MainContainer, Container, Form } from "./style";
 import Header from "../../components/Header";
 
-const SignIn = ({ authenticated, setAuthenticated }) => {
+const SignIn = () => {
   const { toLogin } = useContext(SigninContext);
 
   const schema = yup.object().shape({
@@ -29,12 +29,7 @@ const SignIn = ({ authenticated, setAuthenticated }) => {
 
   const onSignIn = (data) => {
     toLogin(data);
-    //    setAuthenticated(true);
   };
-
-  //if (authenticated) {
-  //  return <Redirect to="/dashboard" />;
-  //}
 
   return (
     <MainContainer>
