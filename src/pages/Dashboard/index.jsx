@@ -9,7 +9,6 @@ function Dashboard({ authenticated, setAuthenticated }) {
 
     const [habitModal, setHabitModal] = useState(false)
     const [createGroupModal, setCreateGroupModal] = useState(false)
-    
     if (!authenticated) {
         return <Redirect to="/"/>
     }
