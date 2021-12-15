@@ -1,25 +1,33 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from "react";
 import Circle from "react-circle";
-import Collapsible from 'react-collapsible';
+import Collapsible from "react-collapsible";
 
 import Edit from "../../components/Edit";
 import Header from "../../components/Header";
-import SubHeader from '../../components/SubHeader';
-import { DisplayContainer } from '../../components/DisplayContainer';
+import SubHeader from "../../components/SubHeader";
+import { DisplayContainer } from "../../components/DisplayContainer";
 import { CardsBox, SecondaryContainer } from "../Habit/style";
 import ListNavButtons from "../../components/ListNavButtons";
 import { useParams } from "react-router-dom";
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
-import { CardExtra, CardInfo, CollapsibleStyled, Icon, MiniCard, ScrollBox, SupportHeader } from "./style";
+import {
+  CardExtra,
+  CardInfo,
+  CollapsibleStyled,
+  Icon,
+  MiniCard,
+  ScrollBox,
+  SupportHeader,
+} from "./style";
 import { BoxImage, Image } from "../../components/CardGroup/styles";
-import CheckButton from '../../components/CheckButton';
-import { BoxDashboard } from '../../components/BoardHabits/style';
+import CheckButton from "../../components/CheckButton";
+import { BoxDashboard } from "../../components/BoardHabits/style";
 
 function Groups() {
   const params = useParams();
-  const [pageWidth, setPageWidth] = useState(window.innerWidth)
+  const [pageWidth, setPageWidth] = useState(window.innerWidth);
 
   // const token = localStorage.getItem("@financeHabits:token");
   const userGroups = JSON.parse(
@@ -31,11 +39,11 @@ function Groups() {
 
   useEffect(() => {
     function handleResize() {
-      setPageWidth(window.innerWidth)
+      setPageWidth(window.innerWidth);
     }
 
-    window.addEventListener('resize', handleResize)
-  }, [])
+    window.addEventListener("resize", handleResize);
+  }, []);
 
   const getTheme = () => {
     if (currentGroup.category === "Poupança") {
@@ -48,7 +56,6 @@ function Groups() {
       return educacao;
     }
   };
-
 
   return (
     <>
@@ -63,7 +70,7 @@ function Groups() {
               type="group"
             />
             <div>
-              <SubHeader tittle={currentGroup.name}/>
+              <SubHeader tittle={currentGroup.name} />
               <CardsBox>
                 <CardInfo>
                   <p>Categoria: {currentGroup.category}</p>
@@ -89,7 +96,7 @@ function Groups() {
                         );
                       })}
                   </ScrollBox>
-                  
+
                   <BoxImage className="desktop">
                     <Image src={getTheme()} alt={currentGroup.title} />
                   </BoxImage>
@@ -102,10 +109,18 @@ function Groups() {
                   <ScrollBox>
                     {currentGroup.goals.map((elem) => {
                       return (
-                        <Collapsible key={elem.id} trigger={<p>Título: {elem.title} <br/>Dificuldade: {elem.difficulty}</p>}>
+                        <Collapsible
+                          key={elem.id}
+                          trigger={
+                            <p>
+                              Título: {elem.title} <br />
+                              Dificuldade: {elem.difficulty}
+                            </p>
+                          }
+                        >
                           <h2>
-                            <Edit type='goals' data={elem}/>
-                            <CheckButton type='goals' data={elem} />
+                            <Edit type="goals" data={elem} />
+                            <CheckButton type="goals" data={elem} />
                           </h2>
                           <Circle
                             animate={true}
@@ -115,7 +130,7 @@ function Groups() {
                             lineWidth={20} // Number: Defines the thickness of the circle's stroke.
                             progress={elem.how_much_achieved} // Number: Update to change the progress and percentage.
                             progressColor="#0090AD" // String: Color of "progress" portion of circle.
-                            bgColor={pageWidth >= 600 ? "#E2F2F9" :"#A5D9EC"} // String: Color of "empty" portion of circle.
+                            bgColor={pageWidth >= 600 ? "#E2F2F9" : "#A5D9EC"} // String: Color of "empty" portion of circle.
                             textColor="#0090AD" // String: Color of percentage text color.
                             textStyle={{
                               font: "bold 5rem Helvetica, Arial, sans-serif", // CSSProperties: Custom styling for percentage.
@@ -129,7 +144,7 @@ function Groups() {
                       );
                     })}
                   </ScrollBox>
-                  
+
                   <BoxImage className="desktop">
                     <Image src={getTheme()} alt={currentGroup.title} />
                   </BoxImage>
@@ -139,7 +154,6 @@ function Groups() {
           </SecondaryContainer>
         </DisplayContainer>
       </BoxDashboard>
-      
     </>
   );
 }

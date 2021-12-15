@@ -5,7 +5,7 @@ import { Box } from "@mui/system";
 export const BoxMobile = styled.div`
   margin: 7px;
 
-  .category{
+  .category {
     font-size: 11px;
   }
 
@@ -20,6 +20,14 @@ export const PopBox = styled(Box)`
 `;
 
 export const BoxDesktop = styled.div`
+  box-shadow: 3px 3px 3px rgb(0 0 0 / 25%);
+  cursor: pointer;
+  :hover {
+    box-shadow: 0px 0px;
+    position: relative;
+    left: 3px;
+    top: 3px;
+  }
   display: none;
   width: 331.8px;
   height: 226px;
@@ -28,7 +36,7 @@ export const BoxDesktop = styled.div`
   border-radius: 8px;
   padding: 8px;
   color: #6c6c6c;
-  font-family: 'Halter';
+  font-family: "Halter";
   text-transform: uppercase;
 
   margin: 10px;
@@ -39,12 +47,21 @@ export const BoxDesktop = styled.div`
 `;
 
 export const PopOVER = styled(Popover)`
+  box-shadow: 0px 3px 3px rgb(0 0 0 / 25%);
   @media screen and (min-width: 600px) {
     display: none;
   }
 `;
 
 export const CardH = styled.div`
+  box-shadow: 3px 3px 3px rgb(0 0 0 / 25%);
+  cursor: pointer;
+  :hover {
+    box-shadow: 0px 0px;
+    position: relative;
+    left: 3px;
+    top: 3px;
+  }
   width: 231px;
   height: 48px;
   left: 70px;
@@ -56,7 +73,7 @@ export const CardH = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  box-shadow: 4px 4px #dcdcdc;
+
   border: solid 1px #0090ad;
   div {
     font-family: "Roboto", sans-serif;
@@ -76,9 +93,8 @@ export const ButtonPop = styled.button`
 
 export const TittlePop = styled.div`
   text-align: center;
-  h3{
+  h3 {
     font-size: 14px;
-    
   }
 `;
 
@@ -101,9 +117,10 @@ export const Image = styled.img`
 `;
 
 export const BoxImage = styled.div`
+  min-width: 81.08px;
   width: 81.08px;
   height: 65px;
-  border:solid 2px #0090AD;
+  border: solid 2px #0090ad;
   border-radius: 8px;
   display: flex;
   justify-content: center;
@@ -131,16 +148,18 @@ export const DivCattegory = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
-  div{font-size:15px;}
+  div {
+    font-size: 15px;
+  }
 `;
 
 export const Description = styled.div`
-     font-size: 10px;
-    margin-bottom: 12px;
-    width: 313px;
-    height: 70px;
+  font-size: 10px;
+  margin-bottom: 12px;
+  width: 313px;
+  height: 70px;
 `;
 
 export const Name = styled.div`
-  font-size:15px;
-`
+  font-size: 15px;
+`;
