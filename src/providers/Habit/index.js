@@ -19,12 +19,14 @@ export const HabitProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        localStorage.setItem("@financeHabits:userHabits", JSON.stringify(response.data))
-        setUserHabits(response.data)
-      })
+        localStorage.setItem(
+          "@financeHabits:userHabits",
+          JSON.stringify(response.data)
+        );
+        setUserHabits(response.data);
+      });
+  };
 
-  }
-  
   const toCreateHabit = (data) => {
     api
       .post(
@@ -33,29 +35,28 @@ export const HabitProvider = ({ children }) => {
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
-        toGetHabits()
-        toast.success('Seu hábito foi criado!')
+        toGetHabits();
+        toast.success("Seu hábito foi criado!");
       })
       .catch((err) => {
         console.log(err);
-        toast.error('Ops. Algo deu errado. Tente novamente.')
+        toast.error("Ops. Algo deu errado. Tente novamente.");
       });
   };
 
   const toDeleteHabit = (data) => {
-    
-    const { id } = data
+    const { id } = data;
     api
       .delete(`/habits/${id}/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        toGetHabits()
-        toast.success('Hábito apagado!')
+        toGetHabits();
+        toast.success("Hábito apagado!");
       })
       .catch((err) => {
         console.log(err);
-        toast.error('Ops. Algo deu errado. Tente novamente.')
+        toast.error("Ops. Algo deu errado. Tente novamente.");
       });
   };
 
@@ -79,7 +80,7 @@ export const HabitProvider = ({ children }) => {
       })
       .catch((err) => {
         console.log(err);
-        toast.error('Ops. Algo deu errado. Tente novamente.')
+        toast.error("Ops. Algo deu errado. Tente novamente.");
       });
   };
 
