@@ -22,6 +22,7 @@ function Header({ setAuthenticated }) {
   const [nameButton2, setNameButton2] = useState();
   const [redirectButton1, setRedirectButton1] = useState("");
   const [redirectButton2, setRedirectButton2] = useState("");
+  const [groups, setGroups] = useState("");
 
   const [menu, setMenu] = useState(false);
 
@@ -46,13 +47,15 @@ function Header({ setAuthenticated }) {
     ) {
       setNameButton1("Home");
       setRedirectButton1("/dashboard");
-      setNameButton2("Logout");
+      setNameButton2("Sair");
       setRedirectButton2();
+      setGroups("");
     } else {
       setNameButton1("Entrar");
       setRedirectButton1("/signin");
       setNameButton2("Cadastrar");
       setRedirectButton2("/signup");
+      setGroups("none");
     }
   }
 
@@ -79,8 +82,15 @@ function Header({ setAuthenticated }) {
             </MenuItem>
             <hr />
             <MenuItem
+              onClick={() => history.push("/groups")}
+              style={{ display: groups }}
+            >
+              Mais Grupos
+            </MenuItem>
+            <hr />
+            <MenuItem
               onClick={
-                nameButton2 === "Logout"
+                nameButton2 === "Sair"
                   ? () => Logout()
                   : () => history.push(redirectButton2)
               }
@@ -95,8 +105,15 @@ function Header({ setAuthenticated }) {
           </Button>
           <Button
             white
+            onClick={() => history.push("/groups")}
+            style={{ display: groups }}
+          >
+            Mais Grupos
+          </Button>
+          <Button
+            white
             onClick={
-              nameButton2 === "Logout"
+              nameButton2 === "Sair"
                 ? () => Logout()
                 : () => history.push(redirectButton2)
             }

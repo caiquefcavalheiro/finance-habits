@@ -29,14 +29,14 @@ const PageGroup = ({ authenticated, setAuthenticated }) => {
     }
   };
 
-  if (!authenticated) {
-    return <Redirect to="/" />;
-  }
+  // if (!authenticated) {
+  //   return <Redirect to="/" />;
+  // }
 
   return (
     <>
       <Header setAuthenticated={setAuthenticated} />
-      <DisplayContainer>
+      <DisplayContainer type="grid">
         <SubHeader tittle="Escolha um grupo para participar">
           <input
             placeholder="busque um grupo"
