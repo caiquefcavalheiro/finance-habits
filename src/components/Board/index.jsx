@@ -6,10 +6,24 @@ import { useHabits } from "../../providers/Habit";
 import SubHeader from "../SubHeader";
 import { DisplayContainer } from "../DisplayContainer";
 import { useGroups } from "../../providers/Groups";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CreateGroup from "../CreateGroup";
 
 const Board = () => {
+
+  const { allGroups } = useGroups();
+  //const {toGetHabits} = useHabits()
+  //const {toGetGroups} = useGroups()
+
+  useEffect(() => {
+    allGroups();
+  //  toGetHabits()
+  //  toGetGroups()
+  }, []);
+
+
+
+
   const { userHabits } = useHabits();
   const { userGroups } = useGroups();
 

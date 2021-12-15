@@ -3,13 +3,15 @@ import Home from "../pages/Home";
 import Dashboard from "../pages/Dashboard";
 import Habit from "../pages/Habit";
 import Groups from "../pages/Groups";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Register from "../pages/Register";
 import SignIn from "../pages/SignIn";
 import PageGroup from "../pages/PageGroup";
+import { SigninContext } from "../providers/SignIn";
 
 function Routes() {
-  const [authenticated, setAuthenticated] = useState(false);
+
+  const { authenticated, setAuthenticated } = useContext(SigninContext)
 
   useEffect(() => {
     let isMounted = true;
