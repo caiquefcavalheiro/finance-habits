@@ -12,6 +12,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 8px;
   @media (min-width: 1170px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -23,6 +24,7 @@ export const ContainerColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 8px;
 `;
 export const Header = styled.div`
   background: var(--color-primary-blue);

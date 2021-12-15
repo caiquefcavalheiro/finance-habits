@@ -1,4 +1,5 @@
 import {FiCheck} from 'react-icons/fi';
+import { useGroups } from '../../providers/Groups';
 import { useHabits } from '../../providers/Habit';
 import api from '../../services/api'
 
@@ -7,10 +8,10 @@ const CheckButton = ({type, data}) => {
     const {id, how_much_achieved} = data;
     const token = localStorage.getItem("@financeHabits:token");
     const {toGetHabits} = useHabits();
+    const {allGroupsUser} = useGroups();
     const computedCheck = how_much_achieved + 10 //TENTAR useSTATE
 
     const handleCheck = () => {
-        // console.log(data)
         if(how_much_achieved === 90){
             api.patch(
                 `/${type}/${id}/`,
@@ -20,9 +21,14 @@ const CheckButton = ({type, data}) => {
                     Authorization: `Bearer ${token}`,
                     },
                 }
-            ).then(res => console.log(res.data));
+                ).then(_ => {
+                    if(type === 'habits'){
+                        toGetHabits();
+                    }else if(type === 'goals'){
+                        allGroupsUser();
+                    }
+                })
         }else if(how_much_achieved < 90){
-            // console.log(`/${type}/${id}/`)
             api.patch(
                 `/${type}/${id}/`,
                 { how_much_achieved: computedCheck },
@@ -31,9 +37,14 @@ const CheckButton = ({type, data}) => {
                     Authorization: `Bearer ${token}`,
                     },
                 }
-            ).then(res => console.log(res.data)).catch(err => console.log(err));
+                ).then(_ => {
+                    if(type === 'habits'){
+                        toGetHabits();
+                    }else if(type === 'goals'){
+                        allGroupsUser();
+                    }
+                })
         }
-        toGetHabits();
     }
 
     
