@@ -1,6 +1,6 @@
 import CardHabitCard from "../CardHabit";
 import CreateHabit from "../CreateHabit";
-import { Container, PlusButton, BoxDashboard, ContainerColumn } from "./style";
+import { Container, BoxDashboard, ContainerColumn } from "./style";
 import CardGroup from "../CardGroup";
 import { useHabits } from "../../providers/Habit";
 import SubHeader from "../SubHeader";
