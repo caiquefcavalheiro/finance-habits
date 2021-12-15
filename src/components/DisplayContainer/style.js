@@ -4,7 +4,7 @@ export const Column = styled.div`
   min-height: 445px;
   background: #d2d2d233;
   height: 445px;
-  overflow-y: auto;
+
   border-radius: 8px;
   min-width: 280px;
   padding: 1rem;
@@ -34,7 +34,7 @@ export const Row = styled.div`
   min-height: 445px;
   background: #d2d2d233;
   height: 445px;
-  overflow-y: auto;
+
   margin-bottom: 20px;
   border-radius: 8px;
 

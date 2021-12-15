@@ -48,8 +48,8 @@ const CardGroup = ({ group }) => {
   };
 
   const goToGroup = () => {
-    history.push(`/groups/${id}`)
-  }
+    history.push(`/groups/${id}`);
+  };
 
   const remove = (e) => {
     unsubscribeGroup(group)
@@ -65,7 +65,7 @@ const CardGroup = ({ group }) => {
             setAnchor(evt.currentTarget);
           }}
         >
-          <div>category</div>
+          {/* <div>category</div> */}
           <TittlePop>{name}</TittlePop>
         </CardH>
         <PopOVER
