@@ -13,12 +13,10 @@ export const Column = styled.div`
   align-items: center;
   box-shadow: 0px 0px 2px 2px #00000040;
 
-
   @media (min-width: 600px) {
-    min-height: 795px;
     min-width: 374px;
-    height: auto;
-    flex-wrap: wrap;
+    height: 790px;
+    /* flex-wrap: wrap; */
     flex-direction: column;
     justify-content: flex-start;
     margin-right: 20px;
@@ -45,7 +43,7 @@ export const Row = styled.div`
   box-shadow: 0px 0px 2px 2px #00000040;
 
   @media (min-width: 600px) {
-    min-height: 795px;
+    height: 790px;
     margin-bottom: 0px;
     margin-right: 20px;
     min-width: 374px;

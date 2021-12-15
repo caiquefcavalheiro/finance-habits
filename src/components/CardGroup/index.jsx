@@ -19,19 +19,21 @@ import {
   Name,
   Edit,
   Check,
-  Close,
   Wedit,
-  Wclose,
 } from "./styles";
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
 import { useHistory } from "react-router-dom";
+import { useGroups } from "../../providers/Groups";
 
-const CardGroup = ({ category, description, name, callback, id }) => {
+
+const CardGroup = ({ group }) => {
+  const {category, description, name, id } = group
   const [pop, setPop] = useState(false);
   const [anchor, setAnchor] = useState("");
   const history = useHistory();
+  const {unsubscribeGroup} = useGroups()
 
   const getTheme = () => {
     if (category === "Poupança") {
@@ -48,6 +50,11 @@ const CardGroup = ({ category, description, name, callback, id }) => {
   const goToGroup = () => {
     history.push(`/groups/${id}`);
   };
+
+  const remove = (e) => {
+    unsubscribeGroup(group)
+    e.stopPropagation()
+  }
 
   return (
     <>
@@ -78,11 +85,10 @@ const CardGroup = ({ category, description, name, callback, id }) => {
           >
             <DescPop>{description}</DescPop>
             <BoxButton>
-              <ButtonPop onclick={() => callback}>Sair</ButtonPop>
+              <ButtonPop onClick={remove}>Sair</ButtonPop>
               <div>
                 <Edit />
                 <Check />
-                <Close />
               </div>
             </BoxButton>
           </PopBox>
@@ -93,9 +99,8 @@ const CardGroup = ({ category, description, name, callback, id }) => {
         <DivCattegory>
           <div>{category}</div>
           <BoxButton>
-            <ButtonDesc onclick={() => callback}>Sair</ButtonDesc>
+            <ButtonDesc onClick={remove}>Sair</ButtonDesc>
             <Wedit />
-            <Wclose />
           </BoxButton>
         </DivCattegory>
 
