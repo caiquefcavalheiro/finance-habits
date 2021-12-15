@@ -3,10 +3,12 @@ import api from "../../services/api";
 import jwtDecode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 export const SigninContext = createContext();
 
 export const SigninProvider = ({ children }) => {
+  const [authenticated, setAuthenticated] = useState(false);
   const history = useHistory();
 
   const toLogin = (data) => {
@@ -55,6 +57,7 @@ export const SigninProvider = ({ children }) => {
           .catch((err) => console.log(err));
 
         toast.success('Bem-vindo ao FinanceHabits')
+        setAuthenticated(true)
         history.push("/dashboard");
       })
       .catch((err) => {
@@ -63,7 +66,7 @@ export const SigninProvider = ({ children }) => {
   };
 
   return (
-    <SigninContext.Provider value={{ toLogin }}>
+    <SigninContext.Provider value={{ toLogin, authenticated, setAuthenticated }}>
       {children}
     </SigninContext.Provider>
   );

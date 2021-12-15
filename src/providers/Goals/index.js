@@ -10,19 +10,22 @@ export const GoalsProvider = ({ children }) => {
   function toUpdateGoals(data) {
     const { id, difficultyGoal, titleGoal } = data;
 
-    api.patch(
-      `/goals/${id}`,
-      { title: titleGoal, difficulty: difficultyGoal },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    ).then(res => {
-      toast.success('As alterações em metas foram salvas!')
-    }).catch( err => {
-      toast.error('Ops. Algo deu errado. Tente novamente.')
-    })
+    api
+      .patch(
+        `/goals/${id}`,
+        { title: titleGoal, difficulty: difficultyGoal },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        toast.success("As alterações em metas foram salvas!");
+      })
+      .catch((err) => {
+        toast.error("Ops. Algo deu errado. Tente novamente.");
+      });
   }
 
   function toDeleteGoals() {}
