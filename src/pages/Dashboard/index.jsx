@@ -6,11 +6,11 @@ import Board from "../../components/Board"
 
 function Dashboard({ authenticated, setAuthenticated }) {
 
-  // const { allGroups } = useGroups();
-// 
-  // useEffect(() => {
-  //   allGroups();
-  // }, []);
+  const { allGroups } = useGroups();
+
+  useEffect(() => {
+    allGroups();
+  }, []);
 
   if (!authenticated) {
     return <Redirect to="/" />;
