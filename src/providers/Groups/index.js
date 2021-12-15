@@ -134,6 +134,7 @@ export const GroupProvider = ({ children }) => {
         unsubscribeGroup,
         allGroups,
         allGroupsUser,
+        setUserGroups,
       }}
     >
       {children}

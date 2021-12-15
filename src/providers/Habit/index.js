@@ -92,6 +92,7 @@ export const HabitProvider = ({ children }) => {
         toUpdateHabit,
         userHabits,
         toGetHabits,
+        setUserHabits
       }}
     >
       {children}
