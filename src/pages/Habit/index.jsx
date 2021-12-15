@@ -3,19 +3,24 @@ import Header from "../../components/Header";
 import SubHeader from "../../components/SubHeader";
 import { DisplayContainer } from "../../components/DisplayContainer";
 import ListNavButtons from "../../components/ListNavButtons";
-import { CardAchieved, CardInfo, CardsBox, CardsConatiner, SecondaryContainer } from "./style";
+import {
+  CardAchieved,
+  CardInfo,
+  CardsBox,
+  CardsConatiner,
+  SecondaryContainer,
+} from "./style";
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
 import { BoxImage, Image } from "../../components/CardGroup/styles";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import { useHabits } from "../../providers/Habit";
 import CheckButton from "../../components/CheckButton";
 import RefreshButton from "../../components/RefreshButton";
 import { BoxDashboard } from "../../components/BoardHabits/style";
 
-function Habit() {
-  
+function Habit({ authenticated, setAuthenticated }) {
   const { toGetHabits } = useHabits();
   const params = useParams();
 
@@ -23,7 +28,7 @@ function Habit() {
   const userHabits = JSON.parse(
     localStorage.getItem("@financeHabits:userHabits")
   );
-  
+
   const currentHabit = userHabits.find((elem) => elem.id === Number(params.id));
   const currentHabitIndex = userHabits.indexOf(currentHabit);
 
@@ -39,9 +44,13 @@ function Habit() {
     }
   };
 
+  if (!authenticated) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <>
-      <Header />
+      <Header setAuthenticated={setAuthenticated} />
       <BoxDashboard>
         <DisplayContainer>
           <SecondaryContainer>
@@ -52,31 +61,31 @@ function Habit() {
               type="habit"
             />
             <CardsConatiner>
-              <SubHeader tittle={currentHabit.title}/>
+              <SubHeader tittle={currentHabit.title} />
               <CardsBox>
                 <CardAchieved>
                   <h2>
                     {currentHabit.achieved ? (
-                      <RefreshButton type='habits' data={currentHabit} />
+                      <RefreshButton type="habits" data={currentHabit} />
                     ) : (
-                      <CheckButton type='habits' data={currentHabit} />
+                      <CheckButton type="habits" data={currentHabit} />
                     )}
                   </h2>
                   <Circle
                     animate={true}
                     animationDuration="1s"
-                    responsive={true} 
-                    size={30} 
-                    lineWidth={20} 
+                    responsive={true}
+                    size={30}
+                    lineWidth={20}
                     progress={currentHabit.how_much_achieved}
-                    progressColor="#0090AD" 
-                    bgColor="#A5D9EC" 
-                    textColor="#0090AD" 
+                    progressColor="#0090AD"
+                    bgColor="#A5D9EC"
+                    textColor="#0090AD"
                     textStyle={{
-                      font: "bold 5rem Helvetica, Arial, sans-serif", 
+                      font: "bold 5rem Helvetica, Arial, sans-serif",
                     }}
-                    percentSpacing={10} 
-                    roundedStroke={true} 
+                    percentSpacing={10}
+                    roundedStroke={true}
                     showPercentage={true}
                     showPercentageSymbol={true}
                   />
@@ -97,7 +106,6 @@ function Habit() {
           </SecondaryContainer>
         </DisplayContainer>
       </BoxDashboard>
-      
     </>
   );
 }

@@ -61,7 +61,7 @@ function Edit({ type, data }) {
 
   function clickIcon(event) {
     setopenModal(true);
-    event.stopPropagation();
+    // event.stopPropagation();
   }
 
   const [habitTitle, setHabitTitle] = useState(
