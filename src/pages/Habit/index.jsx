@@ -16,13 +16,8 @@ import { BoxDashboard } from "../../components/BoardHabits/style";
 
 function Habit() {
   
-  const { toGetHabits } = useHabits();
+  const { userHabits } = useHabits();
   const params = useParams();
-
-  toGetHabits();
-  const userHabits = JSON.parse(
-    localStorage.getItem("@financeHabits:userHabits")
-  );
   
   const currentHabit = userHabits.find((elem) => elem.id === Number(params.id));
   const currentHabitIndex = userHabits.indexOf(currentHabit);
