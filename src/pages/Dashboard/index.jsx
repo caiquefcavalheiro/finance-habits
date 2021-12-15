@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Redirect } from "react-router-dom";
-import BoardHabits from "../../components/BoardHabits";
+import BoardHabits from "../../components/Board";
 import Button from "../../components/Button";
 import CreateGroup from "../../components/CreateGroup";
 import Header from "../../components/Header";
@@ -14,24 +15,9 @@ function Dashboard({ authenticated, setAuthenticated }) {
     return <Redirect to="/" />;
   }
 
-  const logout = () => {
-    setAuthenticated(false);
-    localStorage.clear();
-  };
-
-  const openHabitModal = () => {
-    setHabitModal(true);
-  };
-
-  const openGroupModal = () => {
-    setCreateGroupModal(true);
-  };
   return (
     <>
       <Header setAuthenticated={setAuthenticated} />
-      <LogoutButton onClick={logout}>Sair</LogoutButton>
-      <Button onClick={openHabitModal}>Criar hábito</Button>
-      <Button onClick={openGroupModal}>Criar grupo</Button>
       <BoardHabits habitModal={habitModal} setHabitModal={setHabitModal} />
       <CreateGroup
         createGroupModal={createGroupModal}

@@ -57,7 +57,7 @@ function Routes() {
           setAuthenticated={setAuthenticated}
         />
       </Route>
-      <Route exact path="/groups">
+      <Route path="/groups">
         <PageGroup
           authenticated={authenticated}
           setAuthenticated={setAuthenticated}
