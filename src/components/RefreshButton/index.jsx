@@ -30,8 +30,6 @@ const RefreshButton = ({ type, data }) => {
       });
   };
 
-  toGetHabits();
-
   return (
     <FiRefreshCw
       color="#0090Ad"

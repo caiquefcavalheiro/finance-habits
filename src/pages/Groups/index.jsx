@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Circle from "react-circle";
 import Collapsible from "react-collapsible";
-
 import Edit from "../../components/Edit";
 import Header from "../../components/Header";
 import SubHeader from "../../components/SubHeader";
@@ -23,7 +22,7 @@ import {
 } from "./style";
 import { BoxImage, Image } from "../../components/CardGroup/styles";
 import CheckButton from "../../components/CheckButton";
-import { BoxDashboard } from "../../components/BoardHabits/style";
+import { BoxDashboard } from "../../components/Board/style";
 import { useGroups } from "../../providers/Groups";
 import RefreshButton from "../../components/RefreshButton";
 

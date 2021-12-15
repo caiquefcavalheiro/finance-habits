@@ -18,7 +18,7 @@ import { Redirect, useParams } from "react-router-dom";
 import { useHabits } from "../../providers/Habit";
 import CheckButton from "../../components/CheckButton";
 import RefreshButton from "../../components/RefreshButton";
-import { BoxDashboard } from "../../components/BoardHabits/style";
+import { BoxDashboard } from "../../components/Board/style";
 
 function Habit({ authenticated, setAuthenticated }) {
   const { toGetHabits } = useHabits();

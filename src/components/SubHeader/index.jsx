@@ -1,16 +1,17 @@
 import { PlusButton, HeaderBox } from "./style";
 
-const SubHeader = ({ type, tittle='', children }) => {
+const SubHeader = ({ type, tittle = "", children, onClick }) => {
   return (
     <>
       {type === "Habit" ? (
         <HeaderBox>
-          Meus Hábitos <PlusButton />
+          Meus Hábitos
+          <PlusButton onClick={onClick} />
         </HeaderBox>
       ) : type === "Group" ? (
         <HeaderBox>
           Meus Grupos
-          <PlusButton />
+          <PlusButton onClick={onClick} />
         </HeaderBox>
       ) : (
         <HeaderBox>

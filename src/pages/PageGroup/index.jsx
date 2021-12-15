@@ -6,9 +6,14 @@ import { DisplayContainer } from "../../components/DisplayContainer";
 import SubHeader from "../../components/SubHeader";
 import Header from "../../components/Header";
 import { Main } from "./style";
+<<<<<<< HEAD
 import { Redirect } from "react-router-dom";
 
 const PageGroup = ({ authenticated, setAuthenticated }) => {
+=======
+
+const PageGroup = () => {
+>>>>>>> f462c56d96b321fd5b940f3d80f47a79908ad6ea
   const { groupList, allGroups } = useGroups();
   const [groupFiltered, setGroupFiltered] = useState(groupList);
 
@@ -30,6 +35,7 @@ const PageGroup = ({ authenticated, setAuthenticated }) => {
     }
   };
 
+<<<<<<< HEAD
   if (!authenticated) {
     return <Redirect to="/" />;
   }
@@ -37,6 +43,12 @@ const PageGroup = ({ authenticated, setAuthenticated }) => {
   return (
     <>
       <Header setAuthenticated={setAuthenticated} />
+=======
+  return (
+    <>
+      <Header />
+
+>>>>>>> f462c56d96b321fd5b940f3d80f47a79908ad6ea
       <DisplayContainer>
         <SubHeader tittle="Escolha um grupo para participar">
           <input
