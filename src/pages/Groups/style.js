@@ -1,6 +1,27 @@
 import styled from "styled-components";
 import { Card } from "../Habit/style";
 
+export const CardsBox = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    .desktop{
+        display: none;
+    }
+
+    @media screen and (min-width: 600px){
+        width: 100%;
+        justify-content: space-around;
+
+        .desktop{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+        }
+    }
+`
 
 export const CardInfo = styled(Card)`
     color: var(--color-primary-blue);
@@ -22,6 +43,7 @@ export const CardInfo = styled(Card)`
         margin: 10px;
         font-size: 20px;
         color: var(--color-grey-text);
+        font-family: "Halter";
         
         .title{
             display: initial;
@@ -37,7 +59,7 @@ export const CardExtra = styled(Card)`
     }
 `
 
-export const SupportHeader = styled.p`
+export const SupportHeader = styled.div`
     height: 25px;
     margin: 0 10px;
     padding: 0 10px;
@@ -66,6 +88,7 @@ export const ScrollBox = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
+        
 
         .is-closed{
             color: var(--color-grey-text);
@@ -76,7 +99,7 @@ export const ScrollBox = styled.div`
         }
         
         p{
-            width: 210px
+            width: 210px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
@@ -110,7 +133,7 @@ export const MiniCard = styled.div`
     justify-content: center;
 
     p{
-        width: 210px
+        width: 210px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;

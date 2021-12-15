@@ -26,6 +26,13 @@ export const BoxDesktop = styled.div`
   font-family: "Halter";
   text-transform: uppercase;
   cursor: pointer;
+  box-shadow: 3px 3px #b9b9b9;
+  :hover {
+    box-shadow: 0px 0px;
+    position: relative;
+    left: 3px;
+    top: 3px;
+  }
 
   @media screen and (min-width: 600px) {
     display: block;

@@ -1,4 +1,5 @@
 import { FiRefreshCw } from "react-icons/fi";
+import { useGroups } from "../../providers/Groups";
 import { useHabits } from "../../providers/Habit";
 import api from "../../services/api";
 
@@ -7,6 +8,7 @@ const RefreshButton = ({ type, data }) => {
   const { id } = data;
   const token = localStorage.getItem("@financeHabits:token");
   const { toGetHabits } = useHabits();
+  const { allGroupsUser } = useGroups();
 
   const handleRefresh = () => {
     api
@@ -19,10 +21,16 @@ const RefreshButton = ({ type, data }) => {
           },
         }
       )
-      .then((res) => console.log(res.data));
-
-    toGetHabits();
+      .then((_) => {
+        if (type === "habits") {
+          toGetHabits();
+        } else if (type === "goals") {
+          allGroupsUser();
+        }
+      });
   };
+
+  toGetHabits();
 
   return (
     <FiRefreshCw

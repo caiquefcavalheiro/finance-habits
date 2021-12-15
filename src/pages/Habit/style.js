@@ -26,6 +26,7 @@ export const CardsBox = styled.div`
     @media screen and (min-width: 600px){
         width: 100%;
         justify-content: space-around;
+        flex-direction: row-reverse;
 
         .desktop{
             display: flex;
@@ -67,10 +68,12 @@ export const CardInfo = styled(Card)`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     
     @media screen and (min-width: 600px){
         margin: 10px;
         font-size: 20px;
         color: var(--color-grey-text);
+        font-family: "Halter";
     }
 `
