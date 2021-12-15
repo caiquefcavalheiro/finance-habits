@@ -5,7 +5,7 @@ const SubHeader = ({ type, tittle = "", children, onClick }) => {
     <>
       {type === "Habit" ? (
         <HeaderBox>
-          Meus Hábitos 
+          Meus Hábitos
           <PlusButton onClick={onClick} />
         </HeaderBox>
       ) : type === "Group" ? (

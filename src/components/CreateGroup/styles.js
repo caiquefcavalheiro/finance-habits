@@ -1,8 +1,8 @@
-import styled from "styled-components"
-import ReactModal from "react-modal"
+import styled from "styled-components";
+import ReactModal from "react-modal";
 
 export const GroupModal = styled(ReactModal)`
-    position: fixed;
+  position: fixed;
   bottom: 0px;
   height: 800px;
   width: 100%;
@@ -13,16 +13,19 @@ export const GroupModal = styled(ReactModal)`
   padding: 20px;
   transform: translate(-50, -50%);
 
-  label[data-shrink=false]+.MuiInputBase-formControl .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  label[data-shrink="false"]
+    + .MuiInputBase-formControl
+    .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
     background-color: white;
   }
   .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:focus {
     background-color: white;
   }
-  
+
   @media (min-width: 500px) {
     position: absolute;
     width: 530px;
+    height: 420px;
     min-height: 420px;
     margin-left: -257.5px;
     margin-top: -160px;
@@ -30,4 +33,4 @@ export const GroupModal = styled(ReactModal)`
     left: 50%;
     top: 35%;
   }
-`
+`;

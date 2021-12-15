@@ -3,7 +3,13 @@ import Header from "../../components/Header";
 import SubHeader from "../../components/SubHeader";
 import { DisplayContainer } from "../../components/DisplayContainer";
 import ListNavButtons from "../../components/ListNavButtons";
-import { CardAchieved, CardInfo, CardsBox, CardsConatiner, SecondaryContainer } from "./style";
+import {
+  CardAchieved,
+  CardInfo,
+  CardsBox,
+  CardsConatiner,
+  SecondaryContainer,
+} from "./style";
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
@@ -15,10 +21,9 @@ import RefreshButton from "../../components/RefreshButton";
 import { BoxDashboard } from "../../components/Board/style";
 
 function Habit() {
-  
   const { userHabits } = useHabits();
   const params = useParams();
-  
+
   const currentHabit = userHabits.find((elem) => elem.id === Number(params.id));
   const currentHabitIndex = userHabits.indexOf(currentHabit);
 
@@ -34,6 +39,8 @@ function Habit() {
     }
   };
 
+  console.log(currentHabit);
+
   return (
     <>
       <Header />
@@ -47,31 +54,31 @@ function Habit() {
               type="habit"
             />
             <CardsConatiner>
-              <SubHeader tittle={currentHabit.title}/>
+              <SubHeader tittle={currentHabit.title} />
               <CardsBox>
                 <CardAchieved>
                   <h2>
                     {currentHabit.achieved ? (
-                      <RefreshButton type='habits' data={currentHabit} />
+                      <RefreshButton type="habits" data={currentHabit} />
                     ) : (
-                      <CheckButton type='habits' data={currentHabit} />
+                      <CheckButton type="habits" data={currentHabit} />
                     )}
                   </h2>
                   <Circle
                     animate={true}
                     animationDuration="1s"
-                    responsive={true} 
-                    size={30} 
-                    lineWidth={20} 
+                    responsive={true}
+                    size={30}
+                    lineWidth={20}
                     progress={currentHabit.how_much_achieved}
-                    progressColor="#0090AD" 
-                    bgColor="#A5D9EC" 
-                    textColor="#0090AD" 
+                    progressColor="#0090AD"
+                    bgColor="#A5D9EC"
+                    textColor="#0090AD"
                     textStyle={{
-                      font: "bold 5rem Helvetica, Arial, sans-serif", 
+                      font: "bold 5rem Helvetica, Arial, sans-serif",
                     }}
-                    percentSpacing={10} 
-                    roundedStroke={true} 
+                    percentSpacing={10}
+                    roundedStroke={true}
                     showPercentage={true}
                     showPercentageSymbol={true}
                   />
@@ -92,7 +99,6 @@ function Habit() {
           </SecondaryContainer>
         </DisplayContainer>
       </BoxDashboard>
-      
     </>
   );
 }
