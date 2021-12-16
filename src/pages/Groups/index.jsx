@@ -28,6 +28,7 @@ import { useGroups } from "../../providers/Groups";
 import RefreshButton from "../../components/RefreshButton";
 import { CreateButton } from "../../components/CreateButton";
 import DeleteGoal from "../../components/DeleteGoal";
+import Remove from '../../components/Remove'
 
 function Groups({ authenticated, setAuthenticated }) {
   const params = useParams();
@@ -84,7 +85,9 @@ function Groups({ authenticated, setAuthenticated }) {
               <SubHeader tittle={currentGroup.name} />
               <CardsBox>
                 <CardInfo>
-                  <Edit type="groups" data={currentGroup} />
+                  <div style={{display: 'flex', justifyContent: 'end'}}>
+                    <Edit type="groups" data={currentGroup}/>
+                  </div>
                   <p>Categoria: {currentGroup.category}</p>
                   <p>Descrição: {currentGroup.description}</p>
                   <p className="title">Título: {currentGroup.name}</p>
@@ -102,6 +105,7 @@ function Groups({ authenticated, setAuthenticated }) {
                       currentGroup.activities.map((elem) => {
                         return (
                           <MiniCard key={elem.id}>
+                            <Remove type='activitie' data={elem.id} />
                             <p>{elem.title}</p>
                             <p>
                               Criado:{" "}

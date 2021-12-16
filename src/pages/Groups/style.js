@@ -132,6 +132,10 @@ export const MiniCard = styled.div`
     flex-direction: column;
     justify-content: center;
 
+    > i {
+        margin-left: 95%;
+    }
+
     p{
         width: 210px;
         overflow: hidden;
