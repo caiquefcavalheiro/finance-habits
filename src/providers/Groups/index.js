@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import api from "../../services/api";
 import toast from "react-hot-toast";
 import { useSignin } from "../SignIn";
@@ -6,8 +6,8 @@ import { useSignin } from "../SignIn";
 export const GroupsContext = createContext();
 
 export const GroupProvider = ({ children }) => {
-  const {token} = useSignin();
-  
+  const { token } = useSignin();
+
   const [groupList, setGroupList] = useState(
     JSON.parse(localStorage.getItem("@financeHabits:groupList")) || []
   );
@@ -78,17 +78,23 @@ export const GroupProvider = ({ children }) => {
   };
 
   const updateGroup = (data) => {
+    const { id, nameGroup, descriptionGroup } = data;
     api
-    .post(`/groups/${data.id}`, data,
-      { headers: { Authorization: `Bearer ${token}`} }
-    ).then( res => {
-      //allGroupsUser()
-      toast.success('Suas mudanças foram salvas')
-    }).catch( err => {
-      console.log(err)
-      toast.error('Ops. Algo deu errado. Tente novamente')
-    })
-  }
+      .patch(
+        `/groups/${id}/`,
+        { name: nameGroup, description: descriptionGroup },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((res) => {
+        //allGroupsUser()
+        toast.success("Suas mudanças foram salvas");
+      })
+      .catch((err) => {
+        toast.error("Ops. Algo deu errado. Tente novamente");
+      });
+  };
 
   const subscribeGroup = (data) => {
     const { id } = data;
