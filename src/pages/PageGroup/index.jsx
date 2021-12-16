@@ -52,7 +52,7 @@ const PageGroup = ({ authenticated, setAuthenticated }) => {
     <>
       <Header setAuthenticated={setAuthenticated} />
       <DisplayContainer type="grid">
-        <SubHeader tittle="Escolha um grupo para participar">
+        <SubHeader tittle="Escolha um grupo para participar" type='search'>
           <input
             placeholder="busque um grupo"
             onChange={(e) => {
