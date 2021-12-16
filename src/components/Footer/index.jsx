@@ -9,27 +9,27 @@ function Footer() {
   return (
     <>
       <Container>
-        <a href="https://www.linkedin.com/in/bernardo-c-costa/">
+        <a href="https://www.linkedin.com/in/bernardo-c-costa/" target='_blank'>
           <CommonImg src={Bernardo} alt="Bernardo" />
           <TagP>Bernardo - </TagP>
           <p>Quality Assurance</p>
         </a>
-        <a href="https://www.linkedin.com/in/caiquefcavalheiro/">
+        <a href="https://www.linkedin.com/in/caiquefcavalheiro/" target='_blank'>
           <CommonImg src={Caique} alt="Caique" />
           <TagP>Caique - </TagP>
           <p>Tech Leader</p>
         </a>
-        <a href="https://www.linkedin.com/in/dorivalmachado/">
+        <a href="https://www.linkedin.com/in/dorivalmachado/" target='_blank'>
           <CommonImg src={Dorival} alt="Dorival" />
           <TagP>Dorival - </TagP>
           <p>Product Owner</p>
         </a>
-        <a href="https://www.linkedin.com/in/gabriel-amaral-59181b218/">
+        <a href="https://www.linkedin.com/in/gabriel-amaral-59181b218/" target='_blank'>
           <SpecialImg src={Gabriel} alt="Gabriel" />
           <TagP>Gabriel - </TagP>
           <p>Scrum Master</p>
         </a>
-        <a href="https://www.linkedin.com/in/murillotlopes/">
+        <a href="https://www.linkedin.com/in/murillotlopes/" target='_blank'>
           <CommonImg src={Murillo} alt="Murillo" />
           <TagP>Murillo - </TagP>
           <p>Quality Assurance</p>
