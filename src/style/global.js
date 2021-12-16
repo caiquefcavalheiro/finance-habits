@@ -17,11 +17,22 @@ export default createGlobalStyle`
     }
 
     body{
-        font-size: 16px;
-        font-family: 'Open Sans', sans-serif;
-        color: var(--color-grey-text);
+      font-size: 16px;
+      font-family: 'Open Sans', sans-serif;
+      color: var(--color-grey-text);
+      
     }
 
+    #root {
+      .MuiFormControl-root{
+        background-color: transparent;
+      }
+
+      .MuiOutlinedInput-root{
+        background-color: #FFFFFF;
+      }
+    }
+    
     a{
         text-decoration: none;
     }
