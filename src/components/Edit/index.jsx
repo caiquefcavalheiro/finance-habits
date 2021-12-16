@@ -107,7 +107,8 @@ function Edit({ type, data }) {
 
   return (
     <>
-      <FiEdit onClick={clickIcon} />
+      <FiEdit onClick={clickIcon} style={{cursor: 'pointer', color: '#0090Ad'}} />
+      
       <ReactModalStyled
         isOpen={openModal}
         onRequestClose={() => setopenModal(false)}
