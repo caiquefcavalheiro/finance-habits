@@ -5,7 +5,7 @@ import Edit from "../../components/Edit";
 import Header from "../../components/Header";
 import SubHeader from "../../components/SubHeader";
 import { DisplayContainer } from "../../components/DisplayContainer";
-import { SecondaryContainer } from "../Habit/style";
+import { IconsBox, SecondaryContainer } from "../Habit/style";
 import ListNavButtons from "../../components/ListNavButtons";
 import { Redirect, useParams } from "react-router-dom";
 import educacao from "../../assets/Educacao.svg";
@@ -19,6 +19,9 @@ import {
   MiniCard,
   ScrollBox,
   SupportHeader,
+  EditIcon,
+  Description,
+  Close,
 } from "./style";
 import { BoxImage, Image } from "../../components/CardGroup/styles";
 import CheckButton from "../../components/CheckButton";
@@ -27,7 +30,7 @@ import { useGroups } from "../../providers/Groups";
 import RefreshButton from "../../components/RefreshButton";
 import { CreateButton } from "../../components/CreateButton";
 import DeleteGoal from "../../components/DeleteGoal";
-import Remove from '../../components/Remove'
+import DeleteActivity from "../../components/DeleteActivity";
 
 function Groups({ authenticated, setAuthenticated }) {
   const params = useParams();
@@ -38,10 +41,14 @@ function Groups({ authenticated, setAuthenticated }) {
   const currentGroupIndex = userGroups.indexOf(currentGroup);
 
   const [deleteGoalModal, setDeleteGoalModal] = useState(false)
-
+  const [deleteActModal, setDeleteActModal] = useState(false)
 
   const openDeleteGoal = () => {
     setDeleteGoalModal(true)
+  }
+
+  const openDeleteAct = () => {
+    setDeleteActModal(true)
   }
 
   useEffect(() => {
@@ -84,13 +91,13 @@ function Groups({ authenticated, setAuthenticated }) {
               <SubHeader tittle={currentGroup.name} />
               <CardsBox>
                 <CardInfo>
-                  <div style={{display: 'flex', justifyContent: 'end'}}>
+                  <EditIcon >
                     <Edit type="groups" data={currentGroup}/>
-                  </div>
-                  <p>Categoria: {currentGroup.category}</p>
-                  <p>Descrição: {currentGroup.description}</p>
-                  <p className="title">Título: {currentGroup.name}</p>
-                  <BoxImage className="desktop">
+                  </EditIcon>
+                  <p><span className='mobile'>Categoria: </span>{currentGroup.category}</p>
+                  <Description><span className='mobile'>Descrição: </span>{currentGroup.description}</Description>
+                  <p className="title">{currentGroup.name}</p>
+                  <BoxImage className="desktop image">
                     <Image src={getTheme()} alt={currentGroup.title} />
                   </BoxImage>
                 </CardInfo>
@@ -102,9 +109,13 @@ function Groups({ authenticated, setAuthenticated }) {
                   <ScrollBox>
                     {currentGroup.activities.length > 0 &&
                       currentGroup.activities.map((elem) => {
+                        <DeleteActivity 
+                        deleteActModal={deleteActModal} 
+                        setDeleteActModal={setDeleteActModal} 
+                        data={elem} />
                         return (
                           <MiniCard key={elem.id}>
-                            <Remove type='activitie' data={elem} />
+                            <Close onClick={openDeleteAct} />
                             <p>{elem.title}</p>
                             <p>
                               Criado:{" "}
@@ -119,7 +130,7 @@ function Groups({ authenticated, setAuthenticated }) {
                       })}
                   </ScrollBox>
 
-                  <BoxImage className="desktop">
+                  <BoxImage className="desktop image">
                     <Image src={getTheme()} alt={currentGroup.title} />
                   </BoxImage>
                 </CardExtra>
@@ -140,15 +151,15 @@ function Groups({ authenticated, setAuthenticated }) {
                             </p>
                           }
                         >
-                          <h2>
+                          <IconsBox>
                             <Edit type="goals" data={elem} />
                             {elem.achieved ? (
                               <RefreshButton type="goals" data={elem} />
                             ) : (
                               <CheckButton type="goals" data={elem} />
                             )}
-                            <CgClose onClick={openDeleteGoal}/>
-                          </h2>
+                            <CgClose color="#0090Ad" style={{cursor: 'pointer'}} onClick={openDeleteGoal}/>
+                          </IconsBox>
                           <DeleteGoal
                             deleteGoalModal={deleteGoalModal}
                             setDeleteGoalModal={setDeleteGoalModal}
@@ -176,7 +187,7 @@ function Groups({ authenticated, setAuthenticated }) {
                     })}
                   </ScrollBox>
 
-                  <BoxImage className="desktop">
+                  <BoxImage className="desktop image">
                     <Image src={getTheme()} alt={currentGroup.title} />
                   </BoxImage>
                 </CardExtra>

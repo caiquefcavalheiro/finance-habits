@@ -16,19 +16,17 @@ const DeleteActivity = ({ deleteActModal, setDeleteActModal, data }) => {
         setDeleteActModal(false)
     }
     return (
-        <>
         <DeleteModal
             isOpen={deleteActModal}
             ariaHideApp={false}
         >
-            <CloseModalButton onClicl={closeModal} >
+            <CloseModalButton onClick={closeModal} >
                 <section>
                     <div>Deseja deletar a atividade?</div>
                     <Button onClick={() => handleDelete(data)} >Deletar</Button>
                 </section>
             </CloseModalButton>
         </DeleteModal>
-        </>
     )
 }
 export default DeleteActivity

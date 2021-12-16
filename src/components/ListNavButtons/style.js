@@ -7,7 +7,8 @@ export const Container = styled.div`
   }
 
   @media screen and (min-width: 600px) {
-    width: 180px;
+    width: 20%;
+    max-width: 180px;
     height: 300px;
     display: flex;
     flex-direction: column;
@@ -18,6 +19,10 @@ export const Container = styled.div`
       display: initial;
       margin-bottom: 35px;
     }
+  }
+
+  @media screen and (min-width: 800px) {
+    width: 180px;
   }
 `;
 
