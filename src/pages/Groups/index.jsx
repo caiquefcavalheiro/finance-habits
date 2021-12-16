@@ -5,12 +5,13 @@ import Edit from "../../components/Edit";
 import Header from "../../components/Header";
 import SubHeader from "../../components/SubHeader";
 import { DisplayContainer } from "../../components/DisplayContainer";
-import { SecondaryContainer } from "../Habit/style";
+import { IconsBox, SecondaryContainer } from "../Habit/style";
 import ListNavButtons from "../../components/ListNavButtons";
 import { Redirect, useParams } from "react-router-dom";
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
+import {CgClose} from "react-icons/cg"
 import {
   CardsBox,
   CardExtra,
@@ -26,6 +27,8 @@ import { BoxDashboard } from "../../components/Board/style";
 import { useGroups } from "../../providers/Groups";
 import RefreshButton from "../../components/RefreshButton";
 import { CreateButton } from "../../components/CreateButton";
+import DeleteGoal from "../../components/DeleteGoal";
+import Remove from '../../components/Remove'
 
 function Groups({ authenticated, setAuthenticated }) {
   const params = useParams();
@@ -34,6 +37,12 @@ function Groups({ authenticated, setAuthenticated }) {
 
   const currentGroup = userGroups.find((elem) => elem.id === Number(params.id));
   const currentGroupIndex = userGroups.indexOf(currentGroup);
+
+  const [deleteGoalModal, setDeleteGoalModal] = useState(false)
+
+  const openDeleteGoal = () => {
+    setDeleteGoalModal(true)
+  }
 
   useEffect(() => {
     function handleResize() {
@@ -58,6 +67,8 @@ function Groups({ authenticated, setAuthenticated }) {
   if (!authenticated) {
     return <Redirect to="/" />;
   }
+
+  console.log(currentGroup.goals)
   return (
     <>
       <Header setAuthenticated={setAuthenticated} />
@@ -74,7 +85,9 @@ function Groups({ authenticated, setAuthenticated }) {
               <SubHeader tittle={currentGroup.name} />
               <CardsBox>
                 <CardInfo>
-                  <Edit type="groups" data={currentGroup} />
+                  <div style={{display: 'flex', justifyContent: 'end'}}>
+                    <Edit type="groups" data={currentGroup}/>
+                  </div>
                   <p>Categoria: {currentGroup.category}</p>
                   <p>Descrição: {currentGroup.description}</p>
                   <p className="title">Título: {currentGroup.name}</p>
@@ -92,6 +105,7 @@ function Groups({ authenticated, setAuthenticated }) {
                       currentGroup.activities.map((elem) => {
                         return (
                           <MiniCard key={elem.id}>
+                            <Remove type='activitie' data={elem.id} />
                             <p>{elem.title}</p>
                             <p>
                               Criado:{" "}
@@ -127,14 +141,19 @@ function Groups({ authenticated, setAuthenticated }) {
                             </p>
                           }
                         >
-                          <h2>
+                          <IconsBox>
                             <Edit type="goals" data={elem} />
                             {elem.achieved ? (
                               <RefreshButton type="goals" data={elem} />
                             ) : (
                               <CheckButton type="goals" data={elem} />
                             )}
-                          </h2>
+                            <CgClose color="#0090Ad" style={{cursor: 'pointer'}} onClick={openDeleteGoal}/>
+                          </IconsBox>
+                          <DeleteGoal
+                            deleteGoalModal={deleteGoalModal}
+                            setDeleteGoalModal={setDeleteGoalModal}
+                            data={elem}/>
                           <Circle
                             animate={true}
                             animationDuration="1s"
@@ -167,7 +186,7 @@ function Groups({ authenticated, setAuthenticated }) {
           </SecondaryContainer>
         </DisplayContainer>
       </BoxDashboard>
-    </>
+      </>
   );
 }
 

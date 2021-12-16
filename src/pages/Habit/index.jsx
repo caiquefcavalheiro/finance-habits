@@ -8,6 +8,8 @@ import {
   CardInfo,
   CardsBox,
   CardsConatiner,
+  CenterBox,
+  IconsBox,
   SecondaryContainer,
 } from "./style";
 import educacao from "../../assets/Educacao.svg";
@@ -53,7 +55,7 @@ function Habit({ authenticated, setAuthenticated }) {
     <>
       <Header setAuthenticated={setAuthenticated} />
       <BoxDashboard>
-        <DisplayContainer type="grid">
+        <DisplayContainer >
           <SecondaryContainer>
             <ListNavButtons
               list={userHabits}
@@ -65,14 +67,14 @@ function Habit({ authenticated, setAuthenticated }) {
               <SubHeader tittle={currentHabit.title} />
               <CardsBox>
                 <CardAchieved>
-                  <h2>
-                    <Edit type="habit" data={currentHabit} />
+                  <IconsBox>
+                    <Edit type='habit' data={currentHabit}/>
                     {currentHabit.achieved ? (
                       <RefreshButton type="habits" data={currentHabit} />
                     ) : (
                       <CheckButton type="habits" data={currentHabit} />
                     )}
-                  </h2>
+                  </IconsBox>
                   <Circle
                     animate={true}
                     animationDuration="1s"
@@ -91,15 +93,20 @@ function Habit({ authenticated, setAuthenticated }) {
                     showPercentage={true}
                     showPercentageSymbol={true}
                   />
-                  <BoxImage className="desktop">
+                  <BoxImage className="desktop image">
                     <Image src={getTheme()} alt={currentHabit.title} />
                   </BoxImage>
                 </CardAchieved>
                 <CardInfo>
-                  <p>Categoria: {currentHabit.category}</p>
-                  <p>Dificuldade: {currentHabit.difficulty}</p>
-                  <p>Frequência: {currentHabit.frequency}</p>
-                  <BoxImage className="desktop">
+                  <p><span className="mobile">Categoria: </span>{currentHabit.category}</p>
+                  <CenterBox className="desktop">
+                    <p>Dificuldade: {currentHabit.difficulty}</p>
+                    <p>Frequência: {currentHabit.frequency}</p>
+                  </CenterBox>
+                  <p className="mobile">Dificuldade: {currentHabit.difficulty}</p>
+                  <p className="mobile">Frequência: {currentHabit.frequency}</p>
+                  <p className="title">{currentHabit.title}</p>
+                  <BoxImage className="desktop image">
                     <Image src={getTheme()} alt={currentHabit.title} />
                   </BoxImage>
                 </CardInfo>

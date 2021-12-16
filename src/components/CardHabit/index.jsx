@@ -99,8 +99,6 @@ const CardHabitCard = (data) => {
           <DivCattegory>
             <div>{category}</div>
             <BoxButton>
-              <Edit type="habit" data={data} />
-              <Check />
               <Wclose onClick={openModal} />
             </BoxButton>
           </DivCattegory>

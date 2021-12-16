@@ -97,6 +97,12 @@ export const ScrollBox = styled.div`
         .is-open{
             color: var(--color-dark-blue);
         }
+
+        .Collapsible__contentInner{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         
         p{
             width: 210px;
@@ -131,6 +137,10 @@ export const MiniCard = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    > i {
+        margin-left: 95%;
+    }
 
     p{
         width: 210px;

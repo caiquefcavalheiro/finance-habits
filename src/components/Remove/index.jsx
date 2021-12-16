@@ -5,12 +5,14 @@ import { useHabits } from '../../providers/Habit'
 import { useGroups } from '../../providers/Groups'
 import { useGoals} from '../../providers/Goals'
 import { Container } from './style'
+import { useActivies } from '../../providers/Activities'
 
 const Remove= ({type, data}) => {
 
     const { toDeleteHabit } = useHabits()
     const { unsubscribeGroup } = useGroups()
     const { toDeleteGoals} = useGoals()
+    const { toDeleteActivities } = useActivies()
 
     const toRemove = () => {
         switch (type) {
@@ -22,6 +24,9 @@ const Remove= ({type, data}) => {
                 break
             case 'goals':
                 toDeleteGoals(data)
+                break
+            case 'activitie':
+                toDeleteActivities(data)
                 break
 
             default:
