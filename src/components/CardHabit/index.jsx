@@ -16,6 +16,7 @@ import {
   Name,
   Close,
   Wclose,
+  AlignBox,
 } from "../CardGroup/styles";
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
@@ -94,24 +95,27 @@ const CardHabitCard = (data) => {
       </BoxMobile>
 
       <BoxDesktop onClick={goToHabit}>
-        <DivCattegory>
-          <div>{category}</div>
-          <BoxButton>
-            <Edit type="habit" data={data} />
-            <Check />
-            <Wclose onClick={openModal} />
-          </BoxButton>
-        </DivCattegory>
-        <FrequencyAndDifficult>
-          <p>Dificuldade: {difficulty}</p>
-          <p>Frequência: {frequency}</p>
-        </FrequencyAndDifficult>
-        <BoxName>
-          <Name>{title}</Name>
-          <BoxImage>
-            <Image src={getTheme()} alt={title} />
-          </BoxImage>
-        </BoxName>
+        <AlignBox>
+          <DivCattegory>
+            <div>{category}</div>
+            <BoxButton>
+              <Edit type="habit" data={data} />
+              <Check />
+              <Wclose onClick={openModal} />
+            </BoxButton>
+          </DivCattegory>
+          <FrequencyAndDifficult>
+            <p>Dificuldade: {difficulty}</p>
+            <p>Frequência: {frequency}</p>
+          </FrequencyAndDifficult>
+          <BoxName>
+            <Name>{title}</Name>
+            <BoxImage>
+              <Image src={getTheme()} alt={title} />
+            </BoxImage>
+          </BoxName>
+        </AlignBox>
+        
       </BoxDesktop>
       <DeleteHabit
         deleteModal={deleteModal}
