@@ -69,7 +69,6 @@ function Groups({ authenticated, setAuthenticated }) {
     return <Redirect to="/" />;
   }
 
-  console.log(currentGroup.goals)
   return (
     <>
       <Header setAuthenticated={setAuthenticated} />

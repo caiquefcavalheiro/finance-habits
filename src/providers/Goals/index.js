@@ -8,7 +8,6 @@ const GoalsContext = createContext();
 
 export const GoalsProvider = ({ children }) => {
   const { token } = useSignin();
-  console.log(token)
 
   const { allGroupsUser } = useGroups();
 
@@ -47,9 +46,6 @@ export const GoalsProvider = ({ children }) => {
   }
 
   const toDeleteGoals = (data) => {
-    const { id } = data 
-    
-    console.log(id)
     api 
     .delete(`/goals/${data.id}/`, {
       headers: {
