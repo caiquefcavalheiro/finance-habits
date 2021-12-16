@@ -1,5 +1,5 @@
-import { HeaderBox, PlusButton } from "./style";
-import { EditButton } from "../EditButton";
+import { HeaderBox } from "./style";
+import { CreateButton } from "../CreateButton";
 
 const SubHeader = ({ type, tittle = "", children, onClick }) => {
   return (
@@ -7,12 +7,12 @@ const SubHeader = ({ type, tittle = "", children, onClick }) => {
       {type === "Habit" ? (
         <HeaderBox>
           Meus Hábitos
-          <EditButton type={type} />
+          <CreateButton type={type} />
         </HeaderBox>
       ) : type === "Group" ? (
         <HeaderBox>
           Meus Grupos
-          <EditButton type={type} />
+          <CreateButton type={type} />
         </HeaderBox>
       ) : (
         <HeaderBox>
