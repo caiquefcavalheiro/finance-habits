@@ -10,9 +10,13 @@ export const Container = styled.div`
   display: flex;
   text-align: center;
 
+  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+    height: 15px;
+  }
+
   .MuiFormControl-root {
     width: 80%;
-    margin: 0.5rem auto;
+    margin: 0.3rem auto;
     background-color: white;
     border-radius: var(--radius);
 
@@ -24,7 +28,7 @@ export const Container = styled.div`
   h2 {
     font-family: "Roboto", sans-serif;
     font-size: 36px;
-    margin: 1rem auto 0.5rem auto;
+    margin: 0.2rem auto 0.5rem auto;
     @media screen and (max-width: 800px) {
       margin: 0;
     }
@@ -42,7 +46,7 @@ export const Container = styled.div`
 
   @media screen and (min-width: 800px) {
     width: 450px;
-    height: 90%;
+    height: 95%;
   }
 
   @media screen and (max-width: 800px) {
