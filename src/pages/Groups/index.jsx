@@ -26,6 +26,7 @@ import { BoxDashboard } from "../../components/Board/style";
 import { useGroups } from "../../providers/Groups";
 import RefreshButton from "../../components/RefreshButton";
 import { CreateButton } from "../../components/CreateButton";
+import DeleteGoal from "../../components/DeleteGoal";
 
 function Groups({ authenticated, setAuthenticated }) {
   const params = useParams();
@@ -34,6 +35,12 @@ function Groups({ authenticated, setAuthenticated }) {
 
   const currentGroup = userGroups.find((elem) => elem.id === Number(params.id));
   const currentGroupIndex = userGroups.indexOf(currentGroup);
+
+  const [deleteGoalModal, setDeleteGoalModal] = useState(false)
+
+  const openDeleteGoal = () => {
+    setDeleteGoalModal(true)
+  }
 
   useEffect(() => {
     function handleResize() {
@@ -153,6 +160,11 @@ function Groups({ authenticated, setAuthenticated }) {
                             showPercentage={true} // Boolean: Show/hide percentage.
                             showPercentageSymbol={true}
                           />
+                          <button onClick={openDeleteGoal} >X</button>
+                          <DeleteGoal
+                            deleteGoalModal={deleteGoalModal}
+                            setDeleteGoalModal={setDeleteGoalModal}
+                            data={elem}/>
                         </Collapsible>
                       );
                     })}
@@ -167,7 +179,7 @@ function Groups({ authenticated, setAuthenticated }) {
           </SecondaryContainer>
         </DisplayContainer>
       </BoxDashboard>
-    </>
+      </>
   );
 }
 

@@ -12,7 +12,7 @@ export const GoalsProvider = ({ children }) => {
   const {allGroupsUser} = useGroups();
 
   const createGoals = ( data ) => {
-    api.post('/goals', data, 
+    api.post('/goals/', data, 
       { headers: { Authorization: `Bearer ${token}`} }
     ).then( resp => {
       allGroupsUser()
@@ -41,7 +41,25 @@ export const GoalsProvider = ({ children }) => {
     })
   }
 
-  function toDeleteGoals() {}
+  const toDeleteGoals = (data) => {
+    const { id } = data 
+    console.log(id)
+    api 
+    .delete(`/goals/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token},`
+      },
+    })
+    .then(res => {
+      allGroupsUser()
+      toast.success("Meta excluída com sucesso!")
+    })
+    .catch(
+      (error) => {
+        toast.error('Ops. Algo deu errado. Tente novamente.')
+      }
+    )
+  }
 
   return (
     <GoalsContext.Provider value={{ toUpdateGoals, toDeleteGoals, createGoals }}>
