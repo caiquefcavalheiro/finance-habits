@@ -7,9 +7,9 @@ import { useGroups } from "../Groups";
 const ActivitiesContext = createContext();
 
 export const ActiviesProvider = ({ children }) => {
-  const {token} = useSignin();
+  const { token } = useSignin();
 
-  const {allGroupsUser} = useGroups();
+  const { allGroupsUser } = useGroups();
 
   function toUpdateActivies(data) {
     const { nameActivity, id } = data;
@@ -24,12 +24,13 @@ export const ActiviesProvider = ({ children }) => {
           },
         }
       )
-      .then(res => {
-        allGroupsUser()
-        toast.success('Suas alterações foram salvas com sucesso!')
-      }).catch( err => {
-        toast.error('Ops. Algo deu errado. Tente novamente.')
+      .then((res) => {
+        allGroupsUser();
+        toast.success("Suas alterações foram salvas com sucesso!");
       })
+      .catch((err) => {
+        toast.error("Ops. Algo deu errado. Tente novamente.");
+      });
   }
 
   function toCreateActivities(data) {
@@ -43,27 +44,25 @@ export const ActiviesProvider = ({ children }) => {
           },
         }
       )
-      .then(
-        (response) => {
-          allGroupsUser()
-          toast.success('Atividade criada com sucesso!')
-        })
-      .catch(
-        (error) => {
-          toast.error('Ops. Algo deu errado. Tente novamente.')
-        });
+      .then((response) => {
+        allGroupsUser();
+        toast.success("Atividade criada com sucesso!");
+      })
+      .catch((error) => {
+        toast.error("Ops. Algo deu errado. Tente novamente.");
+      });
   }
 
   function toGetActivities(data) {
-    const { id } = data
+    const { id } = data;
     api
       .get(`/activities/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then().catch(
-        (error) => {});
+      .then()
+      .catch((error) => {});
   }
 
   function toDeleteActivities(data) {
@@ -74,14 +73,13 @@ export const ActiviesProvider = ({ children }) => {
           Authorization: `Bearer ${token}`
         },
       })
-      .then(res => {
-        allGroupsUser()
-        toast.success('Atividade excluída com sucesso!')
+      .then((res) => {
+        allGroupsUser();
+        toast.success("Atividade excluída com sucesso!");
       })
-      .catch(
-        (error) => {
-          toast.error('Ops. Algo deu errado. Tente novamente.')
-        });
+      .catch((error) => {
+        toast.error("Ops. Algo deu errado. Tente novamente.");
+      });
   }
 
   return (
