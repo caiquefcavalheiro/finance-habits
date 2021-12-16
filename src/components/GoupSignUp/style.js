@@ -10,7 +10,8 @@ export const MainContainer = styled.div`
   justify-content: center;
   border-radius: 50px 50px 0 0;
 
-  bottom: ${(props) => (props.isOpen ? "0" : "-1000px")};
+  bottom: ${(props) => (props.isOpen ? "0" : "-500px")};
+  transition: ${(props) => (props.isOpen ? "1s" : "0")};
 `;
 
 export const Container = styled.div`

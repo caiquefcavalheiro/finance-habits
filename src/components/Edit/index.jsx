@@ -16,6 +16,7 @@ import {
   IconX,
   ReactModalStyled,
 } from "./style";
+import { toast } from "react-hot-toast";
 
 function Edit({ type, data }) {
   const { updateGroup, allGroupsUser } = useGroups();
@@ -35,7 +36,10 @@ function Edit({ type, data }) {
       toUpdateHabit(data);
       toGetHabits();
     } else {
-      //toast não pode ter o titulo o vazio
+      toast("Não é possivel editar com um texto em branco", {
+        duration: 6000,
+        style: { fontWeight: "bold", background: "#EC7A06" },
+      });
     }
     setopenModal(false);
   }
@@ -44,6 +48,11 @@ function Edit({ type, data }) {
     const { nameGroup, descriptionGroup } = data;
     if (nameGroup !== "" && descriptionGroup !== "") {
       updateGroup(data);
+    } else {
+      toast("Não é possivel editar com um texto em branco", {
+        duration: 6000,
+        style: { fontWeight: "bold", background: "#EC7A06" },
+      });
     }
     setopenModal(false);
   }
@@ -53,6 +62,11 @@ function Edit({ type, data }) {
     if (titleGoal !== "") {
       toUpdateGoals(data);
       allGroupsUser();
+    } else {
+      toast("Não é possivel editar com um texto em branco", {
+        duration: 6000,
+        style: { fontWeight: "bold", background: "#EC7A06" },
+      });
     }
     setopenModal(false);
   }
@@ -61,6 +75,11 @@ function Edit({ type, data }) {
     const { nameActivity } = data;
     if (nameActivity !== "") {
       toUpdateActivies(data);
+    } else {
+      toast("Não é possivel editar com um texto em branco", {
+        duration: 6000,
+        style: { fontWeight: "bold", background: "#EC7A06" },
+      });
     }
     setopenModal(false);
   }

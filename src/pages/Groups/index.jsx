@@ -25,6 +25,7 @@ import CheckButton from "../../components/CheckButton";
 import { BoxDashboard } from "../../components/Board/style";
 import { useGroups } from "../../providers/Groups";
 import RefreshButton from "../../components/RefreshButton";
+import { CreateButton } from "../../components/CreateButton";
 
 function Groups({ authenticated, setAuthenticated }) {
   const params = useParams();
@@ -84,7 +85,7 @@ function Groups({ authenticated, setAuthenticated }) {
                 <CardExtra>
                   <SupportHeader>
                     Atividade
-                    <Icon>+</Icon>
+                    <CreateButton type="Activities" />
                   </SupportHeader>
                   <ScrollBox>
                     {currentGroup.activities.length > 0 &&
@@ -92,7 +93,14 @@ function Groups({ authenticated, setAuthenticated }) {
                         return (
                           <MiniCard key={elem.id}>
                             <p>{elem.title}</p>
-                            <p>Criado: {`${new Date(elem.realization_time).getDate()}/${(new Date(elem.realization_time).getMonth() + 1)}/${new Date(elem.realization_time).getFullYear()}`}</p>
+                            <p>
+                              Criado:{" "}
+                              {`${new Date(elem.realization_time).getDate()}/${
+                                new Date(elem.realization_time).getMonth() + 1
+                              }/${new Date(
+                                elem.realization_time
+                              ).getFullYear()}`}
+                            </p>
                           </MiniCard>
                         );
                       })}
@@ -105,7 +113,7 @@ function Groups({ authenticated, setAuthenticated }) {
                 <CardExtra>
                   <SupportHeader>
                     Meta
-                    <Icon>+</Icon>
+                    <CreateButton type="Goals" />
                   </SupportHeader>
                   <ScrollBox>
                     {currentGroup.goals.map((elem) => {
