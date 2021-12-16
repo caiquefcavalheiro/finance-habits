@@ -34,10 +34,13 @@ export const ActiviesProvider = ({ children }) => {
   }
 
   function toCreateActivities(data) {
+    console.log({data});
+    
+
     api
       .post(
         "/activities/",
-        { data },
+         data ,
         {
           headers: {
             Authorization: `Bearer ${token}`,
