@@ -25,13 +25,23 @@ export const ActivitiesModal = styled(ReactModal)`
   @media (min-width: 500px) {
     position: absolute;
     width: 530px;
-    min-height: 420px;
-    height: 440px;
+    height: 250px;
     margin-left: -257.5px;
     margin-top: -160px;
     border-radius: 8px;
     left: 50%;
-    top: 35%;
+    top: 50%;
+
+    div{
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    Button{
+      margin-top:10px
+    }
   }
 `;
 export const Container = styled.div`
