@@ -33,10 +33,11 @@ function Edit({ type, data }) {
     const { titleHabit } = data;
     if (titleHabit !== "") {
       toUpdateHabit(data);
-      toGetHabits()
+      toGetHabits();
     } else {
       //toast não pode ter o titulo o vazio
     }
+    setopenModal(false);
   }
 
   function formGroup(data) {
@@ -44,14 +45,16 @@ function Edit({ type, data }) {
     if (nameGroup !== "" && descriptionGroup !== "") {
       updateGroup(data);
     }
+    setopenModal(false);
   }
 
   function formGoal(data) {
     const { titleGoal } = data;
     if (titleGoal !== "") {
-      toUpdateGoals(data)
-      allGroupsUser()
+      toUpdateGoals(data);
+      allGroupsUser();
     }
+    setopenModal(false);
   }
 
   function formActivity(data) {
@@ -59,6 +62,7 @@ function Edit({ type, data }) {
     if (nameActivity !== "") {
       toUpdateActivies(data);
     }
+    setopenModal(false);
   }
 
   function clickIcon(event) {
