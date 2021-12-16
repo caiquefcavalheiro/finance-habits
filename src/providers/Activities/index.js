@@ -34,10 +34,13 @@ export const ActiviesProvider = ({ children }) => {
   }
 
   function toCreateActivities(data) {
+    console.log({data});
+    
+
     api
       .post(
         "/activities/",
-        { data },
+         data ,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -66,8 +69,7 @@ export const ActiviesProvider = ({ children }) => {
   }
 
   function toDeleteActivities(data) {
-
-    console.log(data)
+    console.log(data);
     api
       .delete(`/activities/${data}/`, {
         headers: {

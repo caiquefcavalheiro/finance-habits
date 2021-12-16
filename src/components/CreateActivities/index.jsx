@@ -7,8 +7,11 @@ import Button from "../Button";
 import { CloseModalButton } from "../CloseModalButton";
 import { useActivies } from "../../providers/Activities";
 import { useParams } from "react-router";
+import { useState } from "react";
+import { TittlePop } from "../CardGroup/styles";
 
 export const CreateActivities = ({ activitiesModal, setActivitiesModal }) => {
+  const [realization_time, setRealization_time] = useState("2021-12-31");
   const { toCreateActivities } = useActivies();
   const params = useParams();
 
@@ -31,8 +34,8 @@ export const CreateActivities = ({ activitiesModal, setActivitiesModal }) => {
     const dados = {
       title,
       realization_time: date,
-      group: Number(params.id),
-    };
+      group: Number(params.id)
+    }
     toCreateActivities(dados);
     closeModal();
     reset();
