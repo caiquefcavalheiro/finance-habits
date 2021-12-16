@@ -38,7 +38,11 @@ const Signup = ({ signup, setSignup, setAuthenticated }) => {
   };
 
   return (
-    <ModalSignup isOpen={signup} ariaHideApp={false}>
+    <ModalSignup 
+    isOpen={signup} 
+    ariaHideApp={false}
+    portalClassName="modal"
+    >
       <Icon onClick={() => setSignup(false)}>
         <FiXCircle />
       </Icon>
