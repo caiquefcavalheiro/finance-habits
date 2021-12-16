@@ -5,21 +5,25 @@ import { DisplayContainer } from "../../components/DisplayContainer";
 import SubHeader from "../../components/SubHeader";
 import Header from "../../components/Header";
 import { Main } from "./style";
+import { Redirect } from "react-router-dom";
 
 const PageGroup = ({ authenticated, setAuthenticated }) => {
+  
   const { groupList, allGroups } = useGroups();
-  const [groupFiltered, setGroupFiltered] = useState(groupList);
+  const [verifySubscribeClick, setVerifySubscribeClick] = useState(false);
+  
+  const id = Number(localStorage.getItem('@financeHabits:user_id'))
 
-  useEffect(() => {
-    allGroups();
-  }, []);
+  const [groupFiltered, setGroupFiltered] = useState([]);
+
+  
 
   const filteredGroup = (item) => {
     if (item === "") {
-      setGroupFiltered(groupList);
+      setGroupFiltered(groupList.filter(elem => elem.users_on_group.every(user => user.id !== id)));
     } else {
       setGroupFiltered(
-        groupList.filter(
+        groupFiltered.filter(
           (i) =>
             i.category.toLowerCase().includes(item.toLowerCase()) ||
             i.name.toLowerCase().includes(item.toLowerCase())
@@ -27,10 +31,22 @@ const PageGroup = ({ authenticated, setAuthenticated }) => {
       );
     }
   };
+  
+  useEffect(() => {
+    allGroups();
+    setGroupFiltered(groupList.filter(elem => elem.users_on_group.every(user => user.id !== id)));
 
-  // if (!authenticated) {
-  //   return <Redirect to="/" />;
-  // }
+  }, [verifySubscribeClick]);
+  
+  useEffect(() => {
+    setGroupFiltered(groupList.filter(elem => elem.users_on_group.every(user => user.id !== id)));
+
+  }, [groupList]);
+  
+
+  if (!authenticated) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>
@@ -46,7 +62,7 @@ const PageGroup = ({ authenticated, setAuthenticated }) => {
         </SubHeader>
         <Main>
           {groupFiltered.map((item) => (
-            <CardSearch item={item} key={item.id} />
+            <CardSearch item={item} key={item.id} check={setVerifySubscribeClick} itemChecked={verifySubscribeClick}/>
           ))}
         </Main>
       </DisplayContainer>

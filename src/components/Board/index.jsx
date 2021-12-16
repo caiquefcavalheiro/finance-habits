@@ -13,21 +13,21 @@ const Board = () => {
   const { userHabits, toGetHabits } = useHabits();
   const { userGroups, allGroupsUser } = useGroups();
 
-  const [habitModal, setHabitModal] = useState(false)
-  const [createGroupModal, setCreateGroupModal] = useState(false)
+  const [habitModal, setHabitModal] = useState(false);
+  const [createGroupModal, setCreateGroupModal] = useState(false);
 
   const openHabitModal = () => {
-    setHabitModal(true)
-}
+    setHabitModal(true);
+  };
 
-const openGroupModal = () => {
-    setCreateGroupModal(true)
-}
+  const openGroupModal = () => {
+    setCreateGroupModal(true);
+  };
 
-useEffect(() => {
-  allGroupsUser()
-  toGetHabits()
-}, [])
+  useEffect(() => {
+    allGroupsUser();
+    toGetHabits();
+  }, []);
 
   return (
     <BoxDashboard>
@@ -50,7 +50,10 @@ useEffect(() => {
 
       <DisplayContainer type="column">
         <SubHeader type="Group" onClick={openGroupModal} />
-        <CreateGroup createGroupModal={createGroupModal} setCreateGroupModal={setCreateGroupModal} />
+        <CreateGroup
+          createGroupModal={createGroupModal}
+          setCreateGroupModal={setCreateGroupModal}
+        />
         <ContainerColumn>
           {userGroups.map((group, index) => (
             <CardGroup key={index} group={group} />

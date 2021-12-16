@@ -38,7 +38,7 @@ const GoUpSignUp = ({ openSignup, setOpenSignup, setAuthenticated }) => {
   };
 
   return (
-    <MainContainer isOpen={openSignup} ariaHideApp={false}>
+    <MainContainer isOpen={openSignup} ariaHideApp={false} portalClassName="modal" >
       <Container>
         <Icon onClick={() => setOpenSignup(false)}>
           <FiXCircle />
