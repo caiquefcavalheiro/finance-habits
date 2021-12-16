@@ -19,7 +19,6 @@ import {
   Name,
   Edit,
   Check,
-  Wedit,
   AlignBox,
 } from "./styles";
 import educacao from "../../assets/Educacao.svg";
@@ -102,7 +101,6 @@ const CardGroup = ({ group }) => {
             <div>{category}</div>
             <BoxButton>
               <ButtonDesc onClick={remove}>Sair</ButtonDesc>
-              <Wedit />
             </BoxButton>
           </DivCattegory>
 
