@@ -26,7 +26,6 @@ export const HeaderBox = styled.div`
 
     margin-top: 5px;
   }
-
 `;
 
 export const PlusButton = styled(AiOutlinePlus)`
