@@ -5,8 +5,11 @@ import { DisplayContainer } from "../../components/DisplayContainer";
 import SubHeader from "../../components/SubHeader";
 import Header from "../../components/Header";
 import { Main } from "./style";
+import { Redirect } from "react-router-dom";
 
 const PageGroup = ({ authenticated, setAuthenticated }) => {
+  
+  const { groupList, allGroups } = useGroups();
   
   useEffect(() => {
     allGroups();
@@ -14,11 +17,7 @@ const PageGroup = ({ authenticated, setAuthenticated }) => {
 
   const id = Number(localStorage.getItem('@financeHabits:user_id'))
 
-  const { groupList, allGroups } = useGroups();
   const unsubscribedGroups = groupList.filter(elem => elem.users_on_group.every(user => user.id !== id))
-  // console.log('total',groupList)
-  // console.log('user',userGroups)
-  // console.log('unsibscribed',unsubscribedGroups)
   const [groupFiltered, setGroupFiltered] = useState(unsubscribedGroups);
 
   
@@ -37,9 +36,9 @@ const PageGroup = ({ authenticated, setAuthenticated }) => {
     }
   };
 
-  // if (!authenticated) {
-  //   return <Redirect to="/" />;
-  // }
+  if (!authenticated) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>
