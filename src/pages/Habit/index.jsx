@@ -66,7 +66,7 @@ function Habit({ authenticated, setAuthenticated }) {
               <CardsBox>
                 <CardAchieved>
                   <h2>
-                    <Edit type="habit" data={currentHabit} />
+                    <Edit type='habit' data={currentHabit}/>
                     {currentHabit.achieved ? (
                       <RefreshButton type="habits" data={currentHabit} />
                     ) : (
