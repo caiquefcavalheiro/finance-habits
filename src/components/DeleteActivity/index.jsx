@@ -1,14 +1,14 @@
-import { useGoals } from "../../providers/Goals"
+import { useactivities } from "../../providers/activities"
 import { DeleteModal } from "./styles"
 import Button from "../Button"
 import { CloseModalButton } from "../CloseModalButton"
 
 const DeleteGoal = ({deleteGoalModal, setDeleteGoalModal, data}) => {
     
-    const { toDeleteGoals } = useGoals()
+    const { toDeleteactivities } = useactivities()
 
     const handleDelete = (data) => {
-        toDeleteGoals(data)
+        toDeleteactivities(data)
         closeModal()
     }
 

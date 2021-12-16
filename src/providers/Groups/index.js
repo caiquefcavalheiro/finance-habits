@@ -78,23 +78,19 @@ export const GroupProvider = ({ children }) => {
   };
 
   const updateGroup = (data) => {
-    const { id, nameGroup, descriptionGroup } = data;
+    console.log(data)
+    const { nameGroup, descriptionGroup } = data
     api
-      .patch(
-        `/groups/${id}/`,
-        { name: nameGroup, description: descriptionGroup },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
-      .then((res) => {
-        //allGroupsUser()
-        toast.success("Suas mudanças foram salvas");
-      })
-      .catch((err) => {
-        toast.error("Ops. Algo deu errado. Tente novamente");
-      });
-  };
+    .patch(`/groups/${data.id}/`, { name: nameGroup, description: descriptionGroup },
+      { headers: { Authorization: `Bearer ${token}`} }
+    ).then( res => {
+      //allGroupsUser()
+      toast.success('Suas mudanças foram salvas')
+    }).catch( err => {
+      console.log(err)
+      toast.error('Atenção! Você não pode editar um grupo que não criou.')
+    })
+  }
 
   const subscribeGroup = (data) => {
     const { id } = data;

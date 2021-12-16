@@ -11,6 +11,7 @@ import { Redirect, useParams } from "react-router-dom";
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
+import {CgClose} from "react-icons/cg"
 import {
   CardsBox,
   CardExtra,
@@ -65,6 +66,8 @@ function Groups({ authenticated, setAuthenticated }) {
   if (!authenticated) {
     return <Redirect to="/" />;
   }
+
+  console.log(currentGroup.goals)
   return (
     <>
       <Header setAuthenticated={setAuthenticated} />
@@ -142,6 +145,11 @@ function Groups({ authenticated, setAuthenticated }) {
                               <CheckButton type="goals" data={elem} />
                             )}
                           </h2>
+                          <CgClose onClick={openDeleteGoal}/>
+                          <DeleteGoal
+                            deleteGoalModal={deleteGoalModal}
+                            setDeleteGoalModal={setDeleteGoalModal}
+                            data={elem}/>
                           <Circle
                             animate={true}
                             animationDuration="1s"
@@ -160,11 +168,6 @@ function Groups({ authenticated, setAuthenticated }) {
                             showPercentage={true} // Boolean: Show/hide percentage.
                             showPercentageSymbol={true}
                           />
-                          <button onClick={openDeleteGoal} >X</button>
-                          <DeleteGoal
-                            deleteGoalModal={deleteGoalModal}
-                            setDeleteGoalModal={setDeleteGoalModal}
-                            data={elem}/>
                         </Collapsible>
                       );
                     })}
