@@ -47,9 +47,9 @@ export const Row = styled.div`
 `;
 
 export const Grid = styled.div`
-  min-height: 445px;
+  height: 500px;
   background: #d2d2d233;
-  width: 270px;
+  width: 288px;
   border-radius: 8px;
   padding: 1rem;
   display: flex;
@@ -59,15 +59,16 @@ export const Grid = styled.div`
   margin: 20px auto;
 
   @media (min-width: 600px) {
-    width: 385px;
+    height: 790px;
+    width: 394px;
   }
 
   @media (min-width: 800px) {
-    width: 726px;
+    width: 746px;
   }
 
   @media (min-width: 1200px) {
-    width: 1080px;
+    width: 1100px;
   }
 `;
 
