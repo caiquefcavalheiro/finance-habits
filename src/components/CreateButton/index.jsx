@@ -3,11 +3,13 @@ import { useState } from "react";
 import CreateHabit from "../CreateHabit";
 import CreateGroup from "../CreateGroup";
 import { CreateGouls } from "../CreateGouls";
+import { CreateActivities } from "../CreateActivities";
 
 export const CreateButton = ({ type }) => {
   const [habitModal, setHabitModal] = useState(false);
   const [createGroupModal, setCreateGroupModal] = useState(false);
   const [goalModal, setGoalModal] = useState(false);
+  const [activitiesModal, setActivitiesModal] = useState(false);
 
   const openHabitModal = () => {
     setHabitModal(true);
@@ -21,6 +23,10 @@ export const CreateButton = ({ type }) => {
     setGoalModal(true);
   };
 
+  const openActivitiesModal = () => {
+    setActivitiesModal(true);
+  };
+
   return (
     <>
       {type === "Habit" ? (
@@ -30,7 +36,7 @@ export const CreateButton = ({ type }) => {
       ) : type === "Goals" ? (
         <PlusButton onClick={openGoalModal} />
       ) : type === "Activities" ? (
-        <PlusButton onClick={() => console.log("Activities")} />
+        <PlusButton onClick={openActivitiesModal} />
       ) : (
         <></>
       )}
@@ -40,6 +46,10 @@ export const CreateButton = ({ type }) => {
         setCreateGroupModal={setCreateGroupModal}
       />
       <CreateGouls goalModal={goalModal} setGoalModal={setGoalModal} />
+      <CreateActivities
+        activitiesModal={activitiesModal}
+        setActivitiesModal={setActivitiesModal}
+      />
     </>
   );
 };
