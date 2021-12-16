@@ -40,7 +40,6 @@ export const HabitProvider = ({ children }) => {
         toast.success("Seu hábito foi criado!");
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Ops. Algo deu errado. Tente novamente.");
       });
   };
@@ -56,7 +55,6 @@ export const HabitProvider = ({ children }) => {
         toast.success("Hábito apagado!");
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Ops. Algo deu errado. Tente novamente.");
       });
   };
