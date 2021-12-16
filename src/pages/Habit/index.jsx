@@ -22,14 +22,13 @@ import { BoxDashboard } from "../../components/Board/style";
 import { useEffect } from "react";
 import Edit from "../../components/Edit";
 
-function Habit({authenticated, setAuthenticated}) {
+function Habit({ authenticated, setAuthenticated }) {
   const { userHabits, toGetHabits } = useHabits();
   const params = useParams();
 
   useEffect(() => {
-    toGetHabits()
-  },[])
-
+    toGetHabits();
+  }, []);
 
   const currentHabit = userHabits.find((elem) => elem.id === Number(params.id));
   const currentHabitIndex = userHabits.indexOf(currentHabit);
@@ -66,7 +65,6 @@ function Habit({authenticated, setAuthenticated}) {
               <SubHeader tittle={currentHabit.title} />
               <CardsBox>
                 <CardAchieved>
-                
                   <h2>
                     <Edit type='habit' data={currentHabit}/>
                     {currentHabit.achieved ? (
