@@ -11,6 +11,7 @@ import { Redirect, useParams } from "react-router-dom";
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
+import {CgClose} from "react-icons/cg"
 import {
   CardsBox,
   CardExtra,
@@ -26,6 +27,7 @@ import { BoxDashboard } from "../../components/Board/style";
 import { useGroups } from "../../providers/Groups";
 import RefreshButton from "../../components/RefreshButton";
 import { CreateButton } from "../../components/CreateButton";
+import DeleteGoal from "../../components/DeleteGoal";
 import Remove from '../../components/Remove'
 
 function Groups({ authenticated, setAuthenticated }) {
@@ -35,6 +37,12 @@ function Groups({ authenticated, setAuthenticated }) {
 
   const currentGroup = userGroups.find((elem) => elem.id === Number(params.id));
   const currentGroupIndex = userGroups.indexOf(currentGroup);
+
+  const [deleteGoalModal, setDeleteGoalModal] = useState(false)
+
+  const openDeleteGoal = () => {
+    setDeleteGoalModal(true)
+  }
 
   useEffect(() => {
     function handleResize() {
@@ -59,6 +67,8 @@ function Groups({ authenticated, setAuthenticated }) {
   if (!authenticated) {
     return <Redirect to="/" />;
   }
+
+  console.log(currentGroup.goals)
   return (
     <>
       <Header setAuthenticated={setAuthenticated} />
@@ -138,7 +148,12 @@ function Groups({ authenticated, setAuthenticated }) {
                             ) : (
                               <CheckButton type="goals" data={elem} />
                             )}
+                            <CgClose onClick={openDeleteGoal}/>
                           </h2>
+                          <DeleteGoal
+                            deleteGoalModal={deleteGoalModal}
+                            setDeleteGoalModal={setDeleteGoalModal}
+                            data={elem}/>
                           <Circle
                             animate={true}
                             animationDuration="1s"
@@ -171,7 +186,7 @@ function Groups({ authenticated, setAuthenticated }) {
           </SecondaryContainer>
         </DisplayContainer>
       </BoxDashboard>
-    </>
+      </>
   );
 }
 
