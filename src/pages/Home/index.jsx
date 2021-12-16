@@ -57,7 +57,6 @@ const Home = ({ authenticated, setAuthenticated }) => {
         <GoUpSignIn
           openSignin={signin}
           setOpenSignin={setSignin}
-          setAuthenticated={setAuthenticated}
         />
         <GoUpSignUp
           openSignup={signup}

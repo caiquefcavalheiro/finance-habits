@@ -8,7 +8,7 @@ import Button from "../Button";
 import { Container, Icon, MainContainer } from "./style";
 import { SigninContext } from "../../providers/SignIn";
 
-const GoUpSignIn = ({ openSignin, setOpenSignin, setAuthenticated }) => {
+const GoUpSignIn = ({ openSignin, setOpenSignin }) => {
   const { toLogin } = useContext(SigninContext);
 
   const schema = yup.object().shape({
@@ -26,7 +26,6 @@ const GoUpSignIn = ({ openSignin, setOpenSignin, setAuthenticated }) => {
 
   const onSignIn = (data) => {
     toLogin(data);
-    setAuthenticated(true);
   };
 
   return (
