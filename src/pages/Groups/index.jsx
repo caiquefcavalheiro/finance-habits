@@ -39,6 +39,7 @@ function Groups({ authenticated, setAuthenticated }) {
   const currentGroupIndex = userGroups.indexOf(currentGroup);
 
   const [deleteGoalModal, setDeleteGoalModal] = useState(false)
+  const [deleteActvModal, setDeleteActvModal] = useState(false)
 
   const openDeleteGoal = () => {
     setDeleteGoalModal(true)
@@ -105,7 +106,7 @@ function Groups({ authenticated, setAuthenticated }) {
                       currentGroup.activities.map((elem) => {
                         return (
                           <MiniCard key={elem.id}>
-                            <Remove type='activitie' data={elem.id} />
+                            <Remove type='activitie' data={elem} />
                             <p>{elem.title}</p>
                             <p>
                               Criado:{" "}

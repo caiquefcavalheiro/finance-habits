@@ -66,12 +66,11 @@ export const ActiviesProvider = ({ children }) => {
   }
 
   function toDeleteActivities(data) {
-
-    console.log(data)
+    const { id } = data 
     api
-      .delete(`/activities/${data}/`, {
+      .delete(`/activities/${id}/`, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`
         },
       })
       .then((res) => {
