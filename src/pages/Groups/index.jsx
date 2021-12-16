@@ -144,8 +144,8 @@ function Groups({ authenticated, setAuthenticated }) {
                             ) : (
                               <CheckButton type="goals" data={elem} />
                             )}
+                            <CgClose onClick={openDeleteGoal}/>
                           </h2>
-                          <CgClose onClick={openDeleteGoal}/>
                           <DeleteGoal
                             deleteGoalModal={deleteGoalModal}
                             setDeleteGoalModal={setDeleteGoalModal}
