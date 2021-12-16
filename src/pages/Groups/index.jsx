@@ -11,7 +11,7 @@ import { Redirect, useParams } from "react-router-dom";
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
-import {CgClose} from "react-icons/cg"
+import { CgClose } from "react-icons/cg";
 import {
   CardsBox,
   CardExtra,
@@ -19,6 +19,7 @@ import {
   MiniCard,
   ScrollBox,
   SupportHeader,
+  ContainerButtonsActivities,
 } from "./style";
 import { BoxImage, Image } from "../../components/CardGroup/styles";
 import CheckButton from "../../components/CheckButton";
@@ -27,7 +28,7 @@ import { useGroups } from "../../providers/Groups";
 import RefreshButton from "../../components/RefreshButton";
 import { CreateButton } from "../../components/CreateButton";
 import DeleteGoal from "../../components/DeleteGoal";
-import Remove from '../../components/Remove'
+import Remove from "../../components/Remove";
 
 function Groups({ authenticated, setAuthenticated }) {
   const params = useParams();
@@ -37,12 +38,11 @@ function Groups({ authenticated, setAuthenticated }) {
   const currentGroup = userGroups.find((elem) => elem.id === Number(params.id));
   const currentGroupIndex = userGroups.indexOf(currentGroup);
 
-  const [deleteGoalModal, setDeleteGoalModal] = useState(false)
-
+  const [deleteGoalModal, setDeleteGoalModal] = useState(false);
 
   const openDeleteGoal = () => {
-    setDeleteGoalModal(true)
-  }
+    setDeleteGoalModal(true);
+  };
 
   useEffect(() => {
     function handleResize() {
@@ -84,8 +84,8 @@ function Groups({ authenticated, setAuthenticated }) {
               <SubHeader tittle={currentGroup.name} />
               <CardsBox>
                 <CardInfo>
-                  <div style={{display: 'flex', justifyContent: 'end'}}>
-                    <Edit type="groups" data={currentGroup}/>
+                  <div style={{ display: "flex", justifyContent: "end" }}>
+                    <Edit type="groups" data={currentGroup} />
                   </div>
                   <p>Categoria: {currentGroup.category}</p>
                   <p>Descrição: {currentGroup.description}</p>
@@ -104,16 +104,19 @@ function Groups({ authenticated, setAuthenticated }) {
                       currentGroup.activities.map((elem) => {
                         return (
                           <MiniCard key={elem.id}>
-                            <Remove type='activitie' data={elem} />
-                            <p>{elem.title}</p>
+                            <ContainerButtonsActivities>
+                              <Edit type="activities" data={elem} />
+                              <Remove type="activitie" data={elem} />
+                            </ContainerButtonsActivities>
                             <p>
-                              Criado:{" "}
+                              Criado:
                               {`${new Date(elem.realization_time).getDate()}/${
                                 new Date(elem.realization_time).getMonth() + 1
                               }/${new Date(
                                 elem.realization_time
                               ).getFullYear()}`}
                             </p>
+                            <p>{elem.title}</p>
                           </MiniCard>
                         );
                       })}
@@ -147,12 +150,13 @@ function Groups({ authenticated, setAuthenticated }) {
                             ) : (
                               <CheckButton type="goals" data={elem} />
                             )}
-                            <CgClose onClick={openDeleteGoal}/>
+                            <CgClose onClick={openDeleteGoal} />
                           </h2>
                           <DeleteGoal
                             deleteGoalModal={deleteGoalModal}
                             setDeleteGoalModal={setDeleteGoalModal}
-                            data={elem}/>
+                            data={elem}
+                          />
                           <Circle
                             animate={true}
                             animationDuration="1s"
@@ -185,7 +189,7 @@ function Groups({ authenticated, setAuthenticated }) {
           </SecondaryContainer>
         </DisplayContainer>
       </BoxDashboard>
-      </>
+    </>
   );
 }
 
