@@ -1,28 +1,15 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 import toast from "react-hot-toast";
 import api from "../../services/api";
+import { useGroups } from "../Groups";
+import { useSignin } from "../SignIn";
 
 const GoalsContext = createContext();
 
 export const GoalsProvider = ({ children }) => {
-  const token = localStorage.getItem("@financeHabits:token");
+  const {token} = useSignin();
 
-  const [userGroups, setUserGroups] = useState(JSON.parse(localStorage.getItem('@financeHabits:userGroups')) || [])
-
-  const allGroupsUser = () => {
-    api
-    .get(`/groups/subscriptions/`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((res) => {
-      localStorage.setItem(
-        "@financeHabits:userGroups",
-        JSON.stringify(res.data)
-      )
-      setUserGroups(res.data)
-    })
-    .catch((err) => console.log(err))
-  }
+  const {allGroupsUser} = useGroups();
 
   const createGoals = ( data ) => {
     api.post('/goals', data, 
@@ -35,7 +22,7 @@ export const GoalsProvider = ({ children }) => {
     })
   }
 
-  function toUpdateGoals(data) {// corrgir função
+  function toUpdateGoals(data) {
     const { id, difficultyGoal, titleGoal } = data;
 
     api.patch(

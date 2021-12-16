@@ -5,7 +5,6 @@ import { DisplayContainer } from "../../components/DisplayContainer";
 import SubHeader from "../../components/SubHeader";
 import Header from "../../components/Header";
 import { Main } from "./style";
-import { Redirect } from "react-router-dom";
 
 const PageGroup = ({ authenticated, setAuthenticated }) => {
   const { groupList, allGroups } = useGroups();

@@ -29,9 +29,6 @@ const Home = ({ authenticated, setAuthenticated }) => {
               Crie hábitos personalizados e se junte a grupos com pessoas com as
               mesmas metas que você
             </h2>
-            <Button white onClick={() => console.log()}>
-              Explore
-            </Button>
           </div>
           <div className="group2">
             <img src={figureHome} alt="figure"></img>

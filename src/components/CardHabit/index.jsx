@@ -14,9 +14,7 @@ import {
   DivCattegory,
   BoxImage,
   Name,
-  // Edit,
   Close,
-  // Wedit,
   Wclose,
 } from "../CardGroup/styles";
 import educacao from "../../assets/Educacao.svg";
@@ -30,7 +28,6 @@ const CardHabitCard = (data) => {
   const { title, category, difficulty, frequency, id } = data;
 
   const [deleteModal, setDeleteModal] = useState(false);
-  const [editModal, setEditModal] = useState(false);
   const [pop, setPop] = useState(false);
   const [anchor, setAnchor] = useState("");
   const history = useHistory();
@@ -87,7 +84,7 @@ const CardHabitCard = (data) => {
             <DescPop>Frequência: {frequency}</DescPop>
             <BoxButton>
               <div>
-                <Edit setEditModal={setEditModal} type="habit" data={data} />
+                <Edit type="habit" data={data} />
                 <Check />
                 <Close onClick={openModal} />
               </div>

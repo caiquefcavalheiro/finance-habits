@@ -73,6 +73,7 @@ function Groups({ authenticated, setAuthenticated }) {
               <SubHeader tittle={currentGroup.name} />
               <CardsBox>
                 <CardInfo>
+                  <Edit type="groups" data={currentGroup} />
                   <p>Categoria: {currentGroup.category}</p>
                   <p>Descrição: {currentGroup.description}</p>
                   <p className="title">Título: {currentGroup.name}</p>
@@ -91,7 +92,7 @@ function Groups({ authenticated, setAuthenticated }) {
                         return (
                           <MiniCard key={elem.id}>
                             <p>{elem.title}</p>
-                            <p>Criado: {elem.realization_time}</p>
+                            <p>Criado: {`${new Date(elem.realization_time).getDate()}/${(new Date(elem.realization_time).getMonth() + 1)}/${new Date(elem.realization_time).getFullYear()}`}</p>
                           </MiniCard>
                         );
                       })}

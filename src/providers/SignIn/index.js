@@ -9,6 +9,7 @@ export const SigninContext = createContext();
 
 export const SigninProvider = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(false);
+  const [token, setToken] = useState(localStorage.getItem("@financeHabits:token") || '');
   const history = useHistory();
 
   const toLogin = (data) => {
@@ -18,6 +19,7 @@ export const SigninProvider = ({ children }) => {
         const { access } = res.data;
         const { user_id } = jwtDecode(access);
 
+        setToken(access)
         localStorage.clear();
         localStorage.setItem("@financeHabits:token", access);
         localStorage.setItem("@financeHabits:user_id", JSON.stringify(user_id));
@@ -66,7 +68,7 @@ export const SigninProvider = ({ children }) => {
   };
 
   return (
-    <SigninContext.Provider value={{ toLogin, authenticated, setAuthenticated }}>
+    <SigninContext.Provider value={{ toLogin, authenticated, setAuthenticated, token, setToken }}>
       {children}
     </SigninContext.Provider>
   );

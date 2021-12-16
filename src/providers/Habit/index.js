@@ -1,11 +1,12 @@
 import { createContext, useContext, useState } from "react";
 import api from "../../services/api";
 import toast from "react-hot-toast";
+import { useSignin } from "../SignIn";
 
 export const HabitContext = createContext();
 
 export const HabitProvider = ({ children }) => {
-  const token = localStorage.getItem("@financeHabits:token");
+  const {token} = useSignin();
 
   const [userHabits, setUserHabits] = useState(
     JSON.parse(localStorage.getItem("@financeHabits:userHabits")) || []

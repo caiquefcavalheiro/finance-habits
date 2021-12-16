@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import toast from "react-hot-toast";
+import { useSignin } from "../SignIn";
 
 export const GroupsContext = createContext();
 
 export const GroupProvider = ({ children }) => {
-  const token = localStorage.getItem("@financeHabits:token");
-
+  const {token} = useSignin();
+  
   const [groupList, setGroupList] = useState(
     JSON.parse(localStorage.getItem("@financeHabits:groupList")) || []
   );

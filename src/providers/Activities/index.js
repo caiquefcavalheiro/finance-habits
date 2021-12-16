@@ -1,28 +1,15 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 import api from "../../services/api";
 import toast from "react-hot-toast";
+import { useSignin } from "../SignIn";
+import { useGroups } from "../Groups";
 
 const ActivitiesContext = createContext();
 
 export const ActiviesProvider = ({ children }) => {
-  const token = localStorage.getItem("@financeHabits:token")
+  const {token} = useSignin();
 
-  const [userGroups, setUserGroups] = useState(JSON.parse(localStorage.getItem('@financeHabits:userGroups')) || [])
-
-  const allGroupsUser = () => {
-    api
-    .get(`/groups/subscriptions/`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((res) => {
-      localStorage.setItem(
-        "@financeHabits:userGroups",
-        JSON.stringify(res.data)
-      )
-      setUserGroups(res.data)
-    })
-    .catch((err) => console.log(err))
-  }
+  const {allGroupsUser} = useGroups();
 
   function toUpdateActivies(data) {
     const { nameActivity, id } = data;
