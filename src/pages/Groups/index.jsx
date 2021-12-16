@@ -16,7 +16,6 @@ import {
   CardsBox,
   CardExtra,
   CardInfo,
-  Icon,
   MiniCard,
   ScrollBox,
   SupportHeader,
@@ -39,6 +38,7 @@ function Groups({ authenticated, setAuthenticated }) {
   const currentGroupIndex = userGroups.indexOf(currentGroup);
 
   const [deleteGoalModal, setDeleteGoalModal] = useState(false)
+
 
   const openDeleteGoal = () => {
     setDeleteGoalModal(true)
@@ -68,7 +68,6 @@ function Groups({ authenticated, setAuthenticated }) {
     return <Redirect to="/" />;
   }
 
-  console.log(currentGroup.goals)
   return (
     <>
       <Header setAuthenticated={setAuthenticated} />
@@ -105,7 +104,7 @@ function Groups({ authenticated, setAuthenticated }) {
                       currentGroup.activities.map((elem) => {
                         return (
                           <MiniCard key={elem.id}>
-                            <Remove type='activitie' data={elem.id} />
+                            <Remove type='activitie' data={elem} />
                             <p>{elem.title}</p>
                             <p>
                               Criado:{" "}
