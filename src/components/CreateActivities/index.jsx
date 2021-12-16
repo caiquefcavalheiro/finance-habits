@@ -57,7 +57,7 @@ export const CreateActivities = ({ activitiesModal, setActivitiesModal }) => {
             fullWidth
           />
 
-          <Button type="submit">Criar meta</Button>
+          <div><Button type="submit">Criar atividade</Button></div>
         </form>
       </ActivitiesModal>
     </>
