@@ -10,24 +10,20 @@ import { Redirect } from "react-router-dom";
 const PageGroup = ({ authenticated, setAuthenticated }) => {
   
   const { groupList, allGroups } = useGroups();
+  const [verifySubscribeClick, setVerifySubscribeClick] = useState(false);
   
-  useEffect(() => {
-    allGroups();
-  }, []);
-
   const id = Number(localStorage.getItem('@financeHabits:user_id'))
 
-  const unsubscribedGroups = groupList.filter(elem => elem.users_on_group.every(user => user.id !== id))
-  const [groupFiltered, setGroupFiltered] = useState(unsubscribedGroups);
+  const [groupFiltered, setGroupFiltered] = useState([]);
 
   
 
   const filteredGroup = (item) => {
     if (item === "") {
-      setGroupFiltered(unsubscribedGroups);
+      setGroupFiltered(groupList.filter(elem => elem.users_on_group.every(user => user.id !== id)));
     } else {
       setGroupFiltered(
-        unsubscribedGroups.filter(
+        groupFiltered.filter(
           (i) =>
             i.category.toLowerCase().includes(item.toLowerCase()) ||
             i.name.toLowerCase().includes(item.toLowerCase())
@@ -35,6 +31,18 @@ const PageGroup = ({ authenticated, setAuthenticated }) => {
       );
     }
   };
+  
+  useEffect(() => {
+    allGroups();
+    setGroupFiltered(groupList.filter(elem => elem.users_on_group.every(user => user.id !== id)));
+
+  }, [verifySubscribeClick]);
+  
+  useEffect(() => {
+    setGroupFiltered(groupList.filter(elem => elem.users_on_group.every(user => user.id !== id)));
+
+  }, [groupList]);
+  
 
   if (!authenticated) {
     return <Redirect to="/" />;
@@ -54,7 +62,7 @@ const PageGroup = ({ authenticated, setAuthenticated }) => {
         </SubHeader>
         <Main>
           {groupFiltered.map((item) => (
-            <CardSearch item={item} key={item.id} />
+            <CardSearch item={item} key={item.id} check={setVerifySubscribeClick} itemChecked={verifySubscribeClick}/>
           ))}
         </Main>
       </DisplayContainer>

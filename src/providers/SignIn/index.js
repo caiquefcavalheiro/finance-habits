@@ -8,7 +8,7 @@ import { useState } from "react";
 export const SigninContext = createContext();
 
 export const SigninProvider = ({ children }) => {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(!!localStorage.getItem("@financeHabits:token"));
   const [token, setToken] = useState(localStorage.getItem("@financeHabits:token") || '');
   const history = useHistory();
 

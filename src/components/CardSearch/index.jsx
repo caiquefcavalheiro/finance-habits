@@ -23,7 +23,7 @@ import investimento from "../../assets/Investimento.svg";
 import poupanca from "../../assets/Poupanca.svg";
 import { useGroups } from "../../providers/Groups";
 
-const CardSearch = ({ item }) => {
+const CardSearch = ({ item, check, itemChecked }) => {
   const [pop, setPop] = useState(false);
   const [anchor, setAnchor] = useState("");
   const { subscribeGroup } = useGroups()
@@ -41,6 +41,11 @@ const CardSearch = ({ item }) => {
       return educacao;
     }
   };
+
+  const handleSubscribe = () => {
+    subscribeGroup(item);
+    check(!itemChecked)
+  }
 
   return (
     <>
@@ -71,7 +76,7 @@ const CardSearch = ({ item }) => {
           >
             <DescPop>{description}</DescPop>
             <BoxButton>
-              <ButtonPop onClick={() => subscribeGroup(item)}>inscreva-se</ButtonPop>
+              <ButtonPop onClick={handleSubscribe}>inscreva-se</ButtonPop>
             </BoxButton>
           </PopBox>
         </PopOVER>
@@ -81,7 +86,7 @@ const CardSearch = ({ item }) => {
         <DivCattegory>
           <div>{category}</div>
           <BoxButton>
-            <ButtonDesc onClick={() => subscribeGroup(item)}>inscreva-se</ButtonDesc>
+            <ButtonDesc onClick={handleSubscribe}>inscreva-se</ButtonDesc>
           </BoxButton>
         </DivCattegory>
 
