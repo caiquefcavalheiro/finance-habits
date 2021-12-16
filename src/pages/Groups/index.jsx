@@ -19,6 +19,8 @@ import {
   MiniCard,
   ScrollBox,
   SupportHeader,
+  EditIcon,
+  Description,
 } from "./style";
 import { BoxImage, Image } from "../../components/CardGroup/styles";
 import CheckButton from "../../components/CheckButton";
@@ -84,13 +86,13 @@ function Groups({ authenticated, setAuthenticated }) {
               <SubHeader tittle={currentGroup.name} />
               <CardsBox>
                 <CardInfo>
-                  <div style={{display: 'flex', justifyContent: 'end'}}>
+                  <EditIcon >
                     <Edit type="groups" data={currentGroup}/>
-                  </div>
-                  <p>Categoria: {currentGroup.category}</p>
-                  <p>Descrição: {currentGroup.description}</p>
-                  <p className="title">Título: {currentGroup.name}</p>
-                  <BoxImage className="desktop">
+                  </EditIcon>
+                  <p><span className='mobile'>Categoria: </span>{currentGroup.category}</p>
+                  <Description><span className='mobile'>Descrição: </span>{currentGroup.description}</Description>
+                  <p className="title">{currentGroup.name}</p>
+                  <BoxImage className="desktop image">
                     <Image src={getTheme()} alt={currentGroup.title} />
                   </BoxImage>
                 </CardInfo>
@@ -119,7 +121,7 @@ function Groups({ authenticated, setAuthenticated }) {
                       })}
                   </ScrollBox>
 
-                  <BoxImage className="desktop">
+                  <BoxImage className="desktop image">
                     <Image src={getTheme()} alt={currentGroup.title} />
                   </BoxImage>
                 </CardExtra>
@@ -176,7 +178,7 @@ function Groups({ authenticated, setAuthenticated }) {
                     })}
                   </ScrollBox>
 
-                  <BoxImage className="desktop">
+                  <BoxImage className="desktop image">
                     <Image src={getTheme()} alt={currentGroup.title} />
                   </BoxImage>
                 </CardExtra>

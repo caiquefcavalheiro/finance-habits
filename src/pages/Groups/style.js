@@ -12,7 +12,15 @@ export const CardsBox = styled.div`
         width: 100%;
         justify-content: space-around;
 
+        .mobile{
+            display: none;
+        }
+
         .desktop{
+            display: initial;
+        }
+
+        .image{
             display: flex;
             justify-content: center;
             align-items: center;
@@ -25,15 +33,14 @@ export const CardsBox = styled.div`
 
 export const CardInfo = styled(Card)`
     color: var(--color-primary-blue);
-    margin-top: 20px;
+    margin: 20px 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0 10px;
+    position: relative;
+    /* padding: 0 10px; */
     
-    p{
-        margin-bottom: 10px;
-    }
+    
 
     .title{
         display: none;
@@ -47,7 +54,28 @@ export const CardInfo = styled(Card)`
         
         .title{
             display: initial;
+            width: 285px;
         }
+    }
+`
+export const EditIcon = styled.div`
+    height: 40px;
+    text-align: center;
+
+    svg{
+        font-size: 30px;
+    }
+
+    @media screen and (min-width: 600px){
+        width: 40px;
+        position: absolute;
+        right: 10px
+    }
+`
+export const Description = styled.p`
+    @media screen and (min-width: 600px){
+        font-size: 18px;
+        margin-left: 10px;
     }
 `
 
