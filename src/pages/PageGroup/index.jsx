@@ -7,19 +7,28 @@ import Header from "../../components/Header";
 import { Main } from "./style";
 
 const PageGroup = ({ authenticated, setAuthenticated }) => {
-  const { groupList, allGroups } = useGroups();
-  const [groupFiltered, setGroupFiltered] = useState(groupList);
-
+  
   useEffect(() => {
     allGroups();
   }, []);
 
+  const id = Number(localStorage.getItem('@financeHabits:user_id'))
+
+  const { groupList, allGroups } = useGroups();
+  const unsubscribedGroups = groupList.filter(elem => elem.users_on_group.every(user => user.id !== id))
+  // console.log('total',groupList)
+  // console.log('user',userGroups)
+  // console.log('unsibscribed',unsubscribedGroups)
+  const [groupFiltered, setGroupFiltered] = useState(unsubscribedGroups);
+
+  
+
   const filteredGroup = (item) => {
     if (item === "") {
-      setGroupFiltered(groupList);
+      setGroupFiltered(unsubscribedGroups);
     } else {
       setGroupFiltered(
-        groupList.filter(
+        unsubscribedGroups.filter(
           (i) =>
             i.category.toLowerCase().includes(item.toLowerCase()) ||
             i.name.toLowerCase().includes(item.toLowerCase())
