@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Edit from "../../components/Edit";
 
 export const SecondaryContainer = styled.div`
   display: flex;

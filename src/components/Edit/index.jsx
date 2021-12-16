@@ -102,13 +102,16 @@ function Edit({ type, data }) {
     data.title === undefined ? "" : data.title
   );
   const [activitiesName, setActivitiesName] = useState(
-    data.name === undefined ? "" : data.name
+    data.title === undefined ? "" : data.title
   );
 
   return (
     <>
-      <FiEdit onClick={clickIcon} style={{cursor: 'pointer', color: '#0090Ad'}} />
-      
+      <FiEdit
+        onClick={clickIcon}
+        style={{ cursor: "pointer", color: "#0090Ad" }}
+      />
+
       <ReactModalStyled
         isOpen={openModal}
         onRequestClose={() => setopenModal(false)}

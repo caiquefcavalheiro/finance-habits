@@ -34,19 +34,14 @@ export const ActiviesProvider = ({ children }) => {
   }
 
   function toCreateActivities(data) {
-    console.log({data});
-    
+    console.log({ data });
 
     api
-      .post(
-        "/activities/",
-         data ,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      .post("/activities/", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         allGroupsUser();
         toast.success("Atividade criada com sucesso!");
@@ -69,11 +64,11 @@ export const ActiviesProvider = ({ children }) => {
   }
 
   function toDeleteActivities(data) {
-    const { id } = data 
+    const { id } = data;
     api
       .delete(`/activities/${id}/`, {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
