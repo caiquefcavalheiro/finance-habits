@@ -78,15 +78,17 @@ export const GroupProvider = ({ children }) => {
   };
 
   const updateGroup = (data) => {
+    console.log(data)
+    const { nameGroup, descriptionGroup } = data
     api
-    .post(`/groups/${data.id}`, data,
+    .patch(`/groups/${data.id}/`, { name: nameGroup, description: descriptionGroup },
       { headers: { Authorization: `Bearer ${token}`} }
     ).then( res => {
       //allGroupsUser()
       toast.success('Suas mudanças foram salvas')
     }).catch( err => {
       console.log(err)
-      toast.error('Ops. Algo deu errado. Tente novamente')
+      toast.error('Atenção! Você não pode editar um grupo que não criou.')
     })
   }
 
