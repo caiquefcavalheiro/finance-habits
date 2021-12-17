@@ -1,4 +1,4 @@
-import { HeaderBox } from "./style";
+import { HeaderBox, HeaderSearch } from "./style";
 import { CreateButton } from "../CreateButton";
 
 const SubHeader = ({ type, tittle = "", children, onClick }) => {
@@ -14,6 +14,11 @@ const SubHeader = ({ type, tittle = "", children, onClick }) => {
           Meus Grupos
           <CreateButton type={type} />
         </HeaderBox>
+      ) : type === 'search' ? (
+        <HeaderSearch>
+          {tittle}
+          {children}
+        </HeaderSearch>
       ) : (
         <HeaderBox>
           {tittle}
