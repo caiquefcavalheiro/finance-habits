@@ -1,5 +1,12 @@
 import styled from "styled-components";
 import { Card } from "../Habit/style";
+import {CgClose} from "react-icons/cg"
+
+export const Close = styled(CgClose)`
+  color: var(--color-dark-blue);
+  margin: auto 95%;
+  cursor: pointer;
+`
 
 export const CardsBox = styled.div`
   display: flex;
