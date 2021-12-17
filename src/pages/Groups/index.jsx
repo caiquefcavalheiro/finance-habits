@@ -41,14 +41,15 @@ function Groups({ authenticated, setAuthenticated }) {
   const currentGroupIndex = userGroups.indexOf(currentGroup);
 
   const [deleteGoalModal, setDeleteGoalModal] = useState(false)
-  const [deleteActModal, setDeleteActModal] = useState(false)
 
   const openDeleteGoal = () => {
     setDeleteGoalModal(true)
   }
 
+  const [deleteActivityModal, setDeleteActivityModal,] = useState(false)
+
   const openDeleteAct = () => {
-    setDeleteActModal(true)
+    setDeleteActivityModal(true)
   }
 
   useEffect(() => {
@@ -109,13 +110,13 @@ function Groups({ authenticated, setAuthenticated }) {
                   <ScrollBox>
                     {currentGroup.activities.length > 0 &&
                       currentGroup.activities.map((elem) => {
-                        <DeleteActivity 
-                        deleteActModal={deleteActModal} 
-                        setDeleteActModal={setDeleteActModal} 
-                        data={elem} />
                         return (
                           <MiniCard key={elem.id}>
-                            <Close onClick={openDeleteAct} />
+                          <Close onClick={openDeleteAct} />
+                          <DeleteActivity 
+                          deleteActivityModal={deleteActivityModal} 
+                          setDeleteActivityModal={setDeleteActivityModal} 
+                          data={elem} />
                             <p>{elem.title}</p>
                             <p>
                               Criado:{" "}

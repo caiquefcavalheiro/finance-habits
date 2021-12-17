@@ -1,10 +1,9 @@
 import { useActivies } from "../../providers/Activities"
+import { DeleteModal } from "./styles"
 import Button from "../Button"
 import { CloseModalButton } from "../CloseModalButton"
-import { DeleteModal } from "./styles"
 
-const DeleteActivity = ({ deleteActModal, setDeleteActModal, data }) => {
-    
+const DeleteActivity = ({deleteActivityModal, setDeleteActivityModal, data}) => {
     const { toDeleteActivities } = useActivies()
 
     const handleDelete = (data) => {
@@ -13,20 +12,21 @@ const DeleteActivity = ({ deleteActModal, setDeleteActModal, data }) => {
     }
 
     const closeModal = () => {
-        setDeleteActModal(false)
+        setDeleteActivityModal(false)
     }
+    
     return (
         <DeleteModal
-            isOpen={deleteActModal}
-            ariaHideApp={false}
+        isOpen={deleteActivityModal}
+        ariaHideApp={false}
         >
-            <CloseModalButton onClick={closeModal} >
-                <section>
-                    <div>Deseja deletar a atividade?</div>
-                    <Button onClick={() => handleDelete(data)} >Deletar</Button>
-                </section>
-            </CloseModalButton>
+            <CloseModalButton onClick={closeModal}/>
+            <section>
+            <div>Deseja deletar a atividade?</div>
+            <Button onClick={() => handleDelete(data)} >Deletar</Button>
+            </section>
         </DeleteModal>
     )
 }
+
 export default DeleteActivity

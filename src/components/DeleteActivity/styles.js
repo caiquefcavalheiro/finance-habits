@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import ReactModal from "react-modal"
+import styled from "styled-components";
+import ReactModal from "react-modal";
 
 export const DeleteModal = styled(ReactModal)`
     position: fixed;
