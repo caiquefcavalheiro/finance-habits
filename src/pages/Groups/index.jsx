@@ -5,7 +5,7 @@ import Edit from "../../components/Edit";
 import Header from "../../components/Header";
 import SubHeader from "../../components/SubHeader";
 import { DisplayContainer } from "../../components/DisplayContainer";
-import { SecondaryContainer } from "../Habit/style";
+import { IconsBox, SecondaryContainer } from "../Habit/style";
 import ListNavButtons from "../../components/ListNavButtons";
 import { Redirect, useParams } from "react-router-dom";
 import educacao from "../../assets/Educacao.svg";
@@ -19,6 +19,8 @@ import {
   MiniCard,
   ScrollBox,
   SupportHeader,
+  EditIcon,
+  Description,
   ContainerButtonsActivities,
 } from "./style";
 import { BoxImage, Image } from "../../components/CardGroup/styles";
@@ -84,13 +86,13 @@ function Groups({ authenticated, setAuthenticated }) {
               <SubHeader tittle={currentGroup.name} />
               <CardsBox>
                 <CardInfo>
-                  <div style={{ display: "flex", justifyContent: "end" }}>
-                    <Edit type="groups" data={currentGroup} />
-                  </div>
-                  <p>Categoria: {currentGroup.category}</p>
-                  <p>Descrição: {currentGroup.description}</p>
-                  <p className="title">Título: {currentGroup.name}</p>
-                  <BoxImage className="desktop">
+                  <EditIcon >
+                    <Edit type="groups" data={currentGroup}/>
+                  </EditIcon>
+                  <p><span className='mobile'>Categoria: </span>{currentGroup.category}</p>
+                  <Description><span className='mobile'>Descrição: </span>{currentGroup.description}</Description>
+                  <p className="title">{currentGroup.name}</p>
+                  <BoxImage className="desktop image">
                     <Image src={getTheme()} alt={currentGroup.title} />
                   </BoxImage>
                 </CardInfo>
@@ -110,7 +112,7 @@ function Groups({ authenticated, setAuthenticated }) {
                             </ContainerButtonsActivities>
                             <p>
                               Criado:
-                              {`${new Date(elem.realization_time).getDate()}/${
+                              {` ${new Date(elem.realization_time).getDate()}/${
                                 new Date(elem.realization_time).getMonth() + 1
                               }/${new Date(
                                 elem.realization_time
@@ -122,7 +124,7 @@ function Groups({ authenticated, setAuthenticated }) {
                       })}
                   </ScrollBox>
 
-                  <BoxImage className="desktop">
+                  <BoxImage className="desktop image">
                     <Image src={getTheme()} alt={currentGroup.title} />
                   </BoxImage>
                 </CardExtra>
@@ -143,15 +145,15 @@ function Groups({ authenticated, setAuthenticated }) {
                             </p>
                           }
                         >
-                          <h2>
+                          <IconsBox>
                             <Edit type="goals" data={elem} />
                             {elem.achieved ? (
                               <RefreshButton type="goals" data={elem} />
                             ) : (
                               <CheckButton type="goals" data={elem} />
                             )}
-                            <CgClose onClick={openDeleteGoal} />
-                          </h2>
+                            <CgClose color="#0090Ad" style={{cursor: 'pointer'}} onClick={openDeleteGoal}/>
+                          </IconsBox>
                           <DeleteGoal
                             deleteGoalModal={deleteGoalModal}
                             setDeleteGoalModal={setDeleteGoalModal}
@@ -180,7 +182,7 @@ function Groups({ authenticated, setAuthenticated }) {
                     })}
                   </ScrollBox>
 
-                  <BoxImage className="desktop">
+                  <BoxImage className="desktop image">
                     <Image src={getTheme()} alt={currentGroup.title} />
                   </BoxImage>
                 </CardExtra>

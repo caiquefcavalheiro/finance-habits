@@ -19,7 +19,7 @@ import {
   Name,
   Edit,
   Check,
-  Wedit,
+  AlignBox,
 } from "./styles";
 import educacao from "../../assets/Educacao.svg";
 import investimento from "../../assets/Investimento.svg";
@@ -96,21 +96,23 @@ const CardGroup = ({ group }) => {
       </BoxMobile>
 
       <BoxDesktop onClick={goToGroup}>
-        <DivCattegory>
-          <div>{category}</div>
-          <BoxButton>
-            <ButtonDesc onClick={remove}>Sair</ButtonDesc>
-            <Wedit />
-          </BoxButton>
-        </DivCattegory>
+        <AlignBox>
+          <DivCattegory>
+            <div>{category}</div>
+            <BoxButton>
+              <ButtonDesc onClick={remove}>Sair</ButtonDesc>
+            </BoxButton>
+          </DivCattegory>
 
-        <Description>{description}</Description>
-        <BoxName>
-          <Name>{name}</Name>
-          <BoxImage>
-            <Image src={getTheme()} alt={name} />
-          </BoxImage>
-        </BoxName>
+          <Description>{description}</Description>
+          <BoxName>
+            <Name>{name}</Name>
+            <BoxImage>
+              <Image src={getTheme()} alt={name} />
+            </BoxImage>
+          </BoxName>
+        </AlignBox>
+        
       </BoxDesktop>
     </>
   );

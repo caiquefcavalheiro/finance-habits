@@ -63,6 +63,16 @@ const SignIn = () => {
               {...register("password")}
               error={!!errors.password?.message}
               helperText={errors.password?.message}
+              sx={{
+                ".MuiOutlinedInput-root": {
+                backgroundColor: "#ffffff",
+                },
+              
+                // ".Mui-focused": {
+                //   backgroundColor: '#ffffff',
+                // },
+                
+              }}
             />
 
             <Button biggerButton type="submit">

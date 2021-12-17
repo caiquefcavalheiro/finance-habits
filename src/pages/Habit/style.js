@@ -28,7 +28,15 @@ export const CardsBox = styled.div`
     justify-content: space-around;
     flex-direction: row-reverse;
 
+    .mobile{
+      display: none;
+    }
+
     .desktop {
+      display: initial;
+    }
+
+    .image{
       display: flex;
       justify-content: center;
       align-items: center;
@@ -61,6 +69,24 @@ export const CardAchieved = styled(Card)`
     margin: 10px;
   }
 `;
+
+export const IconsBox = styled.div`
+  padding-top: 10px;
+  height: 80px;
+  width: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  svg{
+    font-size: 30px
+  }
+
+  @media screen and (min-width: 600px) {
+    height: 40px;
+    padding-top: 0;
+  }
+`
+
 export const CardInfo = styled(Card)`
   color: var(--color-primary-blue);
   margin-top: 20px;
@@ -69,10 +95,30 @@ export const CardInfo = styled(Card)`
   flex-direction: column;
   justify-content: space-between;
 
+  .title{
+    display: none;
+  }
+
   @media screen and (min-width: 600px) {
     margin: 10px;
     font-size: 20px;
     color: var(--color-grey-text);
     font-family: "Halter";
+
+
+    .title{
+      display: initial;
+      width: 275px;
+    }
   }
 `;
+
+export const CenterBox = styled.div`
+  @media screen and (min-width: 600px) {
+    margin-left: 10px;
+
+    p{
+      font-size: 18px
+    }
+  }
+`

@@ -4,52 +4,80 @@ import { Card } from "../Habit/style";
 export const CardsBox = styled.div`
   display: flex;
   flex-wrap: wrap;
-  .desktop {
-    display: none;
+  .desktop{
+      display: none;
   }
 
-  @media screen and (min-width: 600px) {
-    width: 100%;
-    justify-content: space-around;
+  @media screen and (min-width: 600px){
+      width: 100%;
+      justify-content: space-around;
 
-    .desktop {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      bottom: 15px;
-      right: 15px;
+      .mobile{
+          display: none;
+      }
+
+      .desktop{
+          display: initial;
+      }
+
+      .image{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          bottom: 15px;
+          right: 15px;
+      }
     }
   }
 `;
 
 export const CardInfo = styled(Card)`
   color: var(--color-primary-blue);
-  margin-top: 20px;
+  margin: 20px 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0 10px;
+  position: relative;
+  
+  
 
-  p {
-    margin-bottom: 10px;
+  .title{
+      display: none;
   }
 
-  .title {
-    display: none;
+  @media screen and (min-width: 600px){
+      margin: 10px;
+      font-size: 20px;
+      color: var(--color-grey-text);
+      font-family: "Halter";
+      
+      .title{
+          display: initial;
+          width: 285px;
+      }
   }
+`
+export const EditIcon = styled.div`
+    height: 40px;
+    text-align: center;
 
-  @media screen and (min-width: 600px) {
-    margin: 10px;
-    font-size: 20px;
-    color: var(--color-grey-text);
-    font-family: "Halter";
-
-    .title {
-      display: initial;
+    svg{
+        font-size: 30px;
     }
-  }
-`;
+
+    @media screen and (min-width: 600px){
+        width: 40px;
+        position: absolute;
+        right: 10px
+    }
+`
+export const Description = styled.p`
+    @media screen and (min-width: 600px){
+        font-size: 18px;
+        margin-left: 10px;
+    }
+`
 
 export const CardExtra = styled(Card)`
   min-width: 238px;
@@ -77,7 +105,7 @@ export const Icon = styled.div`
 `;
 
 export const ScrollBox = styled.div`
-  .Collapsible {
+  .Collapsible{
     width: 230px;
     margin: 10px auto;
     padding: 0 10px;
@@ -88,35 +116,43 @@ export const ScrollBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+      
 
-    .is-closed {
-      color: var(--color-grey-text);
+    .is-closed{
+        color: var(--color-grey-text);
     }
 
-    .is-open {
-      color: var(--color-dark-blue);
+    .is-open{
+        color: var(--color-dark-blue);
     }
 
-    p {
-      width: 210px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      padding: 10px 0;
+    .Collapsible__contentInner{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+      
+    p{
+        width: 210px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 10px 0;
     }
 
-    @media screen and (min-width: 600px) {
-      background-color: var(--color-light-blue);
-      margin: 10px 0;
+    @media screen and (min-width: 600px){
+        background-color: var(--color-light-blue);
+        margin: 10px 0;
     }
   }
-  @media screen and (min-width: 600px) {
-    margin: 10px;
-    width: 250px;
-    height: 210px;
-    overflow: auto;
+  
+  @media screen and (min-width: 600px){
+      margin: 10px;
+      width: 250px;
+      height: 210px;
+      overflow: auto;
   }
-`;
+`
 
 export const MiniCard = styled.div`
   position: relative;

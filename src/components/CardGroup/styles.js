@@ -21,7 +21,7 @@ export const BoxDesktop = styled.div`
   background-color: #e2f2f9;
   border: solid 1px #0090ad;
   border-radius: 8px;
-  padding: 8px;
+  padding: 10px 8px;
   color: #6c6c6c;
   font-family: "Halter";
   text-transform: uppercase;
@@ -39,7 +39,12 @@ export const BoxDesktop = styled.div`
     margin: 0.3rem;
   }
 `;
-
+export const AlignBox = styled.div`
+  height: 204px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
 export const PopOVER = styled(Popover)`
   @media screen and (min-width: 600px) {
     display: none;
@@ -138,21 +143,23 @@ export const ButtonDesc = styled.button`
 export const DivCattegory = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
   div {
     font-size: 15px;
   }
 `;
 
 export const Description = styled.div`
-  font-size: 10px;
-  margin-bottom: 12px;
+  font-size: 12px;
+  margin-left: 10px;
+  /* margin-bottom: 12px; */
   width: 313px;
-  height: 70px;
+  /* height: 70px; */
 `;
 
 export const Name = styled.div`
   font-size: 15px;
+  width: 230px;
 `;
 
 export const Edit = styled(FiEdit)`
