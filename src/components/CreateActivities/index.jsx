@@ -8,6 +8,7 @@ import { CloseModalButton } from "../CloseModalButton";
 import { useActivies } from "../../providers/Activities";
 import { useParams } from "react-router";
 
+
 export const CreateActivities = ({ activitiesModal, setActivitiesModal }) => {
   const { toCreateActivities } = useActivies();
   const params = useParams();
@@ -31,8 +32,8 @@ export const CreateActivities = ({ activitiesModal, setActivitiesModal }) => {
     const dados = {
       title,
       realization_time: date,
-      group: Number(params.id),
-    };
+      group: Number(params.id)
+    }
     toCreateActivities(dados);
     closeModal();
     reset();
@@ -56,7 +57,7 @@ export const CreateActivities = ({ activitiesModal, setActivitiesModal }) => {
             fullWidth
           />
 
-          <Button type="submit">Criar meta</Button>
+          <div><Button type="submit">Criar atividade</Button></div>
         </form>
       </ActivitiesModal>
     </>

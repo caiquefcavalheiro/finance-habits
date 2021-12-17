@@ -5,4 +5,5 @@ export const Container = styled.button`
     float: right;
     font-size: 1rem;
     background: transparent;
+    
 `

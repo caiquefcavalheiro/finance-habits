@@ -1,31 +1,32 @@
-import { useactivities } from "../../providers/activities"
+import { useActivies } from "../../providers/Activities"
 import { DeleteModal } from "./styles"
 import Button from "../Button"
 import { CloseModalButton } from "../CloseModalButton"
 
-const DeleteGoal = ({deleteGoalModal, setDeleteGoalModal, data}) => {
-    
-    const { toDeleteactivities } = useactivities()
+const DeleteActivity = ({deleteActivityModal, setDeleteActivityModal, data}) => {
+    const { toDeleteActivities } = useActivies()
 
     const handleDelete = (data) => {
-        toDeleteactivities(data)
+        toDeleteActivities(data)
         closeModal()
     }
 
     const closeModal = () => {
-        setDeleteGoalModal(false)
+        setDeleteActivityModal(false)
     }
+    
     return (
         <DeleteModal
-        isOpen={deleteGoalModal}
-        ariaHideApp={false}>
-        <CloseModalButton onClick={closeModal} />
+        isOpen={deleteActivityModal}
+        ariaHideApp={false}
+        >
+            <CloseModalButton onClick={closeModal}/>
             <section>
-            <div>Deseja deletar o objetivo ?</div>
+            <div>Deseja deletar a atividade?</div>
             <Button onClick={() => handleDelete(data)} >Deletar</Button>
             </section>
         </DeleteModal>
     )
 }
 
-export default DeleteGoal
+export default DeleteActivity

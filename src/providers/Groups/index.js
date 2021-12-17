@@ -78,7 +78,7 @@ export const GroupProvider = ({ children }) => {
   };
 
   const updateGroup = (data) => {
-    console.log(data)
+
     const { nameGroup, descriptionGroup } = data
     api
     .patch(`/groups/${data.id}/`, { name: nameGroup, description: descriptionGroup },

@@ -13,6 +13,14 @@ export const GoulModal = styled(ReactModal)`
   padding: 20px;
   transform: translate(-50, -50%);
 
+  .MuiInputLabel-root {
+    color: var(--color-dark-blue);
+  }
+
+  .MuiOutlinedInput-root {
+    background-color: white;
+  }
+
   label[data-shrink="false"]
     + .MuiInputBase-formControl
     .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
@@ -24,14 +32,13 @@ export const GoulModal = styled(ReactModal)`
 
   @media (min-width: 500px) {
     position: absolute;
-    width: 530px;
-    min-height: 420px;
-    height: 440px;
+    width: 520px;
+    height: 350px;
     margin-left: -257.5px;
     margin-top: -160px;
     border-radius: 8px;
     left: 50%;
-    top: 35%;
+    top: 45%;
   }
 `;
 export const Container = styled.div`

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { FiXCircle } from "react-icons/fi";
 import { useContext } from "react";
 import Button from "../Button";
-import { Container, Icon, MainContainer } from "./style";
+import { Container, Icon, MainContainer, SignupButton } from "./style";
 import { SignUpContext } from "../../providers/SignUp";
 
 const GoUpSignUp = ({ openSignup, setOpenSignup, setAuthenticated }) => {
@@ -82,9 +82,9 @@ const GoUpSignUp = ({ openSignup, setOpenSignup, setAuthenticated }) => {
             error={!!errors.confirmPassword?.message}
             helperText={errors.confirmPassword?.message}
           />
-          <Button biggerButton white type="submit">
+          <SignupButton type="submit">
             Cadastrar
-          </Button>
+          </SignupButton>
         </form>
       </Container>
     </MainContainer>

@@ -3,7 +3,7 @@ import { useGoals } from "../../providers/Goals";
 import { useActivies } from "../../providers/Activities";
 import { TextField } from "@mui/material";
 import { FiEdit } from "react-icons/fi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../Button";
 import RadioInput from "../RadioInput";
 import { useForm } from "react-hook-form";
@@ -35,6 +35,7 @@ function Edit({ type, data }) {
     if (titleHabit !== "") {
       toUpdateHabit(data);
       toGetHabits();
+      window.location.reload();
     } else {
       toast("Não é possivel editar com um texto em branco", {
         duration: 6000,
@@ -48,6 +49,7 @@ function Edit({ type, data }) {
     const { nameGroup, descriptionGroup } = data;
     if (nameGroup !== "" && descriptionGroup !== "") {
       updateGroup(data);
+      window.location.reload();
     } else {
       toast("Não é possivel editar com um texto em branco", {
         duration: 6000,
@@ -62,6 +64,7 @@ function Edit({ type, data }) {
     if (titleGoal !== "") {
       toUpdateGoals(data);
       allGroupsUser();
+      window.location.reload();
     } else {
       toast("Não é possivel editar com um texto em branco", {
         duration: 6000,
@@ -75,6 +78,7 @@ function Edit({ type, data }) {
     const { nameActivity } = data;
     if (nameActivity !== "") {
       toUpdateActivies(data);
+      window.location.reload();
     } else {
       toast("Não é possivel editar com um texto em branco", {
         duration: 6000,
@@ -89,26 +93,27 @@ function Edit({ type, data }) {
     event.stopPropagation();
   }
 
-  const [habitTitle, setHabitTitle] = useState(
-    data.title === undefined ? "" : data.title
-  );
-  const [groupName, setGroupName] = useState(
-    data.name === undefined ? "" : data.name
-  );
-  const [groupDescription, setGroupDescription] = useState(
-    data.description === undefined ? "" : data.description
-  );
-  const [goalTitle, setGoalTitle] = useState(
-    data.title === undefined ? "" : data.title
-  );
-  const [activitiesName, setActivitiesName] = useState(
-    data.name === undefined ? "" : data.name
-  );
+  const [habitTitle, setHabitTitle] = useState();
+  const [groupName, setGroupName] = useState();
+  const [groupDescription, setGroupDescription] = useState();
+  const [goalTitle, setGoalTitle] = useState();
+  const [activitiesName, setActivitiesName] = useState();
+
+  useEffect(() => {
+    setHabitTitle(data.title === undefined ? "" : data.title);
+    setGroupName(data.name === undefined ? "" : data.name);
+    setGroupDescription(data.description === undefined ? "" : data.description);
+    setGoalTitle(data.title === undefined ? "" : data.title);
+    setActivitiesName(data.title === undefined ? "" : data.title);
+  }, [data]);
 
   return (
     <>
-      <FiEdit onClick={clickIcon} style={{cursor: 'pointer', color: '#0090Ad'}} />
-      
+      <FiEdit
+        onClick={clickIcon}
+        style={{ cursor: "pointer", color: "#0090Ad" }}
+      />
+
       <ReactModalStyled
         isOpen={openModal}
         onRequestClose={() => setopenModal(false)}
@@ -122,7 +127,7 @@ function Edit({ type, data }) {
             {...register("id")}
           ></input>
           <TextField
-            label="title"
+            label="Título"
             variant="outlined"
             margin="normal"
             {...register("titleHabit")}

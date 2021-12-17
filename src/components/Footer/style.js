@@ -22,6 +22,11 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     color: white;
+    cursor: pointer;
+
+    :hover {
+      text-shadow: 1px 1px 3px white;
+    }
   }
 
   img {

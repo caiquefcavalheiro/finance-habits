@@ -19,11 +19,12 @@ const DeleteGoal = ({deleteGoalModal, setDeleteGoalModal, data}) => {
         <DeleteModal
         isOpen={deleteGoalModal}
         ariaHideApp={false}>
-        <CloseModalButton onClick={closeModal} />
+        <CloseModalButton onClick={closeModal}>
             <section>
             <div>Deseja deletar o objetivo ?</div>
             <Button onClick={() => handleDelete(data)} >Deletar</Button>
             </section>
+            </CloseModalButton>
         </DeleteModal>
     )
 }

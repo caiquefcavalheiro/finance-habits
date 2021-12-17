@@ -8,7 +8,6 @@ const GoalsContext = createContext();
 
 export const GoalsProvider = ({ children }) => {
   const { token } = useSignin();
-  console.log(token)
 
   const { allGroupsUser } = useGroups();
 
@@ -47,25 +46,20 @@ export const GoalsProvider = ({ children }) => {
   }
 
   const toDeleteGoals = (data) => {
-    const { id } = data 
-    
-    console.log(id)
-    api 
-    .delete(`/goals/${data.id}/`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      },
-    })
-    .then(res => {
-      allGroupsUser()
-      toast.success("Meta excluída com sucesso!")
-    })
-    .catch(
-      (error) => {
-        toast.error('Ops. Algo deu errado. Tente novamente.')
-      }
-    )
-  }
+    api
+      .delete(`/goals/${data.id}/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        allGroupsUser();
+        toast.success("Meta excluída com sucesso!");
+      })
+      .catch((error) => {
+        toast.error("Ops. Algo deu errado. Tente novamente.");
+      });
+  };
 
   return (
     <GoalsContext.Provider
