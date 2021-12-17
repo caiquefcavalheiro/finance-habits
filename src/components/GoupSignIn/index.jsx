@@ -4,8 +4,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { FiXCircle } from "react-icons/fi";
 import { useContext } from "react";
-import Button from "../Button";
-import { Container, Icon, MainContainer } from "./style";
+import { Container, Icon, MainContainer, SigninButton } from "./style";
 import { SigninContext } from "../../providers/SignIn";
 
 const GoUpSignIn = ({ openSignin, setOpenSignin }) => {
@@ -56,9 +55,9 @@ const GoUpSignIn = ({ openSignin, setOpenSignin }) => {
             helperText={errors.password?.message}
           />
 
-          <Button biggerButton white type="submit">
+          <SigninButton biggerButton white type="submit">
             Login
-          </Button>
+          </SigninButton>
         </form>
       </Container>
     </MainContainer>

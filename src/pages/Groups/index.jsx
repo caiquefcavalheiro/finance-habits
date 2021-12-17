@@ -119,8 +119,8 @@ function Groups({ authenticated, setAuthenticated }) {
                           data={elem} />
                             <p>{elem.title}</p>
                             <p>
-                              Criado:{" "}
-                              {`${new Date(elem.realization_time).getDate()}/${
+                              Criado:
+                              {` ${new Date(elem.realization_time).getDate()}/${
                                 new Date(elem.realization_time).getMonth() + 1
                               }/${new Date(
                                 elem.realization_time

@@ -60,3 +60,29 @@ export const Icon = styled.button`
     font-size: 25px;
   }
 `;
+
+export const SignupButton = styled.button`
+    font-size: 20px;
+    font-weight: 400;
+    font-family: "Roboto";
+    font-style: normal;
+    color: #0090Ad;
+    border: 1px solid;
+
+    width: 80%;
+    height: 50px;
+
+    border-radius: var(--radius); 
+    background-color: #FFFFFF;
+
+    box-shadow: 1px 3px 4px var(--cor-botao);
+    box-sizing: border-box;
+
+    :hover{
+        opacity: 85%;
+    } 
+
+    :disabled {
+        background-color: var(--color-light-blue);
+    }
+`;

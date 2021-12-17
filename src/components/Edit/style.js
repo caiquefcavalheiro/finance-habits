@@ -8,6 +8,7 @@ export const IconX = styled(FiX)`
   top: 20px;
   width: 30px;
   height: 20px;
+  cursor: pointer;
 `;
 
 export const FormHabit = styled.form`
@@ -17,6 +18,14 @@ export const FormHabit = styled.form`
   align-items: center;
   margin: 0 0 20px 0;
   width: 300px;
+
+  .MuiInputLabel-root {
+    color: var(--color-dark-blue);
+  }
+
+  .MuiOutlinedInput-root {
+    background-color: white;
+  }
 
   h3 {
     width: 100%;
@@ -46,6 +55,14 @@ export const FormGroup = styled.form`
   margin: 0 0 20px 0;
   width: 300px;
 
+  .MuiInputLabel-root {
+    color: var(--color-dark-blue);
+  }
+
+  .MuiOutlinedInput-root {
+    background-color: white;
+  }
+
   h3 {
     width: 100%;
     text-align: left;
@@ -74,6 +91,14 @@ export const FormActivities = styled.form`
   margin: 0 0 20px 0;
   width: 300px;
 
+  .MuiInputLabel-root {
+    color: var(--color-dark-blue);
+  }
+
+  .MuiOutlinedInput-root {
+    background-color: white;
+  }
+
   h3 {
     width: 100%;
     text-align: left;
@@ -101,6 +126,14 @@ export const FormGoals = styled.form`
   align-items: center;
   margin: 0 0 20px 0;
   width: 300px;
+
+  .MuiInputLabel-root {
+    color: var(--color-dark-blue);
+  }
+
+  .MuiOutlinedInput-root {
+    background-color: white;
+  }
 
   h3 {
     width: 100%;
