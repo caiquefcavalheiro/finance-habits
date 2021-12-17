@@ -13,6 +13,14 @@ export const GoulModal = styled(ReactModal)`
   padding: 20px;
   transform: translate(-50, -50%);
 
+  .MuiInputLabel-root {
+    color: var(--color-dark-blue);
+  }
+
+  .MuiOutlinedInput-root {
+    background-color: white;
+  }
+
   label[data-shrink="false"]
     + .MuiInputBase-formControl
     .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
