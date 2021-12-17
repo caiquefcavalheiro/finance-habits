@@ -127,7 +127,7 @@ function Edit({ type, data }) {
             {...register("id")}
           ></input>
           <TextField
-            label="title"
+            label="Título"
             variant="outlined"
             margin="normal"
             {...register("titleHabit")}

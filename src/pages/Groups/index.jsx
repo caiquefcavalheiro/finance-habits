@@ -122,7 +122,7 @@ function Groups({ authenticated, setAuthenticated }) {
                             </ContainerButtonsActivities>
                             <p>
                               Criado:
-                              {`${new Date(elem.realization_time).getDate()}/${
+                              {` ${new Date(elem.realization_time).getDate()}/${
                                 new Date(elem.realization_time).getMonth() + 1
                               }/${new Date(
                                 elem.realization_time
