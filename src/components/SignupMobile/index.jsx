@@ -45,7 +45,6 @@ function SignupMobile({ setAuthenticated }) {
           label="Username"
           variant="outlined"
           margin="normal"
-          fullWidth
           {...register("username")}
           error={!!errors.username?.message}
           helperText={errors.username?.message}
@@ -54,7 +53,6 @@ function SignupMobile({ setAuthenticated }) {
           label="Email"
           type="text"
           margin="normal"
-          fullWidth
           {...register("email")}
           error={!!errors.email?.message}
           helperText={errors.email?.message}
@@ -62,7 +60,6 @@ function SignupMobile({ setAuthenticated }) {
         <TextField
           label="Password"
           type="password"
-          fullWidth
           variant="outlined"
           margin="normal"
           {...register("password")}
@@ -72,7 +69,6 @@ function SignupMobile({ setAuthenticated }) {
         <TextField
           label="ConfirmPassword"
           type="password"
-          fullWidth
           variant="outlined"
           margin="normal"
           {...register("confirmPassword")}
