@@ -35,7 +35,11 @@ import DeleteActivity from "../../components/DeleteActivity";
 function Groups({ authenticated, setAuthenticated }) {
   const params = useParams();
   const [pageWidth, setPageWidth] = useState(window.innerWidth);
-  const { userGroups } = useGroups();
+  const { userGroups, allGroupsUser } = useGroups();
+
+  useEffect(() => {
+    allGroupsUser();
+  }, []);
 
   const currentGroup = userGroups.find((elem) => elem.id === Number(params.id));
   const currentGroupIndex = userGroups.indexOf(currentGroup);
@@ -92,11 +96,17 @@ function Groups({ authenticated, setAuthenticated }) {
               <SubHeader tittle={currentGroup.name} />
               <CardsBox>
                 <CardInfo>
-                  <EditIcon >
-                    <Edit type="groups" data={currentGroup}/>
+                  <EditIcon>
+                    <Edit type="groups" data={currentGroup} />
                   </EditIcon>
-                  <p><span className='mobile'>Categoria: </span>{currentGroup.category}</p>
-                  <Description><span className='mobile'>Descrição: </span>{currentGroup.description}</Description>
+                  <p>
+                    <span className="mobile">Categoria: </span>
+                    {currentGroup.category}
+                  </p>
+                  <Description>
+                    <span className="mobile">Descrição: </span>
+                    {currentGroup.description}
+                  </Description>
                   <p className="title">{currentGroup.name}</p>
                   <BoxImage className="desktop image">
                     <Image src={getTheme()} alt={currentGroup.title} />
@@ -159,7 +169,11 @@ function Groups({ authenticated, setAuthenticated }) {
                             ) : (
                               <CheckButton type="goals" data={elem} />
                             )}
-                            <CgClose color="#0090Ad" style={{cursor: 'pointer'}} onClick={openDeleteGoal}/>
+                            <CgClose
+                              color="#0090Ad"
+                              style={{ cursor: "pointer" }}
+                              onClick={openDeleteGoal}
+                            />
                           </IconsBox>
                           <DeleteGoal
                             deleteGoalModal={deleteGoalModal}

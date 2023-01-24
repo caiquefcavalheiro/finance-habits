@@ -8,6 +8,7 @@ import Register from "../pages/Register";
 import SignIn from "../pages/SignIn";
 import PageGroup from "../pages/PageGroup";
 import { SigninContext } from "../providers/SignIn";
+import SnowFall from "../components/SnowFall";
 
 function Routes() {
   const { authenticated, setAuthenticated } = useContext(SigninContext);
@@ -63,6 +64,11 @@ function Routes() {
           authenticated={authenticated}
           setAuthenticated={setAuthenticated}
         />
+      </Route>
+      <Route exact path="/snowfall">
+        <div style={{ backgroundColor: "black" }}>
+          <SnowFall />
+        </div>
       </Route>
     </Switch>
   );
