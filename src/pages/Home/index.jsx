@@ -7,6 +7,7 @@ import GoUpSignIn from "../../components/GoupSignIn";
 import GoUpSignUp from "../../components/GoupSignUp";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
+import SnowFall from "../../components/SnowFall";
 
 const Home = ({ authenticated, setAuthenticated }) => {
   const [signin, setSignin] = useState(false);
@@ -18,6 +19,7 @@ const Home = ({ authenticated, setAuthenticated }) => {
 
   return (
     <>
+      {/* <SnowFall /> */}
       <MainContainer>
         <Header />
         <Container>
@@ -54,10 +56,7 @@ const Home = ({ authenticated, setAuthenticated }) => {
           </Button>
         </div>
         <Footer />
-        <GoUpSignIn
-          openSignin={signin}
-          setOpenSignin={setSignin}
-        />
+        <GoUpSignIn openSignin={signin} setOpenSignin={setSignin} />
         <GoUpSignUp
           openSignup={signup}
           setOpenSignup={setSignup}
